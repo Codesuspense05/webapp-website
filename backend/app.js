@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 app.use(cors({
-  origin: ['https://mwrsms-front.vercel.app',],
+  origin: ['https://mwrsms.vercel.app',],
   credentials: true
 }));
 
