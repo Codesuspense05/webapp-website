@@ -1,0 +1,51 @@
+import axios from "axios";
+import React, { useEffect } from "react";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
+import { server } from "../server";
+import { MdAccessibility } from "react-icons/md";
+import { BiSad } from "react-icons/bi";
+
+const ActivationPage = () => {
+  const { activation_token } = useParams();
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    if (activation_token) {
+      const sendRequest = async () => {
+        await axios
+          .post(`${server}/user/activation`, {
+            activation_token,
+          })
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {
+            setError(true);
+          });
+      };
+      sendRequest();
+    }
+  }, [activation_token]);
+
+  return (
+    <div
+      style={{
+        width: "100%",
+        height: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      {error ? (
+        
+        <p className="flex text-[20px]">Your token is expired!! <BiSad size={30}  className="flex justify-center"/></p>
+      ) : (
+        <p className="flex text-[20px] text-green-600">Your account has been created suceessfully! <MdAccessibility size={30}/></p>
+      )}
+    </div>
+  );
+};
+
+export default ActivationPage;
