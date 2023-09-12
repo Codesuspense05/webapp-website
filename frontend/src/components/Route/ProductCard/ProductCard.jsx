@@ -32,6 +32,7 @@ const ProductCard = ({ data,isEvent }) => {
   useEffect(() => {
     if (wishlist && wishlist.find((i) => i._id === data._id)) {
       setClick(true)
+
     } else {
       setClick(false);
     }
@@ -69,7 +70,7 @@ const ProductCard = ({ data,isEvent }) => {
       <div className="flex">
         <Link to={`/shop/preview/${data?.shop._id}`}>
       <img
-              src={avatar ? avatar : `${seller.avatar.url}`}
+              src={avatar ? avatar : `${data.avatar?.url}`}
               alt=""
               className=" flex w-[35px] h-[35px] max-400px:w-[20px] max-400px:h-[20px] rounded-full cursor-pointer mr-1"
             />
