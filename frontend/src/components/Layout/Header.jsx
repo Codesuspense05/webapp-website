@@ -215,7 +215,7 @@ const Header = ({ activeHeading }) => {
 
 
       {/* mobile header */}
-      <div className="bg-blue-700 800px:hidden h-2"></div>
+      <div className="bg-blue-700 800px:hidden  h-2 z-50 top-0 left-0"></div>
       <div
         className={`${
           active === true ? "shadow-sm fixed top-0 left-0 z-10" : null
@@ -331,9 +331,10 @@ const Header = ({ activeHeading }) => {
                 <Link to="/profile"><BiUser size={30} className="cursor-pointer"/></Link>
                </div>
              <hr />
+             
               <div className="flex w-full justify-center h-[10%] mb-9 shadow-md  bg-gradient-to-r from-blue-400 via-gray-200 to-blue-400 ">
                 {isAuthenticated ? (
-                  <div>
+                  <div className=" flex items-center justify-center">
                     <Link to="/profile">
                       <img
                         src={`${user.avatar?.url}`}
@@ -341,8 +342,11 @@ const Header = ({ activeHeading }) => {
                         className="w-[80px] h-[80px] rounded-full border-[3px] border-[#4357da]"
                       />
                     </Link>
-      
+                    
+                  
+                  <h4 className="text-sm text-gray-600 ml-2"> Name: {user.name}</h4>
                   </div>
+                  
                   
                 ) : (
                   <>

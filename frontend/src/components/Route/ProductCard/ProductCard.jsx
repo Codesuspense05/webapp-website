@@ -17,17 +17,21 @@ import { useEffect } from "react";
 import { addTocart } from "../../../redux/actions/cart";
 import { toast } from "react-toastify";
 import Ratings from "../../Products/Ratings";
+import { HiLocationMarker } from "react-icons/hi";
 
 const ProductCard = ({ data,isEvent }) => {
   const { wishlist } = useSelector((state) => state.wishlist);
   const { cart } = useSelector((state) => state.cart);
   const [click, setClick] = useState(false);
   const [open, setOpen] = useState(false);
+  const { seller } = useSelector((state) => state.seller);
+  const [avatar,] = useState();
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (wishlist && wishlist.find((i) => i._id === data._id)) {
-      setClick(true);
+      setClick(true)
     } else {
       setClick(false);
     }
@@ -58,19 +62,27 @@ const ProductCard = ({ data,isEvent }) => {
     }
   };
 
+
   return (
     <>
       <div className="w-full h-[360px] max-400px:h-[175px]  bg-white rounded-lg shadow-xl p-2 relative cursor-pointer">
-      <Link to={`/shop/preview/${data?.shop._id}`}>
-          <h5 className={`${styles.shop_name} text-[15px] max-400px:text-[10px] pt-0`}>{data.shop.name}</h5>
+      <div className="flex">
+        <Link to={`/shop/preview/${data?.shop._id}`}>
+      <img
+              src={avatar ? avatar : `${seller.avatar?.url}`}
+              alt=""
+              className=" flex w-[35px] h-[35px] max-400px:w-[20px] max-400px:h-[20px] rounded-full cursor-pointer mr-1"
+            />
         </Link>
+        <HiLocationMarker size={12} color="red"/><h5 className={`${styles.shop_name} text-[15px] max-400px:text-[8px] pt-0`}>{seller.address}</h5>
+        </div>
           
         <div className="flex justify-end"></div>
         <Link to={`${isEvent === true ? `/product/${data._id}?isEvent=true` : `/product/${data._id}`}`}>
           <img
             src={`${data.images && data.images[0]?.url}`}
             alt=""
-            className="w-full 800px:h-[170px] max-400px:h-[60px]   object-contain 800px:transform 800px:transition-all 800px:hover:scale-110 max-400px:transform max-400px:transition-all max-400px:hover:scale-110 cursor-pointer"
+            className="w-full 800px:h-[160px] max-400px:h-[70px]   object-contain 800px:transform 800px:transition-all 800px:hover:scale-110 max-400px:transform max-400px:transition-all max-400px:hover:scale-110 cursor-pointer"
           />
         </Link>
         
@@ -113,7 +125,7 @@ const ProductCard = ({ data,isEvent }) => {
           {click ? (
             <AiFillHeart
              
-              className="cursor-pointer absolute right-2 top-4 800px:text-[30px]"
+              className="cursor-pointer absolute right-2 800px:top-14 max-400px:top-9 800px:text-[30px]"
               onClick={() => removeFromWishlistHandler(data)}
               color={click ? "red" : "#333"}
               title="Remove from wishlist"
@@ -121,7 +133,7 @@ const ProductCard = ({ data,isEvent }) => {
           ) : (
             <AiOutlineHeart
              
-              className="cursor-pointer absolute right-2 top-4 800px:text-[30px]"
+              className="cursor-pointer absolute right-2 800px:top-14 max-400px:top-9 800px:text-[30px]"
               onClick={() => addToWishlistHandler(data)}
               color={click ? "red" : "#333"}
               title="Add to wishlist"
@@ -129,14 +141,14 @@ const ProductCard = ({ data,isEvent }) => {
           )}
           <AiOutlineEye
            
-            className="cursor-pointer absolute right-2 top-14 max-400px:top-10 800px:text-[30px]"
+            className="cursor-pointer absolute right-2 800px:top-28 max-400px:top-14 800px:text-[30px]"
             onClick={() => setOpen(!open)}
             color="#333"
             title="Quick view"
           />
           <AiOutlineShoppingCart
             
-            className="cursor-pointer absolute right-2 top-24 max-400px:top-16 800px:text-[30px]"
+            className="cursor-pointer absolute right-2 800px:top-40 max-400px:top-20 800px:text-[30px]"
             onClick={() => addToCartHandler(data._id)}
             color="#444"
             title="Add to cart"

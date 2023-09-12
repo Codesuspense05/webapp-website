@@ -7,7 +7,8 @@ import FeaturedProduct from "../components/Route/FeaturedProduct/FeaturedProduct
 import Events from "../components/Events/Events";
 import Sponsored from "../components/Route/Sponsored";
 import Footer from "../components/Layout/Footer";
-import Navigation from "./components/Navigation.jsx";
+// import Navigation from "./components/Navigation.jsx";
+
 
 const HomePage = () => {
   return (
@@ -17,9 +18,9 @@ const HomePage = () => {
 
         <Categories />
         <BestDeals /> 
-        <div className="fixed top-[600px] left-0 z-10  justify-center items-center ">
+        {/* <div className="fixed left-0 z-10  justify-center items-center ">
         <Navigation />
-        </div>
+        </div> */}
         <Events />
         <FeaturedProduct />
         <Sponsored />

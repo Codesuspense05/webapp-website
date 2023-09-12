@@ -2,16 +2,16 @@ import React, { useState } from "react";
 
 const Navigation = () => {
   const Menus = [
-    { name: "Home", icon: "home-outline", dis: "translate-x-0" },
-    { name: "Profile", icon: "person-outline", dis: "translate-x-16" },
-    { name: "Message", icon: "chatbubble-outline", dis: "translate-x-32" },
-    { name: "Photos", icon: "camera-outline", dis: "translate-x-48" },
-    { name: "Settings", icon: "settings-outline", dis: "translate-x-64" },
+    { name: "Home", icon: "home-outline", dis: "translate-y-0" },
+    { name: "Profile", icon: "person-outline", dis: "translate-y-20" },
+    { name: "Message", icon: "chatbubble-outline", dis: "translate-y-40" },
+    { name: "Photos", icon: "camera-outline", dis: "translate-y-66" },
+    { name: "Settings", icon: "settings-outline", dis: "translate-y-72" },
   ];
   const [active, setActive] = useState(0);
   return (
-    <div className=" w-full bg-gray-200 max-h-[4.4rem] px-9 rounded-t-xl 800px:hidden">
-      <ul className="flex relative">
+    <div className=" w-full bg-transparent h-[55vh] px-9 rounded-t-xl 800px:hidden">
+      <ul className="">
         <span
           className={`bg-blue-500 duration-500 ${Menus[active].dis} border-2 border-gray-600 h-16 w-16 absolute
          -top-5 rounded-full`}

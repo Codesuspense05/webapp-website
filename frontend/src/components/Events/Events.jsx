@@ -10,7 +10,7 @@ const Events = () => {
     <div>
      {
       !isLoading && (
-        <div className="w-11/11 mx-2 max-400px:hidden">
+        <div className="w-11/11 mx-2 ">
       <div className={`${styles.heading}`}>
         <h1 className='text-center text-blue-500 max-400px:text-[15px]'>Limited Special Promo's</h1>
       </div>

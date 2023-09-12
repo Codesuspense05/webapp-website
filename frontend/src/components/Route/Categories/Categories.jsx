@@ -95,7 +95,7 @@ const Categories = () => {
                   <h5 className={`text-[18px] leading-[1.3] `}>{i.title}</h5>
                   <img
                     src={i.image_Url}
-                    className="h-[100px] w-[100px] object-cover shadow-sm"
+                    className="h-[25vh] w-[25vh] max-400px:h-[100px] max-400px:w-[100px] object-cover shadow-sm"
                     
                     alt=""
                   />
