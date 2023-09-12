@@ -17,14 +17,14 @@ import { useEffect } from "react";
 import { addTocart } from "../../../redux/actions/cart";
 import { toast } from "react-toastify";
 import Ratings from "../../Products/Ratings";
-// import { HiLocationMarker } from "react-icons/hi";
+ import { HiLocationMarker } from "react-icons/hi";
 
 const ProductCard = ({ data,isEvent }) => {
   const { wishlist } = useSelector((state) => state.wishlist);
   const { cart } = useSelector((state) => state.cart);
   const [click, setClick] = useState(false);
   const [open, setOpen] = useState(false);
-  // const { seller } = useSelector((state) => state.seller);
+ const { seller } = useSelector((state) => state.seller);
   // const [avatar] = useState();
 
   const dispatch = useDispatch();
@@ -67,16 +67,16 @@ const ProductCard = ({ data,isEvent }) => {
   return (
     <>
       <div className="w-full h-[360px] max-400px:h-[175px]  bg-white rounded-lg shadow-xl p-2 relative cursor-pointer">
-      {/* <div className="flex">
+    <div className="flex">
         <Link to={`/shop/preview/${data?.shop._id}`}>
       <img
-              src={avatar ? avatar : `${data.avatar?.url}`}
+              src={`${data.avatar?.url}`}
               alt=""
               className=" flex w-[35px] h-[35px] max-400px:w-[20px] max-400px:h-[20px] rounded-full cursor-pointer mr-1"
             />
         </Link>
         <HiLocationMarker size={12} color="red"/><h5 className={`${styles.shop_name} text-[15px] max-400px:text-[8px] pt-0`}>{seller?.address}</h5>
-        </div> */}
+        </div> 
           
         <div className="flex justify-end"></div>
         <Link to={`${isEvent === true ? `/product/${data._id}?isEvent=true` : `/product/${data._id}`}`}>
