@@ -70,7 +70,7 @@ const ProductCard = ({ data,isEvent }) => {
     <div className="flex">
         <Link to={`/shop/preview/${data?.shop._id}`}>
       <img
-              src={`${seller?.shop.avatar?.url}`}
+              src={`${seller?.avatar?.url}`}
               alt=""
               className=" flex w-[35px] h-[35px] max-400px:w-[20px] max-400px:h-[20px] rounded-full cursor-pointer mr-1"
             />
