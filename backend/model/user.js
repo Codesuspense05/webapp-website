@@ -7,6 +7,12 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please enter your name!"],
   },
+
+  gender:{
+    type: String,
+    required: [true, "Please Select your Gender Identity!"],
+  },
+ 
   email:{
     type: String,
     required: [true, "Please enter your email!"],
@@ -14,11 +20,12 @@ const userSchema = new mongoose.Schema({
   password:{
     type: String,
     required: [true, "Please enter your password"],
-    minLength: [4, "Password should be greater than 4 characters"],
+    minLength: [8, "Password should be greater than 8 characters"],
     select: false,
   },
   phoneNumber:{
     type: Number,
+    required: [true, "Please enter your contact number"],
   },
   addresses:[
     {

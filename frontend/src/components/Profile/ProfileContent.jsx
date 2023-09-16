@@ -13,7 +13,7 @@ import styles from "../../styles/styles";
 import { DataGrid } from "@material-ui/data-grid";
 import { Avatar, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import { MdTrackChanges } from "react-icons/md";
+import {  MdOutlineAdminPanelSettings, MdOutlineContactPhone, MdOutlineEmail, MdTrackChanges } from "react-icons/md";
 import { RxCross1, RxEyeOpen } from "react-icons/rx";
 import {
   deleteUserAddress,
@@ -26,16 +26,23 @@ import { useEffect } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { getAllOrdersOfUser } from "../../redux/actions/order";
+import { CgNametag } from "react-icons/cg";
+import {  RiLockPasswordLine } from "react-icons/ri";
 
 
-const ProfileContent = ({ active }) => {
+
+const ProfileContent = ({  setActive, active }) => {
   const { user, error, successMessage } = useSelector((state) => state.user);
   const [name, setName] = useState(user && user.name);
+
   const [email, setEmail] = useState(user && user.email);
   const [phoneNumber, setPhoneNumber] = useState(user && user.phoneNumber);
   const [password, setPassword] = useState("");
   const [, setAvatar] = useState(null);
   const dispatch = useDispatch();
+
+
+
 
   useEffect(() => {
     if (error) {
@@ -81,19 +88,20 @@ const ProfileContent = ({ active }) => {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full ">
       
       {/* profile */}
       {active === 1 && (
         <>
+        
           <div className="flex justify-center w-full ">
             <div className="relative">
               <img
                 src={`${user?.avatar?.url}`}
-                className="w-[120px] h-[120px] rounded-full object-cover border-[3px] border-blue-800"
+                className="w-[80px] h-[80px] rounded-full object-cover border-[3px] border-blue-800"
                 alt=""
               />
-              <div className="w-[30px] h-[30px] bg-[#E3E9EE] rounded-full flex items-center justify-center cursor-pointer absolute bottom-[5px] right-[5px]">
+              <div className="w-[20px] h-[20px] bg-[#E3E9EE] rounded-full flex items-center justify-center cursor-pointer absolute bottom-[5px] right-[5px]">
                 <input
                   type="file"
                   id="image"
@@ -109,68 +117,92 @@ const ProfileContent = ({ active }) => {
             
           </div>
           <h4 className="text-center font-semibold ">Account Profile</h4>
+         
+   
           <br />
           
           <hr />
-
-          <div className="w-full px-5 grid grid-cols-1">
+          {user && user?.role === "Admin" && (
+        <Link to="/admin/dashboard">
+          <div
+            className="flex items-center justify-center cursor-pointer w-full "
+            onClick={() => setActive(8)}
+          >
+            <MdOutlineAdminPanelSettings
+              size={20}
+              color={active === 7 ? "blue" : ""}
+            />
+            <span
+              className={`pl-3 ${
+                active === 8 ? "text-[black]" : ""
+              } 800px:block hidden`}
+            >
+              Admin Dashboard
+            </span>
+          </div>
+        </Link>
+      )}
+          <div className=" bg-gray-100 w-full px-5 items-center justify-center ">
             <form onSubmit={handleSubmit} props-required={true}>
-              <div className="w-full 800px:flex block pb-3 ">
-                <div className=" w-[100%] 800px:w-[50%]">
+              <div className="w-full  block pb-3  items-center justify-center ">
+                <div className=" w-[100%] 800px:w-[50%] 800px:ml-[37%] 800px:pt-5">
                
-                  <label className="block pb-2 800px:mt-10 max-400px:mt-4">Full Name</label>
+                 <label className="block  max-400px:mt-4 "><div className="flex "><CgNametag size={20} className="mr-1"/>Full Name</div></label>
                   
                   <input
                     type="text"
                     placeholder="Type Full Name..."
-                    className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
+                    className={`${styles.input} max-400px:w-[100%] mb-2 800px:w-[50%]`}
                     required
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     
                   />
                 </div>
-                <div className=" w-[100%] 800px:w-[50%]">
             
-                  <label className="block pb-2 800px:mt-10">Email Address</label>
+                <div className=" w-[100%] 800px:w-[50%] 800px:ml-[37%]">
+            
+                  <label className="block  "><div className="flex"><MdOutlineEmail size={20} className="mr-1"/>Email Address</div></label>
                   <input
                     type="text"
                     placeholder="Type Email Address..."
-                    className={`${styles.input} !w-[95%] mb-1 800px:mb-0`}
+                    className={`${styles.input} max-400px:w-[100%] mb-2 800px:w-[50%]`}
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
-              </div>
-
-              <div className="w-full 800px:flex block pb-3">
-                <div className=" w-[100%] 800px:w-[50%]">
-                  <label className="block pb-2 800px:mt-5">Phone Number</label>
+              
+                <div className=" w-[100%] 800px:w-[50%] 800px:ml-[37%]">
+                  <label className="block  "><div className="flex"><MdOutlineContactPhone size={20} className="mr-1"/>Phone Number</div></label>
+                 
                   <input
                     type="number"
+                    name="num"
+                    title="Please enter exactly 11 digits." 
                     placeholder="Type Phone Number..."
-                    className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
+                    className={`${styles.input} max-400px:w-[100%] mb-2 800px:w-[50%]`}
                     required
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
                   />
                 </div>
 
-                <div className=" w-[100%] 800px:w-[50%]">
-                  <label className="block pb-2 800px:mt-5">Enter your password</label>
+                <div className=" w-[100%] 800px:w-[50%] 800px:ml-[37%]">
+                  <label className="block "><div className="flex"><RiLockPasswordLine size={20} className="mr-1"/>Input Password</div></label>
                   <input
                     type="password"
-                    placeholder="Type Password..."
-                    className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
+                    placeholder="Type your Password..."
+                    className={`${styles.input} max-400px:w-[100%] mb-2 800px:w-[50%]`}
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
+                
               </div>
               <div className="flex items-center justify-center 800px:mt-10 "><input
-                className={`w-[220px]  h-[40px] border border-blue-700 text-center bg-blue-600 text-[#fff] rounded-full cursor-pointer`}
+                className={`w-full 800px:w-[20%] h-[40px] mb-4  border border-blue-500 text-center bg-blue-600 text-[#fff] rounded-[10px] cursor-pointer`}
                 required
                 value="Update"
                 type="submit"
@@ -322,7 +354,7 @@ const AllOrders = () => {
     });
 
   return (
-    <div className="pl-8 pt-1">
+    <div className=" pt-1">
       <DataGrid
         rows={row}
         columns={columns}
@@ -410,7 +442,7 @@ const AllRefundOrders = () => {
     });
 
   return (
-    <div className="pl-8 pt-1">
+    <div className=" pt-1">
       <DataGrid
         rows={row}
         columns={columns}
@@ -495,7 +527,7 @@ const TrackOrder = () => {
     });
 
   return (
-    <div className="pl-8 pt-1">
+    <div className=" pt-1">
       <DataGrid
         rows={row}
         columns={columns}

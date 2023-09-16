@@ -91,14 +91,14 @@ export const navItems = [
       title: "5 Gallon Slim type and other colors",
       subTitle: "",
       image_Url:
-        "https://i.ibb.co/4gMm6St/ph-11134201-7qul2-lj3bd00ukwli04-removebg-preview.png",
+        "https://down-ph.img.susercontent.com/file/93a3211b7ceacf91e6335643cb7b6480",
     },
     {
       id: 2,
       title: "5 Gallon Rounded type and other colors",
       subTitle: "",
       image_Url:
-        "https://i.ibb.co/vJ2BQm0/ph-11134207-7qul2-lhjww86f4j5349-tn-removebg-preview.png",
+        "https://w7.pngwing.com/pngs/373/917/png-transparent-two-blue-water-gallons-water-cooler-bottled-water-drinking-water-water-bottle-glass-plastic-bottle-drinking.png",
     },
     {
       id: 3,

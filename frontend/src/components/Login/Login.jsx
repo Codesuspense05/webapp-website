@@ -6,6 +6,7 @@ import axios from "axios";
 import { server } from "../../server";
 import { toast } from "react-toastify";
 import { IoLogIn } from "react-icons/io5";
+import { MdOutlineEmail, MdPassword } from "react-icons/md";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -37,26 +38,26 @@ const Login = () => {
 
   return (
     
-    <div className="min-h-screen max-400px:min-h-[30vh] bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8"
-    style={{
-      backgroundImage: "url(https://okcredit-blog-images-prod.storage.googleapis.com/2022/01/mineralwater2.jpg)",
-  }}
+    <div className="min-h-screen max-400px:min-h-[30vh] bg-gray-200 flex flex-col justify-center py-12 sm:px-6 lg:px-8 bg-no-repeat background-cover"
+  //   style={{
+  //     backgroundImage: "url(https://okcredit-blog-images-prod.storage.googleapis.com/2022/01/mineralwater2.jpg)",
+  // }}
     >
 
     <div className="sm:mx-auto sm:w-full sm:max-w-md">
        
       </div>
     <div className=" sm:mx-auto sm:w-full sm:max-w-md max-400px:h-[30vh]">
-      <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10 border-blue-400 border-[3px] max-400px:m-6 max-400px:rounded-[20px]">
-        <form className="space-y-6" onSubmit={handleSubmit} >
-        <IoLogIn size ={30} className="text-blue-500"/><h2 className="mt-6 text-center text-[22px] font-extrabold text-blue-700">
+      <div className=" bg-white py-4 px-4 shadow-xl shadow-gray-500 sm:rounded-lg sm:px-10 max-400px:m-6 max-400px:rounded-[30px]">
+        <form className="space-y-8" onSubmit={handleSubmit} >
+        <IoLogIn size ={30} className="text-blue-500 "/><h2 className="text-center text-[22px]  text-blue-700">
           Login your Valid Account
         </h2>
           <div>
             <label
               htmlFor="email"
               className="block text-sm font-medium text-gray-700">
-              Email address
+              <div className="flex"><MdOutlineEmail size={20} />Email address</div>
             </label>
             <div className="mt-1 ">
               <input
@@ -66,7 +67,7 @@ const Login = () => {
                 autoComplete="email" 
                 required value={email} 
                 onChange={(e) => setEmail(e.target.value)}
-                className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                className=" h-9 appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
               />
             </div>
 
@@ -75,7 +76,7 @@ const Login = () => {
             <label
               htmlFor="password"
               className="block text-sm font-medium text-gray-700">
-              Password
+               <div className="flex"><MdPassword size={20} />Password</div>
             </label>
             <div className="mt-1 relative">
               <input
@@ -85,7 +86,7 @@ const Login = () => {
                 autoComplete="current-password" 
                 required value={password} 
                 onChange={(e) => setPassword(e.target.value)}
-                className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                className=" h-9 appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
               />
                  {visible ? (
                   <AiOutlineEye

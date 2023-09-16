@@ -10,18 +10,18 @@ const Ratings = ({ rating }) => {
       stars.push(
         <AiFillStar
           key={i}
-          size={11}
+          
           color="#f6b100"
-          className="mr-2 cursor-pointer"
+          className="mr-2 cursor-pointer 800px:text-[17px] max-400px:text-[11px]"
         />
       );
     } else if (i === Math.ceil(rating) && !Number.isInteger(rating)) {
       stars.push(
         <BsStarHalf
           key={i}
-          size={11}
+         
           color="#f6ba00"
-          className="mr-2 cursor-pointer"
+          className="mr-2 cursor-pointer 800px:text-[17px] max-400px:text-[11px]"
         />
       );
     } else {
@@ -30,7 +30,7 @@ const Ratings = ({ rating }) => {
           key={i}
           
           color="#f6ba00"
-          className="mr-2 cursor-pointer max-400px:text-[11px]"
+          className="mr-2 cursor-pointer 800px:text-[17px] max-400px:text-[11px]"
         />
       );
     }

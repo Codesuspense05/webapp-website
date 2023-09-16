@@ -45,7 +45,7 @@ export const loadSeller = () => async (dispatch) => {
 
 // user update information
 export const updateUserInformation =
-  (name, email, phoneNumber, password) => async (dispatch) => {
+  (name,birthday, email, phoneNumber, password) => async (dispatch) => {
     try {
       dispatch({
         type: "updateUserInfoRequest",
@@ -55,6 +55,7 @@ export const updateUserInformation =
         `${server}/user/update-user-info`,
         {
           email,
+          birthday,
           password,
           phoneNumber,
           name,

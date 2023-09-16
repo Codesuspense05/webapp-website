@@ -11,15 +11,17 @@ import {
   
 } from "react-icons/ai";
 import { IoIosArrowDown } from "react-icons/io";
-import { BiCart, BiCategory, BiHomeSmile, BiMessage, BiUser } from "react-icons/bi";
+import { BiCart, BiCategory, BiMessage, BiUser } from "react-icons/bi";
 import { CgHeart, CgProfile} from "react-icons/cg";
 import DropDown from "./DropDown";
 import Navbar from "./Navbar";
 import { useSelector } from "react-redux";
 import Cart from "../cart/Cart";
 import Wishlist from "../Wishlist/Wishlist";
-import { RxCross1 } from "react-icons/rx";
-import { MdOutlineLocalOffer } from "react-icons/md";
+import { RxCross1, RxHamburgerMenu, RxHome } from "react-icons/rx";
+import { MdOutlineLocalOffer, MdSell } from "react-icons/md";
+import { BsHouse,BsQuestionCircle } from "react-icons/bs";
+import { IoTicketOutline, IoWater } from "react-icons/io5";
 
 
 
@@ -220,25 +222,57 @@ const Header = ({ activeHeading }) => {
         className={`${
           active === true ? "shadow-sm fixed top-0 left-0 z-10" : null
         }
-      w-full h-[60px] bg-white z-50 top-0 left-0 shadow-sm 800px:hidden`}
+      w-full h-[70px] bg-white z-50 top-0 left-0 shadow-sm 800px:hidden`}
       >
         <div className="w-full flex items-center justify-between">
           <div>
-            <BiCategory 
+            <RxHamburgerMenu
               size={40}
-              className="ml-4 mt-2 text-blue-700"
+              className="ml-4 mt-2 text-blue-700 bg-blue-100 border rounded-[5px] p-0.5"
               onClick={() => setOpen(true)}
             />
           </div>
-          <div>
-            <Link to="/">
-              <img
-                src="https://see.fontimg.com/api/renderfont4/ow59x/eyJyIjoiZnMiLCJoIjozMywidyI6MTAwMCwiZnMiOjMzLCJmZ2MiOiIjMUE1N0IwIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/TVdSU01T/airtravelerspersonaluse-bdit.png"
-                alt=""
-                className="mt-3 cursor-pointer"
-              />
-            </Link>
-          </div>
+          {/* mobile search */}
+          <AiOutlineSearch
+              size={25}
+              className="relative right-5 left-[200px] top-2 cursor-pointer text-blue-500"
+            />
+          <div className="my-5 w-[65%] m-auto h-[20px] relative] mr-4">
+                <input
+                  type="search"
+                  placeholder="Search Product..."
+                  className="h-[35px] w-full px-2 border-[#3957db] border-[2px] rounded-full"
+                  value={searchTerm}
+                  onChange={handleSearchChange}
+                />
+                
+                
+                {searchData && (
+                  <div className="absolute bg-[#fff] z-10 shadow w-full left-0 p-3" >
+                    {searchData.map((i,index) => {
+                      // const d = i.name;
+                      
+                      // const Product_name = d.replace(/\s+/g, "-");
+                      return (
+                        <Link to={`/product/${i._id}`}>
+                          <div className="flex items-center">
+                            <img
+                              src={i.images[0]?.url}
+                              alt=""
+                              className="w-[50px] mr-2"
+                          
+                            />
+                            <h5 className="max-400px:text-[12px]">{i.name}</h5>
+                          </div>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                  
+                )}
+                
+              </div>
+        
           <div>
             <div
               className="relative mr-[20px]"
@@ -277,44 +311,18 @@ const Header = ({ activeHeading }) => {
               </div>
 
 
-                {/* mobile search */}
-                <div className="my-5 w-[92%] m-auto h-[40px] relative]">
-                <input
-                  type="search"
-                  placeholder="Search Product..."
-                  className="h-[40px] w-full px-2 border-[#3957db] border-[2px] rounded-full"
-                  value={searchTerm}
-                  onChange={handleSearchChange}
-                />
-                
-                {searchData && (
-                  <div className="absolute bg-[#fff] z-10 shadow w-full left-0 p-3" >
-                    {searchData.map((i,index) => {
-                      // const d = i.name;
-                      
-                      // const Product_name = d.replace(/\s+/g, "-");
-                      return (
-                        <Link to={`/product/${i._id}`}>
-                          <div className="flex items-center">
-                            <img
-                              src={i.images[0]?.url}
-                              alt=""
-                              className="w-[50px] mr-2"
-                          
-                            />
-                            <h5 className="max-400px:text-[12px]">{i.name}</h5>
-                          </div>
-                        </Link>
-                      );
-                    })}
-                  </div>
-                  
-                )}
-                
-              </div>
+                  <div className="flex items-center justify-center">
+            <Link to="/">
+              <img
+                src="https://see.fontimg.com/api/renderfont4/ow59x/eyJyIjoiZnMiLCJoIjozMywidyI6MTAwMCwiZnMiOjMzLCJmZ2MiOiIjMUE1N0IwIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/TVdSU01T/airtravelerspersonaluse-bdit.png"
+                alt=""
+                className="mt-3 cursor-pointer"
+              />
+            </Link>
+          </div> 
               <hr />
               <div className="flex items-center justify-between m-2">
-              <Link to="/"><BiHomeSmile size={30}/></Link>
+              <Link to="/"><RxHome size={30}/></Link>
               <Link to="/events"><MdOutlineLocalOffer size={30}/></Link>
                 <div>
                   <div
@@ -368,7 +376,20 @@ const Header = ({ activeHeading }) => {
 
               
            
-               <Navbar active={activeHeading} />
+               {/* <Navbar active={activeHeading} /> */}
+               <div className="items-center justify-start m-2">
+              <div className="flex Items-center justify-start mt-2"><Link to="/"><BsHouse size={25} color="blue" className="ml-[10px] mr-1"/></Link>Home</div> 
+              <hr />
+              <div className="flex Items-center justify-start mt-2"><Link to="/best-selling"><MdSell size={25} color="blue" className="ml-[10px] mr-1"/></Link>Best Order</div> 
+              <hr />
+              <div className="flex Items-center justify-start mt-2"><Link to="/products"><IoWater size={25} color="blue" className="ml-[10px] mr-1"/></Link>Water Container</div> 
+              <hr />
+              <div className="flex Items-center justify-start mt-2"><Link to="/events"><IoTicketOutline size={25} color="blue" className="ml-[10px] mr-1"/></Link>Promo's</div> 
+              <hr />
+              <div className="flex Items-center justify-start mt-2"><Link to="/faq"><BsQuestionCircle size={23} color="blue" className="ml-[10px] mr-1"/></Link>FAQ</div> 
+               <hr />
+               </div>
+               <br />
               
              
               <hr />
