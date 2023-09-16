@@ -6,7 +6,8 @@ import axios from "axios";
 import { server } from "../../server";
 import { toast } from "react-toastify";
 import { IoLogIn } from "react-icons/io5";
-import { MdOutlineEmail, MdPassword } from "react-icons/md";
+import { MdOutlineEmail} from "react-icons/md";
+import { RiLockPasswordLine } from "react-icons/ri";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -76,7 +77,7 @@ const Login = () => {
             <label
               htmlFor="password"
               className="block text-sm font-medium text-gray-700">
-               <div className="flex"><MdPassword size={20} />Password</div>
+               <div className="flex"><RiLockPasswordLine size={20} />Password</div>
             </label>
             <div className="mt-1 relative">
               <input
@@ -138,7 +139,7 @@ const Login = () => {
                 Login
               </button>
             </div>
-            <div className={`${styles.noramlFlex} w-full`}>
+            <div className={`${styles.noramlFlex} w-full justify-center`}>
               <h4 className="text-gray-500">Not have any account?</h4>
               <Link to="/sign-up" className="text-blue-600 pl-2">
                 <h4 className="font-Roboto">Sign Up</h4>

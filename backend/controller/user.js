@@ -12,7 +12,7 @@ const { isAuthenticated, isAdmin } = require("../middleware/auth");
 // create user
 router.post("/create-user", async (req, res, next) => {
   try {
-    const { name, phoneNumber, gender, email, password, avatar } = req.body;
+    const { name, phoneNumber, gender, email, password, avatar, facebooklink } = req.body;
     const userEmail = await User.findOne({ email });
 
     if (userEmail) {
@@ -29,6 +29,7 @@ router.post("/create-user", async (req, res, next) => {
       phoneNumber,
       email: email,
       password: password,
+      facebooklink: facebooklink,
       avatar: {
         public_id: myCloud.public_id,
         url: myCloud.secure_url,
@@ -37,7 +38,7 @@ router.post("/create-user", async (req, res, next) => {
 
     const activationToken = createActivationToken(user);
 
-    const activationUrl = `http://localhost:3000/activation/${activationToken}`;
+    const activationUrl = `https://mwrsms-front.vercel.app/activation/${activationToken}`;
 
     try {
       await sendMail({
@@ -79,7 +80,7 @@ router.post(
       if (!newUser) {
         return next(new ErrorHandler("Invalid token", 400));
       }
-      const { name, phoneNumber,gender, email, password, avatar } = newUser;
+      const { name, phoneNumber,gender, email, password, avatar, facebooklink } = newUser;
 
       let user = await User.findOne({ email });
 
@@ -93,6 +94,7 @@ router.post(
         email,
         avatar,
         password,
+        facebooklink,
       });
 
       sendToken(user, 201, res);
@@ -183,7 +185,7 @@ router.put(
   isAuthenticated,
   catchAsyncErrors(async (req, res, next) => {
     try {
-      const { email,  password, phoneNumber, name } = req.body;
+      const { email,  password, phoneNumber, name, } = req.body;
 
       const user = await User.findOne({ email }).select("+password");
 

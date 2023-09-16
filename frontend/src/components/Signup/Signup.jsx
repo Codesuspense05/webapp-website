@@ -22,6 +22,9 @@ const Singup = () => {
   const [isValid, setIsValid] = useState(true);
   const [error, setError] = useState('');
   const [isNameValid, setIsNameValid] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [facebooklink, setFacebooklink] = useState("");
+  const [suggestedNumbers, setSuggestedNumbers] = useState([]);
 
 
   
@@ -48,13 +51,17 @@ const Singup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+   
+
+
+
     const input = phoneNumber
     // Remove any non-numeric characters
     const numericInput = input.replace(/[^0-9]/g, '');
 
 
   
-    
+
     const regex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
     const isValidPassword = regex.test(password);
     setIsValid(isValidPassword);
@@ -64,7 +71,12 @@ const Singup = () => {
  const isnotValidPassword = smallLetters.test(password);
    setIsValid(isnotValidPassword);
    
-   
+   // You can replace this with an API call to fetch suggested numbers based on user input
+    // For this example, we'll simulate some suggested numbers.
+    const suggested = ['ex.090****567', ' 091****678', '092****789'].filter((number) =>
+      number.startsWith('09' + phoneNumber)
+    );
+    setSuggestedNumbers(suggested);
    
     if (password === confirmpassword) {
       // Passwords match, you can submit the form or perform other actions here.
@@ -115,7 +127,7 @@ const Singup = () => {
     // If passwords match, you can submit the form data
     console.log('Form submitted');
 
-
+     
     const nameParts = name.split(' ');
 
     if (nameParts.length >= 2) {
@@ -154,9 +166,23 @@ const Singup = () => {
    if (numericInput.length <= 11) {
     setPhoneNumber(numericInput);
   }
+
+  if (phoneNumber.length !== 11) {
+    return setErrorMessage('Must be exactly 11 digits & start with (09)');
+  } else {
+    // Perform your submit logic here, e.g., send the phone number to the server.
+    // If the input is valid, you can reset the error message and proceed with submission.
+    setErrorMessage('');
+    // Add your submission code here.
+  }
+
+  
+  
+  
+
   
     axios
-      .post(`${server}/user/create-user`, { name, phoneNumber, gender, email, password, avatar })
+      .post(`${server}/user/create-user`, { name, phoneNumber, gender, email, password, avatar, facebooklink })
       .then((res) => {
         toast.success(res.data.message);
         setName("");
@@ -166,6 +192,7 @@ const Singup = () => {
         setPassword("");
         setConfirmPassword("");
         setAvatar();
+        setFacebooklink("")
       })
       .catch((error) => {
         toast.error(error.response.data.message);
@@ -225,6 +252,7 @@ const Singup = () => {
                 </label>
               </div>
             </div>
+            <br />
 <hr />
 <br />
             
@@ -277,13 +305,24 @@ const Singup = () => {
               <label htmlFor="phoneNumber"
                 className="block text-sm font-medium text-gray-700"
               >
+                {suggestedNumbers.map((number) => (
+          <div className="text-[green] flex" key={number}><p>Follow as ex.</p>{number} </div>
+        ))}
+                
                 Contact Number
+                {errorMessage && <div className="error-message text-red-500 max-400px:text-[12px]">{errorMessage}</div>}
+                <div>
+       
+       
+      </div>
+   
               </label>
               <div className="mt-1">
                 <input
                   type="tel"
                   placeholder="Type your Number..."
                   name="phoneNumber"
+                  id="phoneNumber"
                   autoComplete="number"
                   maxLength={11}
                   required
@@ -386,6 +425,27 @@ const Singup = () => {
                
               </div>
             </div>
+
+            <div>
+              <label
+                htmlFor="facebook"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Facebook Profile Link (optional)
+              </label>
+              <div className="mt-1">
+                <input
+                  type="text"
+                  placeholder="Copy your Facebook Profile link..."
+                  name="facebook"
+                  autoComplete="facebook"
+                  // required
+                  value={facebooklink}
+                  onChange={(e) => setFacebooklink(e.target.value)}
+                  className="h-9 appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                />
+              </div>
+            </div>
            
             <div className="mt-5">
               <button
@@ -396,7 +456,7 @@ const Singup = () => {
                 Register
               </button>
             </div>
-            <div className={`${styles.noramlFlex} w-full items-start justify-end my-2`}>
+            <div className={`${styles.noramlFlex} w-full items-start justify-center my-2`}>
               <h4 className="text-gray-500 font-Roboto">Already have an account?</h4>
               <Link to="/login" className="text-blue-600 pl-2">
                 <h4 className="font-Roboto">Sign in</h4>

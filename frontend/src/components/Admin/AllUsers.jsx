@@ -99,6 +99,20 @@ const AllUsers = () => {
       minWidth: 150,
       flex: 0.9,
     },
+    {
+      field: "fb",
+      headerName: "Facebook Profile Link",
+      minWidth: 200,
+      flex: 1.9,
+      renderCell: (params) => (
+        
+        <a href={params.value} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-[red]">
+          {params.value}
+         
+        </a>
+        
+      ),
+    },
 
     {
       field: " ",
@@ -129,6 +143,7 @@ const AllUsers = () => {
         address: item.addresses[0]?.address1,
         addresstypes: item.addresses[0]?.addressType,
         number: item.phoneNumber,
+        fb: item.facebooklink,
         email: "📧 " + item.email,
         // address: item.addresses[0].address1 ,
         role: "🕵️ " + item.role,
@@ -145,7 +160,7 @@ const AllUsers = () => {
             rows={row}
             columns={columns}
             pageSize={10}
-            
+            checkboxSelection={false}
             autoHeight
           />
         </div>

@@ -27,6 +27,11 @@ const userSchema = new mongoose.Schema({
     type: Number,
     required: [true, "Please enter your contact number"],
   },
+
+  facebooklink:{
+    type: String,
+    
+  },
   addresses:[
     {
       // country: {
