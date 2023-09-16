@@ -6,7 +6,6 @@ import axios from "axios";
 import { server } from "../../server";
 import { toast } from "react-toastify";
 import { BiCamera } from "react-icons/bi";
-import { RiRegisteredFill } from "react-icons/ri";
 import { IoPersonCircle } from "react-icons/io5";
 
 
@@ -186,7 +185,7 @@ const Singup = () => {
        >
         
           <form className="" onSubmit={handleSubmit}>
-          <RiRegisteredFill size={40} color="white" className="text-blue-500 absolute"/><h2 className="text-center text-[22px]  text-blue-600 ">
+       <h2 className="text-center text-[22px]  text-blue-600 ">
                Register as a New User
             
             </h2>
@@ -346,7 +345,7 @@ const Singup = () => {
                 />
                 {visible ? (
                   <AiOutlineEye
-                    
+                  className="absolute right-2 top-2 cursor-pointer"
                     size={25}
                     onClick={() => setVisible(false)}
                   />
@@ -398,9 +397,9 @@ const Singup = () => {
               </button>
             </div>
             <div className={`${styles.noramlFlex} w-full items-start justify-end my-2`}>
-              <h4>Already have an account?</h4>
+              <h4 className="text-gray-500 font-Roboto">Already have an account?</h4>
               <Link to="/login" className="text-blue-600 pl-2">
-                Sign In
+                <h4 className="font-Roboto">Sign in</h4>
               </Link>
             </div>
           </form>
