@@ -74,11 +74,14 @@ const Header = ({ activeHeading }) => {
               />
             </Link>
           </div>
+
+          
+          <div> <h4 className="font-Roboto text-[20px] max-400px:hidden">Hi👋 Welcome User, {user?.name}</h4></div>
+          <hr />
           {/* search box */}
           <div className="w-[30%] relative ">
             <input
               type="text"
-              id="search"
               placeholder="Search Product..."
               value={searchTerm}
               onChange={handleSearchChange}
@@ -146,7 +149,7 @@ const Header = ({ activeHeading }) => {
           </div>
 
              {/* contact */}
-             <div className="mr-10">
+             <div className=" flex mr-10">
               <span className="text-[#fff] flex ml-4 mr-4 text-[15px]">
                 <AiOutlineContacts className="mr-1 flex items-center text-xl " />
                 <h1 className="text-[20px]">(02)-888888 / 09123456789 | OPEN 9am-10pm (Mon-Sun)</h1>
@@ -240,8 +243,7 @@ const Header = ({ activeHeading }) => {
             />
           <div className="my-5 w-[65%] m-auto h-[20px] relative] mr-4">
                 <input
-                  type="text"
-                  id="search"
+                  type="search"
                   placeholder="Search Product..."
                   className="h-[35px] w-full px-2 border-[#3957db] border-[2px] rounded-full"
                   value={searchTerm}
@@ -342,19 +344,22 @@ const Header = ({ activeHeading }) => {
                </div>
              <hr />
              
-              <div className="flex w-full justify-center h-[10%] mb-9 shadow-md  bg-gradient-to-r from-blue-400 via-gray-200 to-blue-400 ">
+              <div className="flex w-full justify-center h-[15%] mb-9 shadow-md  bg-gradient-to-r from-white via-gray-200 to-white ">
                 {isAuthenticated ? (
                   <div className=" flex items-center justify-center">
                     <Link to="/profile">
                       <img
                         src={`${user.avatar?.url}`}
                         alt=""
-                        className="w-[80px] h-[80px] rounded-full border-[3px] border-[#4357da]"
+                        className="w-[100px] h-[70px] rounded-full border-[3px] border-[#4357da]"
                       />
                     </Link>
                     
-                  
-                  <h4 className="text-sm text-gray-600 ml-2"> Name: {user.name}</h4>
+                  <div className="w-full"> <h4 className="text-sm text-gray-600 ml-2"> Name: {user.name}</h4>
+               <h4 className="text-sm text-gray-600 ml-2"> Gender: {user.gender}</h4>
+               <h4 className="text-sm text-gray-600 ml-2"> CP#: {user.phoneNumber}</h4>
+               </div>
+                 
                   </div>
                   
                   
@@ -375,6 +380,7 @@ const Header = ({ activeHeading }) => {
                   </>
                 )}
               </div>
+              <hr />
 
               
            

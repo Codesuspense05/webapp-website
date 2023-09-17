@@ -12,13 +12,12 @@ import { IoPersonCircle } from "react-icons/io5";
 const Singup = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
-  const [gender, setSelectedGender] = useState('');
+   const [gender, setSelectedGender] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
   const [passwordMatch, setPasswordMatch] = useState(true);
   const [visible, setVisible] = useState(false);
-  const [avatar, setAvatar] = useState(null);
   const [isValid, setIsValid] = useState(true);
   const [error, setError] = useState('');
   const [isNameValid, setIsNameValid] = useState(false);
@@ -26,6 +25,8 @@ const Singup = () => {
   const [facebooklink, setFacebooklink] = useState("");
   const [suggestedNumbers, setSuggestedNumbers] = useState([]);
 
+  const [avatar, setAvatar] = useState(null);
+  
 
   
 
@@ -41,9 +42,9 @@ const Singup = () => {
     reader.readAsDataURL(e.target.files[0]);
   };
 
-  const handleGenderChange = (e) => {
+   const handleGenderChange = (e) => {
     setSelectedGender(e.target.value);
-  };
+   }
 
 
 
@@ -182,7 +183,7 @@ const Singup = () => {
 
   
     axios
-      .post(`${server}/user/create-user`, { name, phoneNumber, gender, email, password, avatar, facebooklink })
+      .post(`${server}/user/create-user`, { name, phoneNumber,gender, email, password, avatar, facebooklink })
       .then((res) => {
         toast.success(res.data.message);
         setName("");
@@ -299,7 +300,7 @@ const Singup = () => {
             
           </select>
               </div>
-            </div>
+            </div> 
 
             <div>
               <label htmlFor="phoneNumber"

@@ -185,7 +185,7 @@ router.put(
   isAuthenticated,
   catchAsyncErrors(async (req, res, next) => {
     try {
-      const { email,  password, phoneNumber, name, } = req.body;
+      const { email,  password, phoneNumber, facebooklink, name, } = req.body;
 
       const user = await User.findOne({ email }).select("+password");
 
@@ -204,6 +204,7 @@ router.put(
       user.name = name;
       user.email = email;
       user.phoneNumber = phoneNumber;
+      user.facebooklink = facebooklink;
 
       await user.save();
 

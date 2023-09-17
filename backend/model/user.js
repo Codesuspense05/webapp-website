@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
 
   gender:{
     type: String,
-    required: [true, "Please Select your Gender Identity!"],
+    
   },
  
   email:{
@@ -30,6 +30,8 @@ const userSchema = new mongoose.Schema({
 
   facebooklink:{
     type: String,
+    required:[true],
+    unique:true
     
   },
   addresses:[

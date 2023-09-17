@@ -13,7 +13,7 @@ import styles from "../../styles/styles";
 import { DataGrid } from "@material-ui/data-grid";
 import { Avatar, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import {  MdOutlineAdminPanelSettings, MdOutlineContactPhone, MdOutlineEmail, MdTrackChanges } from "react-icons/md";
+import {  MdFacebook, MdOutlineAdminPanelSettings, MdOutlineContactPhone, MdOutlineEmail, MdTrackChanges } from "react-icons/md";
 import { RxCross1, RxEyeOpen } from "react-icons/rx";
 import {
   deleteUserAddress,
@@ -31,13 +31,16 @@ import {  RiLockPasswordLine } from "react-icons/ri";
 
 
 
+
 const ProfileContent = ({  setActive, active }) => {
   const { user, error, successMessage } = useSelector((state) => state.user);
   const [name, setName] = useState(user && user.name);
-
   const [email, setEmail] = useState(user && user.email);
   const [phoneNumber, setPhoneNumber] = useState(user && user.phoneNumber);
+  const [facebooklink, setFacebooklink] = useState(user && user.facebooklink);
+  // const [errorlink, setErrorlink] = useState('');
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState('');
   const [, setAvatar] = useState(null);
   const dispatch = useDispatch();
 
@@ -57,7 +60,41 @@ const ProfileContent = ({  setActive, active }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateUserInformation(name, email, phoneNumber, password));
+
+    
+    const input = phoneNumber
+    // Remove any non-numeric characters
+    const numericInput = input.replace(/[^0-9]/g, '');
+
+
+    if(numericInput.length <= 11) {
+      setPhoneNumber(numericInput);
+    }
+    
+    if (phoneNumber.length !== 11) {
+      return setErrorMessage('Must be exactly 11 digits & start with (09)');
+    } else {
+      // Perform your submit logic here, e.g., send the phone number to the server.
+      // If the input is valid, you can reset the error message and proceed with submission.
+      setErrorMessage('');
+      // Add your submission code here.
+    }
+
+    // if (!facebooklink) {
+    //   setErrorlink('Please enter your Facebook profile link');
+    //   return;
+    // }
+
+
+    if (dispatch(updateUserInformation(name, email, phoneNumber,facebooklink, password))){ 
+      toast.success("userInfo updated");
+
+    }
+    
+    
+  
+
+   
   };
 
   const handleImage = async (e) => {
@@ -174,19 +211,50 @@ const ProfileContent = ({  setActive, active }) => {
                 </div>
               
                 <div className=" w-[100%] 800px:w-[50%] 800px:ml-[37%]">
-                  <label className="block  "><div className="flex"><MdOutlineContactPhone size={20} className="mr-1"/>Phone Number</div></label>
+                  <label className="block  "><div className="flex"><MdOutlineContactPhone size={20} className="mr-1"/>
+                  Phone Number
+                  {errorMessage && <div className="error-message text-red-500 max-400px:text-[12px]">{errorMessage}</div>}
+                  
+                  </div></label>
                  
                   <input
-                    type="number"
-                    name="num"
+                    type="tel"
+                    name="phoneNumber"
+                    id="phoneNumber"
+                    autoComplete="number"
+                    maxLength={11}
                     title="Please enter exactly 11 digits." 
                     placeholder="Type Phone Number..."
                     className={`${styles.input} max-400px:w-[100%] mb-2 800px:w-[50%]`}
                     required
                     value={phoneNumber}
-                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    onChange={(e) => setPhoneNumber(e.target.value.replace(/\D/g, ""))}
                   />
                 </div>
+
+                
+                <div className=" w-[100%] 800px:w-[50%] 800px:ml-[37%]">
+                  <label className="block  "><div className="flex"><MdFacebook size={20} className="mr-1"/>
+                  
+                  Facebook Profile Link
+                
+                  </div></label>
+
+                  <input
+                    type="link"
+                    name="facebook"
+                    title="Facebook Link." 
+                    placeholder=" Provide your profile facebook link..."
+                    className={`${styles.input} max-400px:w-[100%] mb-2 800px:w-[50%]`}
+                    required
+                    value={facebooklink}
+                    onChange={(e) => setFacebooklink(e.target.value)
+                     
+                    }
+                    
+                  />
+                </div>
+
 
                 <div className=" w-[100%] 800px:w-[50%] 800px:ml-[37%]">
                   <label className="block "><div className="flex"><RiLockPasswordLine size={20} className="mr-1"/>Input Password</div></label>
@@ -204,10 +272,11 @@ const ProfileContent = ({  setActive, active }) => {
               <div className="flex items-center justify-center 800px:mt-10 "><input
                 className={`w-full 800px:w-[20%] h-[40px] mb-4  border border-blue-500 text-center bg-blue-600 text-[#fff] rounded-[10px] cursor-pointer`}
                 required
-                value="Update"
+                value="Update Profile"
                 type="submit"
               /></div>
             </form>
+            {/* {errorlink && <p>{errorlink}</p>} */}
           </div>
         </>
       )}

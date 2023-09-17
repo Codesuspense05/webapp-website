@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 app.use(cors({
-  origin: ['https://mwrsms-front.vercel.app',],
+  origin: ['http://localhost:3000',],
   credentials: true
 }));
 
@@ -16,12 +16,12 @@ app.use("/test", (req, res) => {
   res.send("Hello world!");
 });
 
-app.use(bodyParser.urlencoded({ extended: true, limit: "100000000" }));
+app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 
 // config
 if (process.env.NODE_ENV !== "PRODUCTION") {
   require("dotenv").config({
-    path: "./config/.env",
+    path: "config/.env",
   });
 }
 
