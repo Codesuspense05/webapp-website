@@ -1,6 +1,6 @@
 {
     "version": 2,
-    "name":"capstoneProjectv2",
+    "name":"Capstone_projv2-mwrsms",
     "builds":[
         {"src":"server.js","use":"@vercel/node"}
     ],

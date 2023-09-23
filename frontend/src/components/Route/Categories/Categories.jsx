@@ -5,7 +5,14 @@ import styles from "../../../styles/styles";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { AiOutlinePicCenter } from "react-icons/ai";
+
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
+
 const Categories = () => {
+
   const navigate = useNavigate();
   
   const responsive = {
@@ -27,9 +34,111 @@ const Categories = () => {
       items: 1
     }
   };
+
+  const settings = {
+    autoplay: true,
+    autoplaySpeed: 3000, // Adjust the speed (in milliseconds)
+    dots: true, // Show navigation dots
+    infinite: true, // Enable infinite loop
+    speed: 500, // Transition speed (in milliseconds)
+    slidesToShow: 3, // Number of items to show at once
+    slidesToScroll: 1, // Number of items to scroll on each autoplay
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  }
   return (
     <>
-     <div className={`w-full block bg-white rounded-lg  lg:flex p-2 pl-[10%] pr-[10%] max-400px:mb-[10px] max-400px:hidden`}>
+
+
+
+<div className="w-full 800px:hidden ">
+<Slider {...settings}>
+  
+          {/* Add your product items here */}
+          <div>
+            <img src="https://cdn.vectorstock.com/i/preview-1x/50/64/man-works-as-water-delivery-holding-large-vector-45755064.webp" alt="Product 1" 
+             className="w-full"
+            />
+            {/* <h3>Product 1</h3>
+            <p>Description for Product 1</p> */}
+          </div>
+          <div>
+            <img src="https://cdn.vectorstock.com/i/preview-1x/16/30/happy-man-recommend-bottled-water-service-vector-45051630.webp" alt="Product 1" 
+             className="w-full"
+            />
+            {/* <h3>Product 1</h3>
+            <p>Description for Product 1</p> */}
+          </div>
+          <div>
+            <img src="https://cdn.vectorstock.com/i/preview-1x/64/17/water-delivery-truck-male-bottle-vector-48056417.webp" alt="Product 1" 
+             className="w-full h-[230px]"
+            />
+            {/* <h3>Product 1</h3>
+            <p>Description for Product 1</p> */}
+          </div>
+          <div>
+            <img src="https://cdn.vectorstock.com/i/preview-1x/08/75/man-holding-two-paper-cups-with-hot-or-cold-drink-vector-34500875.webp" alt="Product 1" 
+             className="w-full h-[230px]"
+            />
+            {/* <h3>Product 1</h3>
+            <p>Description for Product 1</p> */}
+          </div>
+          {/* Add more product items as needed */}
+        </Slider>
+
+
+</div>
+<hr />
+
+
+      
+        <br />
+        <hr />
+      <div className={`${styles.section} 800px:hidden`} >
+      <div
+          className={`branding  flex justify-between max-400px:w-full shadow-xl relative bg-white p-2 `}
+        >
+      {brandingData &&
+            brandingData.map((i, index) => (
+              <div className="flex items-center justify-between" key={index}>
+              
+              <div className="border rounded-full p-2 shadow-md">{i.icon}</div> 
+              </div>
+            ))}
+
+            </div>
+        <div
+          className={`branding  flex justify-between w-full shadow-sm bg-white p-4 rounded-md`}
+        >
+          {brandingData &&
+            brandingData.map((i, index) => (
+              <div className="flex items-start" key={index}>
+              
+                <div className="px-2">
+                  <h3 className="font-bold max-400px:text-[9px] md:text-base">{i.title}|</h3>
+                  <p className="text-xs md:text-sm max-400px:text-[8px]">{i.Description}</p>
+                </div>
+              </div>
+            ))}
+        </div>
+      </div>
+
+     <div data-aos="fade-up"
+     data-aos-anchor-placement="top-center" className={`w-full block bg-white rounded-lg  lg:flex p-2 pl-[10%] pr-[10%] max-400px:mb-[10px] max-400px:hidden`}>
         <div className="w-full lg:[w-50%] flex flex-col justify-center">
         <h1 className={`${styles.productTitle} text-blue-900 800px:text-[20px] max-400px:text-[20px] text-center `}>Our Services & Offer Promo's</h1>
     <p className="text-justify  max-400px:text-[12px]">

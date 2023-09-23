@@ -255,7 +255,7 @@ const Payment = () => {
   };
 
   return (
-    <div className="w-full flex flex-col items-center py-8">
+    <div className="w-full flex flex-col items-center">
       <div className="w-[90%] 1000px:w-[70%] block 800px:flex">
         <div className="w-full 800px:w-[65%]">
           <PaymentInfo
@@ -525,7 +525,7 @@ const PaymentInfo = ({
 
 {/*FOR WALKIN ADVANCE PAYMENT*/}
 <div>
-        <div className="flex w-full pb-5 border-b mb-2">
+        <div className="flex w-full pb-5 border-b mb-2 max-400px:hidden">
           <div
             className="w-[25px] h-[25px] rounded-full bg-transparent border-[3px] border-[#1d1a1ab4] relative flex items-center justify-center"
             onClick={() => setSelect(5)}
@@ -542,7 +542,7 @@ const PaymentInfo = ({
 
 {/* WALKIN ADVANCE PAYMENT */}
         {select === 5 ? (
-          <div className="w-full flex items-center justify-end">
+          <div className="w-full flex items-center justify-end max-400px:hidden">
             <form className="w-full items-end justify-end" onSubmit={walkinAdvancepayment} >
               <input
                 type="submit"
@@ -557,7 +557,7 @@ const PaymentInfo = ({
 
       {/*FOR WALKIN CASH ON DELIVERY*/}
 <div>
-        <div className="flex w-full pb-5 border-b mb-2">
+        <div className="flex w-full pb-5 border-b mb-2  max-400px:hidden">
           <div
             className="w-[25px] h-[25px] rounded-full bg-transparent border-[3px] border-[#1d1a1ab4] relative flex items-center justify-center"
             onClick={() => setSelect(6)}
@@ -597,6 +597,8 @@ const CartData = ({ orderData }) => {
   //const shipping = orderData?.shipping?.toFixed(2);
   return (
     <div className="w-full bg-[#fff] rounded-md p-5 pb-8">
+      <hr />
+      <br />
       <div className="flex justify-between">
         <IoScaleOutline className="text-[30px] text-blue-500"/><h3 className="text-[16px] font-[400] text-[#000000a4]">Subtotal:</h3>
         <h5 className="text-[18px] font-[600]">P{orderData?.subTotalPrice}</h5>

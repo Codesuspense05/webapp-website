@@ -24,14 +24,14 @@ const userSchema = new mongoose.Schema({
     select: false,
   },
   phoneNumber:{
-    type: Number,
+    type: String,
     required: [true, "Please enter your contact number"],
   },
 
   facebooklink:{
     type: String,
-    required:[true],
-    unique:true
+    
+    
     
   },
   addresses:[

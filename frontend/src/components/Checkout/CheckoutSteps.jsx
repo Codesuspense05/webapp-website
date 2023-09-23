@@ -15,7 +15,7 @@ const CheckoutSteps = ({active}) => {
         <div className="w-[90%] 800px:w-[50%] flex items-center flex-wrap ">
                <div className={`${styles.noramlFlex} `}>
                 <div className={`${styles.cart_button} `}>
-                       <IoBicycleOutline className='text-white text-[40px] max-400px:text-[30px]'/><span className={`${styles.cart_button_text} max-400px:w-[20px] `}><h3 className='hidden sm:block'>(1)Delivery Address</h3></span>
+                       <IoBicycleOutline className='text-white text-[40px] max-400px:text-[30px]'/><span className={`${styles.cart_button_text}`}><h3 className='hidden sm:block'>(1)Delivery Address</h3></span>
                 </div>
                 <div className={`${
                     active > 1 ? "w-[30px] 800px:w-[70px] h-[4px] !bg-blue-300"
@@ -25,7 +25,7 @@ const CheckoutSteps = ({active}) => {
 
                <div className={`${styles.noramlFlex}`}>
                 <div className={`${active > 1 ? `${styles.cart_button}` : `${styles.cart_button} !bg-blue-300`}`}>
-                <IoArchiveSharp className="text-white text-[30px] max-400px:text-[30px]"/><span className={`${active > 1 ? `${styles.cart_button_text} ` : `${styles.cart_button_text} !text-white max-400px:w-[20px]`}`}>
+                <IoArchiveSharp className="text-white text-[30px] max-400px:text-[30px]"/><span className={`${active > 1 ? `${styles.cart_button_text} ` : `${styles.cart_button_text} !text-white max-400px:w-[15px]`}`}>
                 <h3 className='hidden sm:block'>(2)Payment Method</h3>
                     </span>
                 </div>
@@ -37,7 +37,7 @@ const CheckoutSteps = ({active}) => {
                     : "w-[30px] 800px:w-[70px] h-[4px] !bg-blue-300"
                 }`} />
                 <div className={`${active > 2 ? `${styles.cart_button}` : `${styles.cart_button} !bg-blue-300`}`}>
-                    <IoCheckmarkDoneCircleSharp className='text-white text-[30px]'/><span className={`${active > 2 ? `${styles.cart_button_text}` : `${styles.cart_button_text} !text-blue-white max-400px:w-[20px]`}`}>
+                    <IoCheckmarkDoneCircleSharp className='text-white text-[30px]'/><span className={`${active > 2 ? `${styles.cart_button_text}` : `${styles.cart_button_text} !text-blue-white max-400px:w-[15px]`}`}>
                     <h3 className='hidden sm:block'>(3)Order Successful</h3>
                     </span>
                 </div>

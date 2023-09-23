@@ -54,11 +54,12 @@ export const updateUserInformation =
       const { data } = await axios.put(
         `${server}/user/update-user-info`,
         {
+          name,
           email,
           password,
           phoneNumber,
           facebooklink,
-          name,
+          
         },
         {
           withCredentials: true,

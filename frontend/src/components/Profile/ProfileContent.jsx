@@ -86,13 +86,7 @@ const ProfileContent = ({  setActive, active }) => {
     // }
 
 
-    if (dispatch(updateUserInformation(name, email, phoneNumber,facebooklink, password))){ 
-      toast.success("userInfo updated");
-
-    }
-    
-    
-  
+     (dispatch(updateUserInformation(name, email, phoneNumber,facebooklink, password)))
 
    
   };
@@ -192,7 +186,7 @@ const ProfileContent = ({  setActive, active }) => {
                     className={`${styles.input} max-400px:w-[100%] mb-2 800px:w-[50%]`}
                     required
                     value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    onChange={(e) => setName(e.target.value.replace(/[^A-Za-z ]/g, ''))}
                     
                   />
                 </div>
@@ -205,6 +199,7 @@ const ProfileContent = ({  setActive, active }) => {
                     placeholder="Type Email Address..."
                     className={`${styles.input} max-400px:w-[100%] mb-2 800px:w-[50%]`}
                     required
+                    disabled
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
@@ -227,6 +222,7 @@ const ProfileContent = ({  setActive, active }) => {
                     placeholder="Type Phone Number..."
                     className={`${styles.input} max-400px:w-[100%] mb-2 800px:w-[50%]`}
                     required
+                    disabled
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value.replace(/\D/g, ""))}
                   />

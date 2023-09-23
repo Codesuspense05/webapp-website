@@ -6,21 +6,21 @@ import {
   AiFillCodepenSquare,
   AiFillContacts,
   AiFillHeart,
-  AiOutlineContacts,
+  AiOutlineInstagram,
   AiOutlineSearch,
   
 } from "react-icons/ai";
-import { IoIosArrowDown } from "react-icons/io";
-import { BiCart, BiCategory, BiMessage, BiUser } from "react-icons/bi";
+import { IoIosArrowDown,  IoLogoYoutube } from "react-icons/io";
+import { BiCart,  BiMessage, BiUser } from "react-icons/bi";
 import { CgHeart, CgProfile} from "react-icons/cg";
 import DropDown from "./DropDown";
 import Navbar from "./Navbar";
 import { useSelector } from "react-redux";
 import Cart from "../cart/Cart";
 import Wishlist from "../Wishlist/Wishlist";
-import { RxCross1, RxHamburgerMenu, RxHome } from "react-icons/rx";
-import { MdOutlineLocalOffer, MdSell } from "react-icons/md";
-import { BsHouse,BsQuestionCircle } from "react-icons/bs";
+import { RxCross1, RxHamburgerMenu, RxHome} from "react-icons/rx";
+import { MdFacebook, MdOutlineLocalOffer, MdSell } from "react-icons/md";
+import { BsDropletFill, BsHouse,BsQuestionCircle } from "react-icons/bs";
 import { IoTicketOutline, IoWater } from "react-icons/io5";
 
 
@@ -62,24 +62,49 @@ const Header = ({ activeHeading }) => {
 
   return (
     <>
-    <div className="bg-blue-500 800px:w-[100%] h-1 max-400px:hidden" ></div>
+    <div className="bg-blue-500 1024px:w-[100%] h-1 max-400px:hidden" ></div>
+   
     
       <div className={`${styles.section}`}>
-        <div className="hidden 800px:h-[50px] 800px:my-[20px] 800px:flex items-center justify-between">
+        <div className="hidden 1024px:h-[50px] 1024px:my-[20px] 1024px:flex items-center justify-between">
           <div>
             <Link to="/">
               <img
                 src="https://see.fontimg.com/api/renderfont4/ow59x/eyJyIjoiZnMiLCJoIjozMywidyI6MTAwMCwiZnMiOjMzLCJmZ2MiOiIjMUE1N0IwIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/TVdSU01T/airtravelerspersonaluse-bdit.png"
                 alt=""
+                className="mr-5"
+                
               />
             </Link>
           </div>
+          <div class="relative flex overflow-x-hidden">
+  <div class="py-12 animate-marquee whitespace-nowrap">
+    <span class="text-2xl mx-4">(02)-888888 / 09123456789 | OPEN 9am-10pm (Mon-Sun)</span>
+    <span class="text-2xl mx-4">9123456789</span>
+    <span class="text-2xl mx-4">|</span>
+    <span class="text-2xl mx-4">OPEN 9am-10pm</span>
+    <span class="text-2xl mx-4">(Mon-Sun)</span>
+  </div>
+
+  <div class="absolute top-0 py-12 animate-marquee2 whitespace-nowrap">
+  <span class="text-2xl mx-4">(02)-888888 / 09123456789 | OPEN 9am-10pm (Mon-Sun)</span>
+    <span class="text-2xl mx-4">9123456789</span>
+    <span class="text-2xl mx-4">|</span>
+    <span class="text-2xl mx-4">OPEN 9am-10pm</span>
+    <span class="text-2xl mx-4">(Mon-Sun)</span>
+  </div>
+</div>
 
           
-          <div> <h4 className="font-Roboto text-[20px] max-400px:hidden">Hi👋 Welcome User, {user?.name}</h4></div>
-          <hr />
+          <div> <h4 className="font-Roboto text-[15px] max-400px:hidden ml-5 ">Hi👋 Welcome,<div className="flex"><CgProfile color="blue" size={20} className="mr-1"/> {user?.name}</div></h4></div>
+          
+          <div className="flex items-center ">
+            <MdFacebook size={30} color="blue" className="mr-2 "/>
+            <AiOutlineInstagram size={27} color="white" className="mr-2 bg-gradient-to-r from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] rounded-full "/>
+            <IoLogoYoutube size={30} color="red" className="rounded-full"/>
+          </div>
           {/* search box */}
-          <div className="w-[30%] relative ">
+          <div className="w-[30%] relative 800px:hidden">
             <input
               type="text"
               placeholder="Search Product..."
@@ -111,14 +136,16 @@ const Header = ({ activeHeading }) => {
               </div>
             ) : null}
           </div>
+          
 
        
         </div>
       </div>
+      
       <div
         className={`${
           active === true ? "shadow-sm fixed top-0 left-0 z-10" : null
-        } transition hidden 800px:flex items-center justify-between w-full bg-blue-500 h-[70px]`}
+        } transition hidden 1024px:flex items-center justify-between w-full bg-blue-500 h-[70px]`}
       >
         <div
           className={`${styles.section} relative ${styles.noramlFlex} justify-between`}
@@ -126,7 +153,7 @@ const Header = ({ activeHeading }) => {
           {/* categories */}
           <div onClick={() => setDropDown(!dropDown)}>
             <div className="relative h-[60px] mb-[10px] w-[270px]  1000px:block">
-              <BiCategory size={30} className="absolute top-3 left-6 text-blue-700" />
+              <BsDropletFill size={40} className="absolute top-3 left-5 text-blue-500" />
               <button
                 className={`h-[100%] w-[80px] flex justify-between items-center pl-10 bg-white font-sans text-lg font-[500] rounded-b-xl select-none  border shadow-xl p-5`}
               >
@@ -134,7 +161,7 @@ const Header = ({ activeHeading }) => {
               </button>
               <IoIosArrowDown
                 size={20}
-                className="absolute right-4 top-10 left-7 cursor-pointer text-blue-700"
+                className="absolute right-4 top-10 left-7 cursor-pointer text-blue-700 800px:hidden"
                 onClick={() => setDropDown(!dropDown)}
                 title="Product & Category"
               />
@@ -148,13 +175,13 @@ const Header = ({ activeHeading }) => {
             </div>
           </div>
 
-             {/* contact */}
+             {/* contact
              <div className=" flex mr-10">
               <span className="text-[#fff] flex ml-4 mr-4 text-[15px]">
                 <AiOutlineContacts className="mr-1 flex items-center text-xl " />
                 <h1 className="text-[20px]">(02)-888888 / 09123456789 | OPEN 9am-10pm (Mon-Sun)</h1>
               </span>
-            </div>
+            </div> */}
 
 
           {/* navitems */}
@@ -162,8 +189,8 @@ const Header = ({ activeHeading }) => {
             <Navbar active={activeHeading} />
           </div>
 
-          <div className="flex">
-            <div className={`${styles.noramlFlex}`}>
+          <div className="flex ">
+            <div className={`${styles.noramlFlex} 800px:hidden`}>
               <div
                 className="relative cursor-pointer mr-[15px]"
                 onClick={() => setOpenWishlist(true)}
@@ -175,7 +202,7 @@ const Header = ({ activeHeading }) => {
               </div>
             </div>
 
-            <div className={`${styles.noramlFlex}`}>
+            <div className={`${styles.noramlFlex} 800px:hidden `}>
               <div
                 className="relative cursor-pointer mr-[15px]"
                 onClick={() => setOpenCart(true)}
@@ -196,7 +223,7 @@ const Header = ({ activeHeading }) => {
                   <Link to="/profile">
                     <img
                       src={`${user?.avatar?.url}`}
-                      className="w-[30px] h-[30px] rounded-full"
+                      className="w-[30px] h-[30px] 800px:w-[40px] 800px:h-[40px] rounded-full"
                       alt=""
                     />
                   </Link>
