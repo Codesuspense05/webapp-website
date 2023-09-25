@@ -11,12 +11,13 @@ import Footer from "../components/Layout/Footer";
 
 
 const HomePage = () => {
+  
   return (
-    <div>
+    <div className='max-400px:scrollbar-hidden'>
         <Header activeHeading={1} />
-        <Hero />
+         {/* <Hero /> */}
 
-        <Categories />
+        <Categories /> 
         <BestDeals /> 
         {/* <div className="fixed left-0 z-10  justify-center items-center ">
         <Navigation />

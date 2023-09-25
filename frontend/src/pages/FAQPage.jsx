@@ -8,7 +8,7 @@ const FAQPage = () => {
     <div>
       <Header activeHeading={5} />
       <Faq />
-      <Footer />
+      <div className="max-400px:hidden"><Footer /></div>
     </div>
   );
 };

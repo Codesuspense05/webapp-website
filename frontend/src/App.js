@@ -15,6 +15,7 @@ import {
   OrderSuccessPage,
   ProductDetailsPage,
   ProfilePage,
+  AllUserOrders,
   // ShopCreatePage,
   SellerActivationPage,
   // ShopLoginPage,
@@ -23,6 +24,10 @@ import {
   TrackOrderPage,
   UserInbox,
   WalkinProductPage,
+  UserRefundOrder,
+  UserTrackOrder,
+  UserchangePassword,
+  UserAddress,
  
 } from "./routes/Routes.js";
 import {
@@ -131,6 +136,46 @@ const App = () => {
           element={
             <ProtectedRoute>
               <ProfilePage />
+            </ProtectedRoute>
+          }
+        />
+          <Route
+          path="/user-orders"
+          element={
+            <ProtectedRoute>
+              <AllUserOrders />
+            </ProtectedRoute>
+          }
+        />
+          <Route
+          path="/user-refundOrders"
+          element={
+            <ProtectedRoute>
+              <UserRefundOrder />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/user-trackorders"
+          element={
+            <ProtectedRoute>
+              <UserTrackOrder />
+            </ProtectedRoute>
+          }
+        />
+         <Route
+          path="/user-changepassword"
+          element={
+            <ProtectedRoute>
+              <UserchangePassword />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/user-address"
+          element={
+            <ProtectedRoute>
+              <UserAddress />
             </ProtectedRoute>
           }
         />

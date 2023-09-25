@@ -1,28 +1,31 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "../../styles/styles";
 import { categoriesData} from "../../static/data";
 import {
-  AiFillCodepenSquare,
-  AiFillContacts,
+ 
   AiFillHeart,
   AiOutlineInstagram,
+  AiOutlineProfile,
   AiOutlineSearch,
   
 } from "react-icons/ai";
 import { IoIosArrowDown,  IoLogoYoutube } from "react-icons/io";
-import { BiCart,  BiMessage, BiUser } from "react-icons/bi";
-import { CgHeart, CgProfile} from "react-icons/cg";
+import { BiCart,  BiMenuAltRight,  } from "react-icons/bi";
+import {  CgProfile} from "react-icons/cg";
 import DropDown from "./DropDown";
 import Navbar from "./Navbar";
 import { useSelector } from "react-redux";
 import Cart from "../cart/Cart";
 import Wishlist from "../Wishlist/Wishlist";
-import { RxCross1, RxHamburgerMenu, RxHome} from "react-icons/rx";
-import { MdFacebook, MdOutlineLocalOffer, MdSell } from "react-icons/md";
-import { BsDropletFill, BsHouse,BsQuestionCircle } from "react-icons/bs";
-import { IoTicketOutline, IoWater } from "react-icons/io5";
-
+import { RxCaretDown, RxCaretUp, RxCross1, RxHamburgerMenu} from "react-icons/rx";
+import {  MdFacebook } from "react-icons/md";
+import {  BsDropletFill } from "react-icons/bs";
+import { HiQuestionMarkCircle } from "react-icons/hi";
+import { RiShutDownLine } from "react-icons/ri";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { server } from "../../server";
 
 
 const Header = ({ activeHeading }) => {
@@ -38,6 +41,12 @@ const Header = ({ activeHeading }) => {
   const [openCart, setOpenCart] = useState(false);
   const [openWishlist, setOpenWishlist] = useState(false);
   const [open, setOpen] = useState(false);
+  const [isSubItemsOpen, setSubItemsOpen] = useState(false);
+  const [isItemsOpen, setItemsOpen] = useState(false);
+  const navigate = useNavigate();
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
+
+
   
 
   const handleSearchChange = (e) => {
@@ -50,6 +59,11 @@ const Header = ({ activeHeading }) => {
         product.name.toLowerCase().includes(term.toLowerCase())
       );
     setSearchData(filteredProducts);
+    if (searchData && searchData.length === 0){
+      setSearchData(!allProducts)
+    } 
+    
+    
   };
 
   window.addEventListener("scroll", () => {
@@ -60,13 +74,37 @@ const Header = ({ activeHeading }) => {
     }
   });
 
+  const toggleSubItems = () => {
+    setSubItemsOpen(!isSubItemsOpen);
+  
+  }
+  
+  const toggleItems = () => {
+    setItemsOpen(!isItemsOpen);
+  
+  }
+  
+  const logoutHandler = () => {
+    
+    axios
+      .get(`${server}/user/logout`, { withCredentials: true })
+      .then((res) => {
+        toast.success(res.data.message);
+        window.location.reload(true);
+        navigate("/login");
+      })
+      .catch((error) => {
+        console.log(error.response.data.message);
+      });
+  };
+
   return (
     <>
-    <div className="bg-blue-500 1024px:w-[100%] h-1 max-400px:hidden" ></div>
+    <div className="bg-blue-500 800px:w-[100%] h-1 max-400px:hidden " ></div>
    
     
       <div className={`${styles.section}`}>
-        <div className="hidden 1024px:h-[50px] 1024px:my-[20px] 1024px:flex items-center justify-between">
+        <div className="hidden 800px:h-[50px] 1024px:my-[20px] 800px:flex items-center justify-between">
           <div>
             <Link to="/">
               <img
@@ -116,6 +154,9 @@ const Header = ({ activeHeading }) => {
               size={30}
               className="absolute right-2 top-1.5 cursor-pointer text-blue-500"
             />
+
+
+            
             {searchData && searchData.length !== 0 ? (
               <div className="absolute min-h-[30vh] w-full bg-slate-50 shadow-sm-2 z-[9] p-4  border-b-[5px] rounded-b-[20px] ">
                 {searchData &&
@@ -134,7 +175,7 @@ const Header = ({ activeHeading }) => {
                     );
                   })}
               </div>
-            ) : null}
+            )  :null}
           </div>
           
 
@@ -145,7 +186,7 @@ const Header = ({ activeHeading }) => {
       <div
         className={`${
           active === true ? "shadow-sm fixed top-0 left-0 z-10" : null
-        } transition hidden 1024px:flex items-center justify-between w-full bg-blue-500 h-[70px]`}
+        } transition hidden 800px:flex items-center justify-between w-full bg-blue-500 h-[70px]`}
       >
         <div
           className={`${styles.section} relative ${styles.noramlFlex} justify-between`}
@@ -264,11 +305,11 @@ const Header = ({ activeHeading }) => {
             />
           </div>
           {/* mobile search */}
-          <AiOutlineSearch
+          {/* <AiOutlineSearch
               size={25}
               className="relative right-5 left-[200px] top-2 cursor-pointer text-blue-500"
-            />
-          <div className="my-5 w-[65%] m-auto h-[20px] relative] mr-4">
+            /> */}
+          <div className="my-5 w-[60%] m-auto h-[20px] relative] mr-4">
                 <input
                   type="search"
                   placeholder="Search Product..."
@@ -323,7 +364,7 @@ const Header = ({ activeHeading }) => {
           {openWishlist ? <Wishlist setOpenWishlist={setOpenWishlist} /> : null}
         </div>
 
-        {/* header sidebar */}
+        {/* mobile header sidebar */}
         {open && (
           
           <div
@@ -342,7 +383,7 @@ const Header = ({ activeHeading }) => {
               </div>
 
 
-                  <div className="flex items-center justify-center">
+                  {/* <div className="flex items-center justify-center">
             <Link to="/">
               <img
                 src="https://see.fontimg.com/api/renderfont4/ow59x/eyJyIjoiZnMiLCJoIjozMywidyI6MTAwMCwiZnMiOjMzLCJmZ2MiOiIjMUE1N0IwIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/TVdSU01T/airtravelerspersonaluse-bdit.png"
@@ -350,8 +391,8 @@ const Header = ({ activeHeading }) => {
                 className="mt-3 cursor-pointer"
               />
             </Link>
-          </div> 
-              <hr />
+          </div>  */}
+              {/* <hr />
               <div className="flex items-center justify-between m-2">
               <Link to="/"><RxHome size={30}/></Link>
               <Link to="/events"><MdOutlineLocalOffer size={30}/></Link>
@@ -368,23 +409,23 @@ const Header = ({ activeHeading }) => {
                 </div>
                 <Link to="/inbox"><BiMessage color="black" size={30}/></Link>
                 <Link to="/profile"><BiUser size={30} className="cursor-pointer"/></Link>
-               </div>
-             <hr />
-             
-              <div className="flex w-full justify-center h-[15%] mb-9 shadow-md  bg-gradient-to-r from-white via-gray-200 to-white ">
+               </div> */}
+               <div className="w-50 bg-gray-100 text-white">
+      <div className="">
+      <div className="flex w-full justify-center h-[10%] mb-2  ">
                 {isAuthenticated ? (
                   <div className=" flex items-center justify-center">
                     <Link to="/profile">
                       <img
                         src={`${user.avatar?.url}`}
                         alt=""
-                        className="w-[100px] h-[70px] rounded-full border-[3px] border-[#4357da]"
+                        className="w-[88px] h-[60px] rounded-full border-[3px] border-[#4357da]"
                       />
                     </Link>
                     
-                  <div className="w-full"> <h4 className="text-sm text-gray-600 ml-2"> Name: {user.name}</h4>
-               <h4 className="text-sm text-gray-600 ml-2"> Gender: {user.gender}</h4>
-               <h4 className="text-sm text-gray-600 ml-2"> CP#: {user.phoneNumber}</h4>
+                  <div className="w-full"> <h4 className="text-[11px] text-gray-600 ml-2"> Name: {user.name}</h4>
+               <h4 className="text-[11px] text-gray-600 ml-2"> Gender: {user.gender}</h4>
+               <h4 className="text-[11px] text-gray-600 ml-2"> CP#: {user.phoneNumber}</h4>
                </div>
                  
                   </div>
@@ -396,7 +437,7 @@ const Header = ({ activeHeading }) => {
                       to="/login"
                       className="text-[18px] pr-[10px] text-[#000000b7]"
                     >
-                      Login /
+                      Login |
                     </Link>
                     <Link
                       to="/sign-up"
@@ -408,48 +449,100 @@ const Header = ({ activeHeading }) => {
                 )}
               </div>
               <hr />
+            
+              <hr />
+      </div>
+      <hr />
+      <ul className="py-3">
+        <li className="pl-4 pr-2 py-2 cursor-pointer">
+          <div  className="text-blue-700 flex">
+            <BiMenuAltRight size={24}/> Dashboard Menu <Link to={"/faq"}><HiQuestionMarkCircle size={22} className="ml-5 cursor-pointer"/></Link>
+            
+          </div>
+          <hr />
+          
+            <ul className="pl-8 cursor-pointer">
+            <Link to={"/"}><li className="py-2 cursor-pointer hover:p-2  hover:text-blue-500 text-gray-500"><div className="flex">🏠 Home</div>
+              </li></Link>
+              <hr />
+              <Link to={"/best-selling"}><li className="py-2 cursor-pointer hover:p-2  hover:text-blue-500 text-gray-500"><div className="flex">🛒 Best Item Order</div>
+              </li></Link>
+              <hr />
+              <Link to={"/products"}><li className="py-2 cursor-pointer hover:p-2  hover:text-blue-500 text-gray-500"><div className="flex">🧴 Gallon | Container</div>
+              </li></Link>
+              <hr />
+              <Link to={"/events"}><li className="py-2 cursor-pointer hover:p-2  hover:text-blue-500 text-gray-500"><div className="flex">🎁 Offer's Promo</div>
+              </li></Link>
+              <hr />
+            </ul>
+          
+        </li>
+        
+        <li className="pl-4 pr-2 py-2 cursor-pointer">
+          <div onClick={toggleItems} className="text-blue-700 flex">
+           <AiOutlineProfile  size={20} className="mr-1"/>Profile Dashboard
+            {isItemsOpen ? (
+            <RxCaretUp className="h-6 w-6 ml-2 inline-block"/>
+            ) : (
+              <RxCaretDown className="h-6 w-6 ml-2 inline-block"/>
+            )}
+          </div>
+          <hr />
+          {isItemsOpen && (
+            <ul className="pl-8 cursor-pointer">
+               <Link to={"/profile"}><li className="py-2 cursor-pointer hover:p-2  hover:text-blue-500 text-gray-500"><div className="flex">👨‍⚖️ Profile</div>
+              </li></Link>
+              <hr />
+              <Link to={"/user-orders"}><li className="py-2 cursor-pointer hover:p-2  hover:text-blue-500 text-gray-500 " ><div className="flex">👜 Orders</div>
+              </li></Link>
+              <hr />
+              <Link to={"/user-trackorders"}><li className="py-2 cursor-pointer hover:p-2  hover:text-blue-500 text-gray-500"><div className="flex">🔗 Track Orders </div>
+              </li></Link>
+              <hr />
+              <Link to={"/user-refundOrders"}><li className="py-2 cursor-pointer hover:p-2  hover:text-blue-500 text-gray-500"><div className="flex">↩️ Refund </div>
+              </li></Link>
+              <hr />
+              <Link to={"/user-address"}><li className="py-2 cursor-pointer hover:p-2  hover:text-blue-500 text-gray-500"><div className="flex">📌 Address </div>
+              </li></Link>
+              <hr />
+              <Link to={"/user-changepassword"}><li className="py-2 cursor-pointer hover:p-2  hover:text-blue-500 text-gray-500"><div className="flex">🔐 Change Password </div>
+              </li></Link>
+              <hr />
+            
+            </ul>
+          )}
+        </li>
 
-              
-           
-               {/* <Navbar active={activeHeading} /> */}
-               <div className="items-center justify-start m-2">
-              <div className="flex Items-center justify-start mt-2"><Link to="/"><BsHouse size={25} color="blue" className="ml-[10px] mr-1"/></Link>Home</div> 
+        <li className="pl-4 pr-2 py-2 cursor-pointer ">
+          <div onClick={toggleSubItems} className="text-blue-700 flex">
+           📨 Chat Inbox
+            {isSubItemsOpen ? (
+            <RxCaretUp className="h-6 w-6 ml-2 inline-block"/>
+            ) : (
+              <RxCaretDown className="h-6 w-6 ml-2 inline-block"/>
+            )}
+          </div>
+          <hr />
+          {isSubItemsOpen && (
+            <ul className="pl-8 cursor-pointer">
+               <Link to={"/inbox"}><li className="py-2 cursor-pointer hover:p-2  hover:text-blue-500 text-gray-500"><div className="flex">💬 Message</div>
+              </li></Link>
               <hr />
-              <div className="flex Items-center justify-start mt-2"><Link to="/best-selling"><MdSell size={25} color="blue" className="ml-[10px] mr-1"/></Link>Best Order</div> 
-              <hr />
-              <div className="flex Items-center justify-start mt-2"><Link to="/products"><IoWater size={25} color="blue" className="ml-[10px] mr-1"/></Link>Water Container</div> 
-              <hr />
-              <div className="flex Items-center justify-start mt-2"><Link to="/events"><IoTicketOutline size={25} color="blue" className="ml-[10px] mr-1"/></Link>Promo's</div> 
-              <hr />
-              <div className="flex Items-center justify-start mt-2"><Link to="/faq"><BsQuestionCircle size={23} color="blue" className="ml-[10px] mr-1"/></Link>FAQ</div> 
-               <hr />
-               </div>
-               <br />
-              
              
-              <hr />
-              <div className="flex items-center justify-center">
-              <AiFillContacts size={30} className="text-blue-700 m-2 ml-0"/> (02) - 88888 | 09123456789
-              </div>
-              <hr />
-              <div className="flex items-center justify-center">
-              <AiFillCodepenSquare size={30} className="text-blue-700 m-2"/> OPEN 9am-10pm (Mon-Sun)
-              </div>
-              <hr />
-                 <br />
-                 <br />
+            </ul>
+          )}
+          <div  className="text-blue-700 flex mt-4" >
+            <RiShutDownLine  className="mr-1 text-[red]" size={24} onClick={logoutHandler} /> Logout
+            
+          </div>
+        </li>
+        
+        
+      </ul>
+     
+    </div>
+             <hr />
              
-               
-
-              {/* <div className="flex items-center justify-center">
-               <div className={`${styles.button} ml-4 !rounded-[4px]`}>
-                <Link to="/shop-create">
-                  <h1 className="text-[#fff] flex items-center">
-                    Become Seller <IoIosArrowForward className="ml-1" />
-                  </h1>
-                </Link>
-              </div> 
-              </div> */}
              
               
               

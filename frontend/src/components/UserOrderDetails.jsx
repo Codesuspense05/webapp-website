@@ -65,7 +65,7 @@ const UserOrderDetails = ({active}) => {
 
   return (
     <div className={`py-4 min-h-screen ${styles.section}`}>
-      <Link to={"/profile"}>
+      <Link to={"/user-orders"}>
         <RxCaretLeft size={40} color={`${active === 2 ? "gray" : "blue"}`} className="cursor pointer"/>
       </Link>
       <div className="w-full flex items-center justify-center">

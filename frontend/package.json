@@ -34,6 +34,7 @@
     "socket.io-client": "^4.6.1",
     "source-map-loader": "^4.0.1",
     "swiper": "^10.2.0",
+    "tailwind-scrollbar-hide": "^1.1.7",
     "taos": "^1.0.5",
     "timeago.js": "^4.0.2",
     "web-vitals": "^2.1.4"

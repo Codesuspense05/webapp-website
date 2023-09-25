@@ -18,7 +18,12 @@ import ShoploginPrivate from "../pages/ShoploginPrivate"
 import OrderDetailsPage from "../pages/OrderDetailsPage";
 import TrackOrderPage from "../pages/TrackOrderPage";
 import UserInbox from "../pages/UserInbox.jsx";
+import AllUserOrders from "../pages/UserOrder";
+import UserRefundOrder from "../pages/UserRefundOrder";
 import WalkinProductPage from "../pages/WalkinProductPage.jsx"
+import UserchangePassword from "../pages/UserchangePassword"
+import UserTrackOrder from "../pages/UserTrackOrders";
+import UserAddress from "../pages/UserAddress";
 
 export { 
     LoginPage,
@@ -41,6 +46,11 @@ export {
     OrderDetailsPage,
     TrackOrderPage,
     UserInbox,
+    AllUserOrders,
+    UserRefundOrder,
+    UserTrackOrder,
+    UserchangePassword,
+    UserAddress,
     WalkinProductPage,
     
 };

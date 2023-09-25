@@ -36,6 +36,8 @@ const Categories = () => {
   };
 
   const settings = {
+    arrows: null,
+    nextArrow: null,
     autoplay: true,
     autoplaySpeed: 3000, // Adjust the speed (in milliseconds)
     dots: true, // Show navigation dots

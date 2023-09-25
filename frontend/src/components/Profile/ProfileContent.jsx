@@ -21,13 +21,14 @@ import {
   updatUserAddress,
   updateUserInformation,
 } from "../../redux/actions/user";
-import { Country, State } from "country-state-city";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { getAllOrdersOfUser } from "../../redux/actions/order";
 import { CgNametag } from "react-icons/cg";
 import {  RiLockPasswordLine } from "react-icons/ri";
+import { HiLocationMarker } from "react-icons/hi";
+
 
 
 
@@ -629,65 +630,67 @@ const ChangePassword = () => {
       });
   };
   return (
-    <div className="w-full px-5">
-      <h1 className="block text-[25px] text-center font-[600] text-[#000000ba] pb-2">
-        Change Password
-      </h1>
-      <div className="w-full">
-        <form
-          props-required
-          onSubmit={passwordChangeHandler}
-          className="flex flex-col items-center"
-        >
-          <div className=" w-[100%] 800px:w-[50%] mt-5">
-            <label className="block pb-2">Enter your old password</label>
-            <input
-              type="password"
-              className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
-              required
-              value={oldPassword}
-              onChange={(e) => setOldPassword(e.target.value)}
-            />
-          </div>
-          <div className=" w-[100%] 800px:w-[50%] mt-2">
-            <label className="block pb-2">Enter your new password</label>
-            <input
-              type="password"
-              className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
-              required
-              value={newPassword}
-              onChange={(e) => setNewPassword(e.target.value)}
-            />
-          </div>
-          <div className=" w-[100%] 800px:w-[50%] mt-2">
-            <label className="block pb-2">Enter your confirm password</label>
-            <input
-              type="password"
-              className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
-              required
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
-            <input
-              className={`w-[95%] h-[40px] border border-[#3a24db] text-center text-[#3a24db] rounded-full mt-8 cursor-pointer`}
-              required
-              value="Update"
-              type="submit"
-            />
-          </div>
-        </form>
+    <div className="w-full p-5 border">
+        <h1 className="block text-[20px] text-center font-[600] text-[#000000ba] pb-2 pt-5">
+        🔏 Change Password
+        </h1>
+        <hr />
+        <div className="w-full p-6">
+          <form
+            props-required
+            onSubmit={passwordChangeHandler}
+            className="flex flex-col items-center"
+          >
+            <div className=" w-[100%] 800px:w-[50%] mt-5">
+              <label className="block pb-2">Enter your old password</label>
+              <input
+                type="password"
+                className={`${styles.input} !w-[100%] mb-4 800px:mb-0`}
+                placeholder="Enter your old Password..."
+                required
+                value={oldPassword}
+                onChange={(e) => setOldPassword(e.target.value)}
+              />
+            </div>
+            <div className=" w-[100%] 800px:w-[50%] mt-2">
+              <label className="block pb-2">Enter your new password</label>
+              <input
+                type="password"
+                className={`${styles.input} !w-[100%] mb-4 800px:mb-0`}
+                required
+                placeholder="Enter your new Password..."
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+              />
+            </div>
+            <div className=" w-[100%] 800px:w-[50%] mt-2">
+              <label className="block pb-2">Enter your confirm password</label>
+              <input
+                type="password"
+                className={`${styles.input} !w-[100%] mb-4 800px:mb-0`}
+                placeholder=" Confirm Password..."
+                required
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+              <input
+                className={`w-[100%] h-[35px] border border-[#3a24db] text-center hover:bg-blue-500 hover:text-white text-[#3a24db] rounded-full mt-8 cursor-pointer`}
+                required
+                value="Update Password"
+                type="submit"
+              />
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
   );
 };
 
 const Address = () => {
   const [open, setOpen] = useState(false);
-  const [country, setCountry] = useState("");
-  const [city, setCity] = useState("");
   const [zipCode, setZipCode] = useState();
-  const [address1, setAddress1] = useState("");
-  const [address2, setAddress2] = useState("");
+  const [address, setAddress] = useState("");
+  const [landmark, setLandmark] = useState("");
   const [addressType, setAddressType] = useState("");
   const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
@@ -707,24 +710,21 @@ const Address = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (addressType === "" || country === "" || city === "") {
+    if (addressType === "") {
       toast.error("Please fill all the fields!");
     } else {
       dispatch(
         updatUserAddress(
-          country,
-          city,
-          address1,
-          address2,
+          
+          address,
+          landmark,
           zipCode,
           addressType
         )
       );
       setOpen(false);
-      setCountry("");
-      setCity("");
-      setAddress1("");
-      setAddress2("");
+      setAddress("");
+      setLandmark("");
       setZipCode(null);
       setAddressType("");
     }
@@ -736,10 +736,11 @@ const Address = () => {
   };
 
   return (
-    <div className="w-full px-2">
+    <div className="w-full p-2">
+       
       {open && (
         <div className="fixed w-full h-screen bg-[#0000004b] top-0 left-0 flex items-center justify-center ">
-          <div className="w-[35%] h-[80vh] bg-white rounded shadow relative overflow-x-scroll max-400px:w-[80%]">
+          <div className="w-[35%] h-[80vh] bg-white rounded-[4px] shadow relative overflow-x-scroll max-400px:w-[80%]">
             <div className="w-full flex justify-end p-3">
               <RxCross1
                 size={30}
@@ -753,74 +754,28 @@ const Address = () => {
             <div className="w-full">
               <form props-required onSubmit={handleSubmit} className="w-full">
                 <div className="w-full block p-4">
-                  <div className="w-full pb-2">
-                    <label className="block pb-2">Country</label>
-                    <select
-                      name=""
-                      id=""
-                      value={country}
-                      onChange={(e) => setCountry(e.target.value)}
-                      className="w-[95%] border h-[40px] rounded-[5px]"
-                    >
-                      <option value="" className="block border pb-2">
-                        choose your country
-                      </option>
-                      {Country &&
-                        Country.getAllCountries().map((item) => (
-                          <option
-                            className="block pb-2"
-                            key={item.isoCode}
-                            value={item.isoCode}
-                          >
-                            {item.name}
-                          </option>
-                        ))}
-                    </select>
-                  </div>
+                  
+
+                  
 
                   <div className="w-full pb-2">
-                    <label className="block pb-2">Choose your City</label>
-                    <select
-                      name=""
-                      id=""
-                      value={city}
-                      onChange={(e) => setCity(e.target.value)}
-                      className="w-[95%] border h-[40px] rounded-[5px]"
-                    >
-                      <option value="" className="block border pb-2">
-                        choose your city
-                      </option>
-                      {State &&
-                        State.getStatesOfCountry(country).map((item) => (
-                          <option
-                            className="block pb-2"
-                            key={item.isoCode}
-                            value={item.isoCode}
-                          >
-                            {item.name}
-                          </option>
-                        ))}
-                    </select>
-                  </div>
-
-                  <div className="w-full pb-2">
-                    <label className="block pb-2">Address 1</label>
+                    <label className="block pb-2">Address</label>
                     <input
                       type="address"
                       className={`${styles.input}`}
                       required
-                      value={address1}
-                      onChange={(e) => setAddress1(e.target.value)}
+                      value={address}
+                      onChange={(e) => setAddress(e.target.value)}
                     />
                   </div>
                   <div className="w-full pb-2">
-                    <label className="block pb-2">Address 2</label>
+                    <label className="block pb-2">Landmark</label>
                     <input
                       type="address"
                       className={`${styles.input}`}
                       required
-                      value={address2}
-                      onChange={(e) => setAddress2(e.target.value)}
+                      value={landmark}
+                      onChange={(e) => setLandmark(e.target.value)}
                     />
                   </div>
 
@@ -874,38 +829,44 @@ const Address = () => {
           </div>
         </div>
       )}
-      <div className="flex w-full items-center justify-between">
-        <h1 className="text-[25px] font-[600] text-[#000000ba] pb-2">
+      <br />
+      <hr />
+      <div className="flex w-full items-center justify-between mt-2 mb-2">
+        <HiLocationMarker size={20} color="red"/><h1 className="text-[18px] font-[600] text-[#000000ba] ">
           My Addresses
         </h1>
         <AiOutlinePlusCircle
-          size={45}
+          size={25}
           className="text-blue-500 cursor-pointer"
           onClick={() => setOpen(true)}
         />
          
         
       </div>
-      <br />
+      
+      <hr />
+
+
+
+
+      
       {user &&
         user.addresses.map((item, index) => (
           <div
-            className="w-full max-400px:w-full bg-gray-50 h-min 800px:h-[70px] max-400px:h-[70px] rounded-[4px] flex items-center px-2 shadow justify-between  mb-1"
+            className="w-full bg-gray-50 h-min 800px:h-[70px] max-400px:h-[70px] rounded-[4px] flex  items-center px-2 shadow justify-between  mb-1"
             key={index}
           >
-            <div className="flex items-center">
-              <h5 className=" font-[600] max-400px:text-[13px]">{item.addressType}</h5>
+            <div className="">
+            
+              <h5 className=" font-[600] max-400px:text-[13px]">
+                  {item.addressType}</h5><br /><br />
             </div>
             <div className="flex items-center">
-              <h6 className=" pl-2 text-[15px] 800px:text-[unset] max-400px:text-[12px] max-400px:text-justify pr-2 ">
-                {item.address1} {item.address2}
+              <h6 className=" pt-2 text-[11px] 800px:text-[unset]  pr-2 ">
+                {item.address} {item.landmark}, #{user && user.phoneNumber}
               </h6>
             </div>
-            <div className="flex items-center">
-              <h6 className="text-[12px] 800px:text-[unset]">
-                {user && user.phoneNumber}
-              </h6>
-            </div>
+          
             <div className="min-w-[10%] flex items-center justify-between  ">
               <AiOutlineDelete
                 
