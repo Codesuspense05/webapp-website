@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import {
-  AiFillHeart,
-  AiOutlineHeart,
   AiOutlineMessage,
   AiOutlineShoppingCart,
 } from "react-icons/ai";
@@ -10,14 +8,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { getAllProductsShop } from "../../redux/actions/product";
 import { server } from "../../server";
 import styles from "../../styles/styles";
-import {
-  addToWishlist,
-  removeFromWishlist,
-} from "../../redux/actions/wishlist";
+// import {
+//   addToWishlist,
+//   removeFromWishlist,
+// } from "../../redux/actions/wishlist";
 import { addTocart } from "../../redux/actions/cart";
 import { toast } from "react-toastify";
 import Ratings from "./Ratings";
 import axios from "axios";
+
 
 const ProductDetails = ({ data }) => {
   const { wishlist } = useSelector((state) => state.wishlist);
@@ -26,7 +25,7 @@ const ProductDetails = ({ data }) => {
   const { products } = useSelector((state) => state.products);
    const { seller } = useSelector((state) => state.seller);
   const [count, setCount] = useState(1);
-  const [click, setClick] = useState(false);
+  const [, setClick] = useState(false);
   const [select, setSelect] = useState(0);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -49,15 +48,15 @@ const ProductDetails = ({ data }) => {
     }
   };
 
-  const removeFromWishlistHandler = (data) => {
-    setClick(!click);
-    dispatch(removeFromWishlist(data));
-  };
+  // const removeFromWishlistHandler = (data) => {
+  //   setClick(!click);
+  //   dispatch(removeFromWishlist(data));
+  // };
 
-  const addToWishlistHandler = (data) => {
-    setClick(!click);
-    dispatch(addToWishlist(data));
-  };
+  // const addToWishlistHandler = (data) => {
+  //   setClick(!click);
+  //   dispatch(addToWishlist(data));
+  // };
 
   const addToCartHandler = (id) => {
     const isItemExists = cart && cart.find((i) => i._id === id);
@@ -123,7 +122,7 @@ const ProductDetails = ({ data }) => {
                 <img
                   src={`${data && data.images[select]?.url}`}
                   alt=""
-                  className="w-[80%] max-400px:w-[100%] "
+                  className="w-[80%] max-400px:w-[60%] max-400px:ml-14 "
                 />
                 <div className="w-[150px] flex">
                   {data &&
@@ -136,9 +135,10 @@ const ProductDetails = ({ data }) => {
                         <img
                           src={`${i?.url}`}
                           alt=""
-                          className="h-[120px] overflow-hidden mr-3 mt-3"
+                          className="h-[60px] overflow-hidden mr-3 mt-3"
                           onClick={() => setSelect(index)}
                         />
+                        
                       </div>
                     ))}
                   <div
@@ -147,22 +147,23 @@ const ProductDetails = ({ data }) => {
                     } cursor-pointer`}
                   ></div>
                 </div>
+      
               </div>
               <br />
               <hr />
-              <div className="w-full 800px:w-[50%] pt-5">
+              <div className="w-full 800px:w-[50%] pt-1 ">
                 <h1 className={`${styles.productTitle}`}>{data.name}</h1>
                  {/* color type */}
                   <div className=" flex items-center justify-start">
-                    <h5 className={"text-[15px] text-gray-500 pt-0 pb-0.5 text-shadow flex"}><h4 className="text-orange-500 flex pr-2">Colortype:</h4> {data.color}</h5>
+                    <h5 className={"text-[12px] text-gray-500 pt-0 pb-0.5 text-shadow flex"}><h4 className="text-orange-500 flex pr-2">Colortype:</h4> {data.color}</h5>
                   </div>
-                <p>{data.description}</p>
+                <p className="text-[12px] text-gray-500">Details: {data.description}</p>
                 <div className="flex pt-3">
                   <h4 className={`${styles.productDiscountPrice}`}>
                     P{data.discountPrice}
                   </h4>
                   <h3 className={`${styles.price}`}>
-                    {data.originalPrice ? data.originalPrice + "P" : null}
+                    {data.originalPrice ? "P" + data.originalPrice : null}
                   </h3>
                   
                 </div>
@@ -172,22 +173,22 @@ const ProductDetails = ({ data }) => {
                 <div className="flex items-center mt-12 max-400px:mt-6 justify-center pr-3">
                   <div>
                     <button
-                      className="bg-gradient-to-r from-blue-400 to-blue-500 text-white font-bold rounded px-4 py-2 shadow-lg hover:opacity-75 transition duration-300 ease-in-out"
+                      className="bg-gradient-to-r from-blue-400 to-blue-500 text-white font-bold rounded px-4 py-1 shadow-lg hover:opacity-75 transition duration-300 ease-in-out"
                       onClick={decrementCount}
                     >
                       -
                     </button>
-                    <span className="border text-gray-800 font-medium px-5 py-[9px]">
+                    <span className="border text-gray-800 font-medium px-4 py-1">
                       {count}
                     </span>
                     <button
-                      className="bg-gradient-to-r from-blue-400 to-blue-500 text-white font-bold rounded px-4 py-2 shadow-lg hover:opacity-75 transition duration-300 ease-in-out"
+                      className="bg-gradient-to-r from-blue-400 to-blue-500 text-white font-bold rounded px-4 py-1 shadow-lg hover:opacity-75 transition duration-300 ease-in-out"
                       onClick={incrementCount}
                     >
                       +
                     </button>
                   </div>
-                  <div className="ml-2 border p-1">
+                  {/* <div className="ml-2 border p-1">
                     {click ? (
                       <AiFillHeart
                         size={30}
@@ -205,19 +206,19 @@ const ProductDetails = ({ data }) => {
                         title="Add to wishlist"
                       />
                     )}
-                  </div>
+                  </div> */}
                 </div>
                 <div
-                  className="w-[150px]flex 800px:w-[70%] items-center justify-center  cursor-pointer !mt-6 !rounded-full h-11 border-[2px] border-blue-500 !bg-transparent shadow-lg"
+                  className="w-[150px]flex 800px:w-[70%] items-center justify-center  cursor-pointer !mt-2 !rounded-full h-9 border-[2px] border-blue-500 !bg-transparent shadow-lg"
                   onClick={() => addToCartHandler(data._id)}
                 >
-                  <span className="text-blue-500 flex items-center justify-center pt-2">
+                  <span className="text-blue-500 flex items-center justify-center pt-1">
                     Add to cart <AiOutlineShoppingCart className="ml-1" />
                   </span>
                 </div>
                 <br />
                 <hr />
-                <div className="flex items-center pt-8">
+                <div className="flex items-center ">
                   <Link to={`/shop/preview/${data?.shop._id}`}>
                     <img
                       src={`${seller?.avatar?.url}`}
@@ -236,12 +237,10 @@ const ProductDetails = ({ data }) => {
                     </h5>
                   </div>
                   <div
-                    className={`${styles.button} bg-blue-500 mt-4 !rounded-full !h-11`}
+                      className="flex justify-end "
                     onClick={handleMessageSubmit}
                   >
-                    <span className="text-white flex items-center">
-                      Send Message <AiOutlineMessage className="ml-1" />
-                    </span>
+                 <AiOutlineMessage size={30} className="text-blue-500" />
                   </div>
                 </div>
               </div>
@@ -271,15 +270,15 @@ const ProductDetailsInfo = ({
 
   return (
     <div className="border-[2px] px-3 800px:px-10 py-2 rounded">
-      <div className="w-full flex justify-between border-b pt-10 pb-2">
+      <div className="w-full flex justify-between border-b pt-1 pb-2">
         <div className="relative">
           <h5
             className={
-              "text-[#000] text-[18px] px-1 leading-5 font-[600] cursor-pointer 800px:text-[20px]"
+              "text-[#000] text-[13px] px-1 leading-5 font-[600] cursor-pointer 800px:text-[20px]"
             }
             onClick={() => setActive(1)}
           >
-            Product Details
+           📃 Product Details
           </h5>
           {active === 1 ? (
             <div className={`${styles.active_indicator}`} />
@@ -288,11 +287,11 @@ const ProductDetailsInfo = ({
         <div className="relative">
           <h5
             className={
-              "text-[#000] text-[18px] px-1 leading-5 font-[600] cursor-pointer 800px:text-[20px]"
+              "text-[#000] text-[13px] px-1 leading-5 font-[600] cursor-pointer 800px:text-[20px]"
             }
             onClick={() => setActive(2)}
           >
-            Product Reviews
+            🌟 Product Reviews
           </h5>
           {active === 2 ? (
             <div className={`${styles.active_indicator}`} />
@@ -301,11 +300,11 @@ const ProductDetailsInfo = ({
         <div className="relative">
           <h5
             className={
-              "text-[#000] text-[18px] px-1 leading-5 font-[600] cursor-pointer 800px:text-[20px]"
+              "text-[#000] text-[13px] px-1 leading-5 font-[600] cursor-pointer 800px:text-[20px]"
             }
             onClick={() => setActive(3)}
           >
-            Seller Information
+            👩🏻‍💻 Seller Information
           </h5>
           {active === 3 ? (
             <div className={`${styles.active_indicator}`} />
@@ -314,7 +313,7 @@ const ProductDetailsInfo = ({
       </div>
       {active === 1 ? (
         <>
-          <p className="py-2 text-[18px] leading-8 pb-10 whitespace-pre-line">
+          <p className="py-2 text-[11px] leading-8 pb-10 whitespace-pre-line">
             {data.description}
           </p>
         </>
@@ -328,14 +327,14 @@ const ProductDetailsInfo = ({
                 <img
                   src={`${item.user.avatar?.url}`}
                   alt=""
-                  className="w-[50px] h-[50px] rounded-full"
+                  className="w-[35px] h-[35px] rounded-full"
                 />
                 <div className="pl-2 ">
                   <div className="w-full flex items-center">
-                    <h1 className="font-[500] mr-3">{item.user.name}</h1>
+                    <h1 className="font-[500] mr-3 text-[13px]">{item.user.name}</h1>
                     <Ratings rating={data?.ratings} />
                   </div>
-                  <p>{item.comment}</p>
+                  <p className="text-[11px]">{item.comment}</p>
                 </div>
               </div>
             ))}
@@ -354,7 +353,7 @@ const ProductDetailsInfo = ({
             <Link to={`/shop/preview/${data.shop._id}`}>
               <div className="flex items-center">
                 <img
-                  src={`${data?.shop?.avatar?.url}`}
+                  src={`${data?.shop.avatar?.url}`}
                   className="w-[50px] h-[50px] rounded-full"
                   alt=""
                 />
@@ -370,27 +369,28 @@ const ProductDetailsInfo = ({
           </div>
           <div className="w-full 800px:w-[50%] mt-5 800px:mt-0 800px:flex flex-col items-end">
             <div className="text-left">
-              <h5 className="font-[600]">
-                Date was Created:{" "}
-                <span className="font-[500]">
+              <h5 className="font-[600] text-[12px]">
+                Date was Created :{" "}
+                <span className="font-[500] text-gray-500">
                   {data.shop?.createdAt?.slice(0, 10)}
                 </span>
               </h5>
-              <h5 className="font-[600] pt-3">
-                Total Post Products:{" "}
-                <span className="font-[500]">
+              <h5 className="font-[600] pt-3 text-[12px]">
+                Total Post Products :{" "}
+                <span className="font-[500] text-gray-500">
                   {products && products.length}
                 </span>
               </h5>
-              <h5 className="font-[600] pt-3">
-                Total Products Reviews:{" "}
-                <span className="font-[500]">{totalReviewsLength}</span>
+              <h5 className="font-[600] pt-3 text-[12px]">
+                Total Products Reviews :{" "}
+                <span className="font-[500] text-gray-500">{totalReviewsLength}</span>
               </h5>
+              <br />
               <Link to="/">
                 <div
-                  className={`${styles.button} !rounded-full !h-[39.5px] mt-3`}
+                  className="w-[150px] bg-blue-500 h-[40px] my-3 flex items-center justify-center rounded-xl cursor-pointer"
                 >
-                  <h4 className="text-white">Order Now</h4>
+                  <h4 className="text-white">🏠 Back to Home</h4>
                 </div>
               </Link>
             </div>

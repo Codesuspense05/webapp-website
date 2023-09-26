@@ -39,7 +39,7 @@ const Login = () => {
 
   return (
     
-    <div className="min-h-screen max-400px:min-h-[30vh] bg-gray-200 flex flex-col justify-center py-12 sm:px-6 lg:px-8 bg-no-repeat background-cover"
+    <div className="min-h-screen max-400px:min-h-[30vh] bg-blue-700 flex flex-col justify-center py-12 sm:px-6 lg:px-8 bg-no-repeat background-cover"
   //   style={{
   //     backgroundImage: "url(https://okcredit-blog-images-prod.storage.googleapis.com/2022/01/mineralwater2.jpg)",
   // }}
@@ -49,16 +49,16 @@ const Login = () => {
        
       </div>
     <div className=" sm:mx-auto sm:w-full sm:max-w-md max-400px:h-[30vh]">
-      <div className=" bg-white py-4 px-4 shadow-xl shadow-gray-500 sm:rounded-lg sm:px-10 max-400px:m-6 max-400px:rounded-[30px]">
+      <div className=" bg-white py-4 px-4 shadow-xl shadow-blue-400 sm:rounded-lg sm:px-10 max-400px:m-6 max-400px:rounded-[20px]">
         <form className="space-y-8" onSubmit={handleSubmit} >
-        <IoLogIn size ={30} className="text-blue-500 "/><h2 className="text-center text-[22px]  text-blue-700">
+       <h2 className="text-center text-[22px]  text-blue-700">
           Login your Valid Account
         </h2>
           <div>
             <label
               htmlFor="email"
               className="block text-sm font-medium text-gray-700">
-              <div className="flex"><MdOutlineEmail size={20} />Email address</div>
+              <div className="flex">📧 Email address</div>
             </label>
             <div className="mt-1 ">
               <input
@@ -77,7 +77,7 @@ const Login = () => {
             <label
               htmlFor="password"
               className="block text-sm font-medium text-gray-700">
-               <div className="flex"><RiLockPasswordLine size={20} />Password</div>
+               <div className="flex">🔐 Password</div>
             </label>
             <div className="mt-1 relative">
               <input

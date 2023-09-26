@@ -44,7 +44,7 @@ const Header = ({ activeHeading }) => {
   const [isSubItemsOpen, setSubItemsOpen] = useState(false);
   const [isItemsOpen, setItemsOpen] = useState(false);
   const navigate = useNavigate();
-  const [isLoggingOut, setIsLoggingOut] = useState(false);
+
 
 
   
@@ -100,7 +100,7 @@ const Header = ({ activeHeading }) => {
 
   return (
     <>
-    <div className="bg-blue-500 800px:w-[100%] h-1 max-400px:hidden " ></div>
+    <div className="bg-blue-500 800px:w-[100%] h-1 max-400px:hidden max-500px:hidden max-640px:hidden  max-768px:hidden" ></div>
    
     
       <div className={`${styles.section}`}>
@@ -202,12 +202,12 @@ const Header = ({ activeHeading }) => {
               </button>
               <IoIosArrowDown
                 size={20}
-                className="absolute right-4 top-10 left-7 cursor-pointer text-blue-700 800px:hidden"
+                className="absolute right-4 top-10 left-7 cursor-pointer text-blue-700 max-400px:hidden max-500px:hidden max-640px:hidden  max-768px:hidden max-800px:hidden"
                 onClick={() => setDropDown(!dropDown)}
                 title="Product & Category"
               />
               {dropDown ? (
-                <DropDown className="bg-blue-500"
+                <DropDown className="bg-blue-500 max-400px:hidden max-500px:hidden max-640px:hidden  max-768px:hidden max-800px:hidden"
                   categoriesData={categoriesData}
                   setDropDown={setDropDown}
                   
@@ -289,18 +289,18 @@ const Header = ({ activeHeading }) => {
 
 
       {/* mobile header */}
-      <div className="bg-blue-700 800px:hidden  h-2 z-50 top-0 left-0"></div>
+      
       <div
         className={`${
           active === true ? "shadow-sm fixed top-0 left-0 z-10" : null
         }
-      w-full h-[70px] bg-white z-50 top-0 left-0 shadow-sm 800px:hidden`}
+      w-full h-[70px] bg-blue-800 z-50 top-0 left-0 shadow-sm 800px:hidden`}
       >
         <div className="w-full flex items-center justify-between">
           <div>
             <RxHamburgerMenu
               size={40}
-              className="ml-4 mt-2 text-blue-700 bg-blue-100 border rounded-[5px] p-0.5"
+              className="ml-4 mt-2 text-white p-0.5 shadow-sm"
               onClick={() => setOpen(true)}
             />
           </div>
@@ -309,11 +309,11 @@ const Header = ({ activeHeading }) => {
               size={25}
               className="relative right-5 left-[200px] top-2 cursor-pointer text-blue-500"
             /> */}
-          <div className="my-5 w-[60%] m-auto h-[20px] relative] mr-4">
+          <div className="my-5 max-400px:w-[65%] max-500px:w-[80%] max-640px:w-[80%] max-768px:w-[80%] m-auto h-[20px] relative] max-400px:ml-3 max-500px:ml-3 max-640px:ml-3 max-768px:ml-3">
                 <input
                   type="search"
                   placeholder="Search Product..."
-                  className="h-[35px] w-full px-2 border-[#3957db] border-[2px] rounded-full"
+                  className="h-[35px] w-full px-2 bg-white border-[2px] rounded-full"
                   value={searchTerm}
                   onChange={handleSearchChange}
                 />
@@ -350,7 +350,7 @@ const Header = ({ activeHeading }) => {
               className="relative mr-[20px]"
               onClick={() => setOpenCart(true)}
             >
-              <BiCart className="text-blue-500 mt-3"
+              <BiCart className="text-white mt-3"
               size={30} />
               <span class="absolute right-0 top-0 rounded-full bg-[#ec3a3a] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px]  leading-tight text-center">
                 {cart && cart.length}
@@ -371,7 +371,7 @@ const Header = ({ activeHeading }) => {
             className={`fixed w-full bg-[#0000005f] z-20 h-full top-0 left-0`}
           >
             
-            <div className="fixed w-[70%] bg-gray-100 h-screen top-0 left-0 z-10 overflow-y-scroll">
+            <div className="fixed max-400px:w-[70%] max-500px:w-[60%] max-640px:w-[60%] max-768px:w-[60%] bg-gray-100 h-screen top-0 left-0 z-10 overflow-y-scroll">
             <div className="bg-blue-500 w-full h-2"></div>
             <div className="w-full justify-end flex   ">
                 
@@ -454,14 +454,14 @@ const Header = ({ activeHeading }) => {
       </div>
       <hr />
       <ul className="py-3">
-        <li className="pl-4 pr-2 py-2 cursor-pointer">
+        <li className="pl-4 pr-2 ">
           <div  className="text-blue-700 flex">
-            <BiMenuAltRight size={24}/> Dashboard Menu <Link to={"/faq"}><HiQuestionMarkCircle size={22} className="ml-5 cursor-pointer"/></Link>
+            <BiMenuAltRight size={24}/> Dashboard Menu <Link to={"/faq"}><HiQuestionMarkCircle size={22} className="ml-5 "/></Link>
             
           </div>
           <hr />
           
-            <ul className="pl-8 cursor-pointer">
+            <ul className="pl-8 ">
             <Link to={"/"}><li className="py-2 cursor-pointer hover:p-2  hover:text-blue-500 text-gray-500"><div className="flex">🏠 Home</div>
               </li></Link>
               <hr />
@@ -478,7 +478,7 @@ const Header = ({ activeHeading }) => {
           
         </li>
         
-        <li className="pl-4 pr-2 py-2 cursor-pointer">
+        <li className="pl-4 pr-2 py-2 ">
           <div onClick={toggleItems} className="text-blue-700 flex">
            <AiOutlineProfile  size={20} className="mr-1"/>Profile Dashboard
             {isItemsOpen ? (
@@ -489,7 +489,7 @@ const Header = ({ activeHeading }) => {
           </div>
           <hr />
           {isItemsOpen && (
-            <ul className="pl-8 cursor-pointer">
+            <ul className="pl-8 ">
                <Link to={"/profile"}><li className="py-2 cursor-pointer hover:p-2  hover:text-blue-500 text-gray-500"><div className="flex">👨‍⚖️ Profile</div>
               </li></Link>
               <hr />
@@ -513,7 +513,7 @@ const Header = ({ activeHeading }) => {
           )}
         </li>
 
-        <li className="pl-4 pr-2 py-2 cursor-pointer ">
+        <li className="pl-4 pr-2 py-2  ">
           <div onClick={toggleSubItems} className="text-blue-700 flex">
            📨 Chat Inbox
             {isSubItemsOpen ? (
@@ -531,11 +531,12 @@ const Header = ({ activeHeading }) => {
              
             </ul>
           )}
-          <div  className="text-blue-700 flex mt-4" >
+         
+        </li>
+        <div  className="text-gray-500 flex mt-4 pl-4" >
             <RiShutDownLine  className="mr-1 text-[red]" size={24} onClick={logoutHandler} /> Logout
             
           </div>
-        </li>
         
         
       </ul>

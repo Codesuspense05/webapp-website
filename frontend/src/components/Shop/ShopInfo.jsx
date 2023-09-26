@@ -7,7 +7,9 @@ import Loader from "../Layout/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProductsShop } from "../../redux/actions/product";
 import { AiFillEdit } from "react-icons/ai";
-import { BiLogOut } from "react-icons/bi";
+import {  BiArrowToLeft, BiLogOut } from "react-icons/bi";
+
+
 
 const ShopInfo = ({ isOwner }) => {
   const [data,setData] = useState({});
@@ -51,40 +53,43 @@ const ShopInfo = ({ isOwner }) => {
       <Loader />
     ) : (
       <div>
-      <div className="w-full py-5">
+      <div className="w-full p-2 ">
+        <Link to={"/"}><BiArrowToLeft size={20} className="text-blue-500"/></Link>
         <div className="w-full flex item-center justify-center">
           <img
             src={`${data.avatar?.url}`}
             alt=""
-            className="w-[150px] h-[150px] object-cover rounded-full"
+            className=" 800px:w-[130px] 800px:h-[130px]  w-[90px] h-[90px] object-cover border rounded-full"
           />
         </div>
-        <h3 className="text-center py-2 text-[20px]">{data.name}</h3>
+        <h3 className="text-center py-2 text-[15px]">{data.name}</h3>
         <hr />
-        <p className="text-[16px] text-[#000000a6] p-[10px] flex items-center">
+        <p className="text-[12px] text-[#000000a6]  flex items-center">
           {data.description}
         </p>
       </div>
-      <div className="p-3">
-        <h5 className="font-[600]">Address</h5>
-        <h4 className="text-[#000000a6]">{data.address}</h4>
+      <div className="p-2">
+        <h5 className="font-[600] text-[14px] ">Address</h5>
+        <h4 className="text-[#000000a6] text-[12px]">{data.address}</h4>
       </div>
-      <div className="p-3">
-        <h5 className="font-[600]">Phone Number</h5>
-        <h4 className="text-[#000000a6]">{data.phoneNumber}</h4>
+      <div className="p-2">
+        <h5 className="font-[600] text-[14px]">Phone Number</h5>
+        <h4 className="text-[#000000a6] text-[12px]">{data.phoneNumber}</h4>
       </div>
-      <div className="p-3">
-        <h5 className="font-[600]">Total Post Products</h5>
-        <h4 className="text-[#000000a6]">{products && products.length}</h4>
+      <div className="p-2">
+        <h5 className="font-[600] text-[14px]">Total Post Products</h5>
+        <h4 className="text-[#000000a6] text-[12px]">{products && products.length}</h4>
       </div>
-      <div className="p-3">
-        <h5 className="font-[600]">Shop Ratings</h5>
-        <h4 className="text-[#000000b0]">{averageRating}/5</h4>
+      <div className="p-2">
+        <h5 className="font-[600] text-[14px]">Shop Ratings</h5>
+        <h4 className="text-[#000000b0] text-[12px]">{averageRating}/5</h4>
       </div>
-      <div className="p-3">
-        <h5 className="font-[600]">Account was Created On</h5>
-        <h4 className="text-[#000000b0]">Date : {data?.createdAt?.slice(0, 10)}</h4>
+      <div className="p-2">
+        <h5 className="font-[600] text-[14px]">Shop was Created On</h5>
+        <h4 className="text-[#000000b0] text-[12px]">Date : {data?.createdAt?.slice(0, 10)}</h4>
       </div>
+      <hr />
+      
       {isOwner && (
         <div className="mt-[100px] py-3 px-4">
            <Link to="/settings">
@@ -99,8 +104,10 @@ const ShopInfo = ({ isOwner }) => {
             <span className="text-gray-500 hover:text-white "><div className="flex"><BiLogOut size={20} />Log Out</div></span>
           </div>
         </div>
+        
       )}
     </div>
+    
     )
    }
    </>

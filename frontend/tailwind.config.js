@@ -27,11 +27,15 @@ module.exports = {
         "1100px": "1110px",
         "800px": "800px",
         "1300px": "1300px",
+        "768px":"768px",
+        "640px":"640px",
+        "500px":"500px",
         "400px":"400px",
-        // 'sm': '640px', // Small screens, like mobile
-        // 'md': '768px', // Medium screens, like tablets
-        // 'lg': '1024px', // Large screens, like laptops
-        // 'xl': '1280px', // Extra-large screens, like desktops
+        "320px":"320px",
+         'sm': '640px', // Small screens, like mobile
+        'md': '768px', // Medium screens, like tablets
+         'lg': '1024px', // Large screens, like laptops
+         'xl': '1280px', // Extra-large screens, like desktops
       },
     },
     safelist: ['animate-[fade-in_1s_ease-in-out]', 'animate-[fade-in-down_1s_ease-in-out]']

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
-import styles from '../../styles/styles'
+// import styles from '../../styles/styles'
 import EventCard from "./EventCard";
 
 const Events = () => {
@@ -11,8 +11,8 @@ const Events = () => {
      {
       !isLoading && (
         <div className="w-11/11 mx-2 ">
-      <div className={`${styles.heading}`}>
-        <h1 className='text-center text-blue-500 max-400px:text-[15px]'>Limited Special Promo's</h1>
+      <div className="text-[27px] text-center md:text-start font-[600] font-Roboto">
+        <h1 className='text-center text-blue-500 max-400px:text-[15px] max-500px:text-[15px] max-640px:text-[15px] max-768px:text-[15px]'>Limited Special Promo's</h1>
       </div>
 
       <div className="w-full grid">

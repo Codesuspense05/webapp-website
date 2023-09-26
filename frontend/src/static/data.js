@@ -30,8 +30,8 @@ export const navItems = [
       Description: "From all orders ",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" 
-        width="50" 
-        height="50" 
+        width="25" 
+        height="25" 
         fill="#0066FF" 
         class="bi bi-truck" 
         viewBox="0 0 16 16"> 
@@ -45,8 +45,8 @@ export const navItems = [
       Description: "Save up to 5% off",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" 
-        width="40" 
-        height="40" 
+        width="25" 
+        height="25" 
         fill="#0066FF" 
         class="bi bi-save" 
         viewBox="0 0 16 16"> 
@@ -60,8 +60,8 @@ export const navItems = [
       icon: (
         <svg 
         xmlns="http://www.w3.org/2000/svg" 
-        width="50" 
-        height="50" 
+        width="25" 
+        height="25" 
         fill="#0066FF" 
         class="bi bi-droplet-half" 
         viewBox="0 0 16 16"> 
@@ -70,16 +70,24 @@ export const navItems = [
     },
     {
       id: 5,
-      title: "Near At your Home",
+      title: "Near at your Home",
       Description: "Most suitable locations that will provide fresh water",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" 
-        width="50" 
-        height="50" 
+        width="25" 
+        height="25" 
         fill="#0066FF" 
         viewBox="0 0 24 24">
         <path d="M13.02,19.93v2.02c2.01-0.2,3.84-1,5.32-2.21l-1.42-1.43C15.81,19.17,14.48,19.75,13.02,19.93z"/><path d="M4.03,12c0-4.05,3.03-7.41,6.95-7.93V2.05C5.95,2.58,2.03,6.84,2.03,12c0,5.16,3.92,9.42,8.95,9.95v-2.02 C7.06,19.41,4.03,16.05,4.03,12z"/><path d="M19.95,11h2.02c-0.2-2.01-1-3.84-2.21-5.32l-1.43,1.43C19.19,8.21,19.77,9.54,19.95,11z"/><path d="M18.34,4.26c-1.48-1.21-3.32-2.01-5.32-2.21v2.02c1.46,0.18,2.79,0.76,3.9,1.62L18.34,4.26z"/><path d="M18.33,16.9l1.43,1.42c1.21-1.48,2.01-3.31,2.21-5.32h-2.02C19.77,14.46,19.19,15.79,18.33,16.9z"/><path d="M16,11.1C16,8.61,14.1,7,12,7s-4,1.61-4,4.1c0,1.66,1.33,3.63,4,5.9C14.67,14.73,16,12.76,16,11.1z M12,12 c-0.59,0-1.07-0.48-1.07-1.07c0-0.59,0.48-1.07,1.07-1.07s1.07,0.48,1.07,1.07C13.07,11.52,12.59,12,12,12z"/>
         </svg>
+      ),
+    },
+    {
+      id: 5,
+      title: "Daily Open Shop",
+      Description: "Most suitable locations that will provide fresh water",
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#0066FF" class="bi bi-shop" viewBox="0 0 16 16"> <path d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z"/> </svg>
       ),
     },
   ];

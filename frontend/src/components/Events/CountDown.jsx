@@ -44,7 +44,7 @@ const CountDown = ({ data }) => {
     }
 
     return (
-      <span className="text-[20px] text-[#5b5b5c] ml-2 max-400px:text-[15px]">
+      <span className="text-[20px] text-[#5b5b5c] ml-2 max-400px:text-[15px] max-500px:text-[15px] max-640px:text-[15px] max-768px:text-[15px]">
         {timeLeft[interval]} {interval}{" "}
       </span>
     );
@@ -55,7 +55,7 @@ const CountDown = ({ data }) => {
       {timerComponents.length ? (
         timerComponents
       ) : (
-        <span className="text-[red] text-[25px]">Promo was Ended!</span> 
+        <span className="text-[red] text-[15px]">Promo was Ended!</span> 
       )}
     </div>
   );

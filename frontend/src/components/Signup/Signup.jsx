@@ -202,7 +202,7 @@ const Singup = () => {
 
   
   return (
-    <div className="min-h-screen max-400px:min-h-[30vh] bg-gray-200 flex flex-col justify-center sm:px-6 lg:px-8 "
+    <div className="min-h-screen max-400px:min-h-[30vh] bg-blue-700 flex flex-col justify-center sm:px-6 lg:px-8 "
   //   style={{
   //     backgroundImage: "url(https://okcredit-blog-images-prod.storage.googleapis.com/2022/01/mineralwater2.jpg)",
   // }}

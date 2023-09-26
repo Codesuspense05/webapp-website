@@ -4,7 +4,6 @@ import { brandingData, categoriesData } from "../../../static/data";
 import styles from "../../../styles/styles";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { AiOutlinePicCenter } from "react-icons/ai";
 
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -67,8 +66,8 @@ const Categories = () => {
 
 
 
-<div className="w-full 800px:hidden ">
-<Slider {...settings}>
+<div className="w-full h-50 800px:hidden ">
+<Slider {...settings} className="max-400px:h-40  max-500px:h-60 max-640px:h-60 max-768px:h-60">
   
           {/* Add your product items here */}
           <div>
@@ -112,7 +111,7 @@ const Categories = () => {
         <hr />
       <div className={`${styles.section} 800px:hidden`} >
       <div
-          className={`branding  flex justify-between max-400px:w-full shadow-xl relative bg-white p-2 `}
+          className={`branding  flex justify-between max-400px:w-full shadow-xl relative bg-white p-2 rounded-md `}
         >
       {brandingData &&
             brandingData.map((i, index) => (
@@ -131,8 +130,8 @@ const Categories = () => {
               <div className="flex items-start" key={index}>
               
                 <div className="px-2">
-                  <h3 className="font-bold max-400px:text-[9px] md:text-base">{i.title}|</h3>
-                  <p className="text-xs md:text-sm max-400px:text-[8px]">{i.Description}</p>
+                  <h3 className=" max-400px:text-[9px] max-500px:text-[10px] max-640px:text-[11px] max-768px:text-[12px] md:text-base">{i.title}</h3>
+                  {/* <p className="text-xs md:text-sm max-400px:text-[8px]">{i.Description}</p> */}
                 </div>
               </div>
             ))}
@@ -140,7 +139,7 @@ const Categories = () => {
       </div>
 
      <div data-aos="fade-up"
-     data-aos-anchor-placement="top-center" className={`w-full block bg-white rounded-lg  lg:flex p-2 pl-[10%] pr-[10%] max-400px:mb-[10px] max-400px:hidden`}>
+     data-aos-anchor-placement="top-center" className={`w-full block bg-white rounded-lg  lg:flex p-2 pl-[10%] pr-[10%] max-400px:mb-[10px] max-768px:hidden max-500px:hidden max-400px:hidden`}>
         <div className="w-full lg:[w-50%] flex flex-col justify-center">
         <h1 className={`${styles.productTitle} text-blue-900 800px:text-[20px] max-400px:text-[20px] text-center `}>Our Services & Offer Promo's</h1>
     <p className="text-justify  max-400px:text-[12px]">
@@ -184,7 +183,7 @@ const Categories = () => {
         className={`${styles.section}  bg-transparent p-3 rounded-lg 800px:mb-12`}
         id="categories"
       >
- <div className="flex"><AiOutlinePicCenter size={25} color="blue"/><h4 className="text-gray-500">Categories</h4></div>
+ <div className="flex"><h4 className="text-blue-500">✨ Categories</h4></div>
         <Carousel 
    
   showDots={true}
@@ -199,14 +198,14 @@ const Categories = () => {
               return (
                 
                 <div
-                  className=" w-full  max-400px:flex gap-[10px] md:grid-cols-2 md:gap-[5px] lg:grid-cols-4 lg:gap-[20px] xl:grid-cols-5 xl:gap-[30px] items-center  cursor-pointer overflow-hidden"
+                  className=" w-full  max-400px:flex max-500px:flex max-640px:flex gap-[10px] md:grid-cols-3 md:gap-[5px] lg:grid-cols-4 lg:gap-[20px] xl:grid-cols-5 xl:gap-[30px] items-center  cursor-pointer overflow-hidden"
                   key={i.id}
                   onClick={() => handleSubmit(i)}
                 >
-                  <h5 className={`text-[18px] leading-[1.3] `}>{i.title}</h5>
+                  <h5 className={`text-[12px] leading-[1.3] `}>{i.title}</h5>
                   <img
                     src={i.image_Url}
-                    className="h-[25vh] w-[25vh] max-400px:h-[100px] max-400px:w-[100px] object-cover shadow-sm"
+                    className="h-[25vh] w-[25vh] max-400px:h-[80px] max-400px:w-[80px] max-500px:h-[100px] max-500px:w-[100px] max-640px:h-[100px] max-640px:w-[100px] max-768px:h-[100px] max-768px:w-[100px]object-cover"
                     
                     alt=""
                   />

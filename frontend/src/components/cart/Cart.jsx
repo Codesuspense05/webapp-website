@@ -27,7 +27,7 @@ const Cart = ({ setOpenCart }) => {
 
   return (
     <div className="fixed top-0 left-0 w-full bg-[#0000004b] h-screen z-10">
-      <div className="fixed top-0 right-0 h-full w-[80%] 800px:w-[25%] bg-white flex flex-col overflow-y-scroll justify-between shadow-sm">
+      <div className="fixed top-0 right-0 h-full max-400px:w-[80%] max-500px:w-[80%] max-640px:w-[80%] max-768px:w-[80%] 800px:w-[25%] bg-white flex flex-col overflow-y-scroll justify-between shadow-sm">
         {cart && cart.length === 0 ? (
           <div className="w-full h-screen flex items-center justify-center">
             <div className="flex w-full justify-end pt-5 pr-5 fixed top-3 right-3">
@@ -42,8 +42,8 @@ const Cart = ({ setOpenCart }) => {
         ) : (
           <>
             <div>
-              <div className="flex w-full justify-between pt-5 pr-5 shadow-lg items-center  text-[15px]">
-              <div className={`${styles.noramlFlex}items-center justify-center text-[15px]`}><h1 className="text-[17px] pl-2 font-semibold">Cart List</h1></div>
+              <div className="flex w-full justify-between pt-5 pr-5 shadow-lg items-center rounded-b-[20px] text-[15px]">
+              <div className={`${styles.noramlFlex}items-center justify-center text-[15px]`}><h1 className="text-[17px] pl-2 font-semibold">🛒 Cart List</h1></div>
                 <RxCross1
                   size={25}
                   className="cursor-pointer mb-3 text-blue-600  "
@@ -138,10 +138,10 @@ const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
         <img
           src={`${data?.images[0]?.url}`}
           alt=""
-          className="w-[130px] max-400px:w-[80px]  h-min ml-2 mr-2 rounded-[5px]"
+          className="w-[130px] max-400px:w-[80px] max-500px:w-[80px] max-640px:w-[80px] max-768px:w-[80px]  h-min ml-2 mr-2 rounded-[5px]"
         />
         <div className="pl-[5px]">
-          <h1 className="max-400px:text-[13px]">{data.name}</h1>
+          <h1 className="max-400px:text-[13px] max-500px:text-[13px] max-640px:text-[13px]">{data.name}</h1>
           <h4 className="font-[400] text-[15px] text-[#00000082]">
             P{data.discountPrice} x {value}
           </h4>

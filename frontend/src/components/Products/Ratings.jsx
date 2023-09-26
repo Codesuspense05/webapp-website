@@ -12,7 +12,7 @@ const Ratings = ({ rating }) => {
           key={i}
           
           color="#f6b100"
-          className="mr-2 cursor-pointer 800px:text-[17px] max-400px:text-[11px]"
+          className="mr-2 cursor-pointer 800px:text-[17px] max-400px:text-[11px] max-500px:text-[11px] max-640px:text-[11px] max-768px:text-[11px]"
         />
       );
     } else if (i === Math.ceil(rating) && !Number.isInteger(rating)) {
@@ -21,7 +21,7 @@ const Ratings = ({ rating }) => {
           key={i}
          
           color="#f6ba00"
-          className="mr-2 cursor-pointer 800px:text-[17px] max-400px:text-[11px]"
+          className="mr-2 cursor-pointer 800px:text-[17px] max-400px:text-[11px] max-500px:text-[11px] max-640px:text-[11px] max-768px:text-[11px]"
         />
       );
     } else {
@@ -30,7 +30,7 @@ const Ratings = ({ rating }) => {
           key={i}
           
           color="#f6ba00"
-          className="mr-2 cursor-pointer 800px:text-[17px] max-400px:text-[11px]"
+          className="mr-2 cursor-pointer 800px:text-[17px] max-400px:text-[11px] max-500px:text-[11px] max-640px:text-[11px] max-768px:text-[11px]"
         />
       );
     }
