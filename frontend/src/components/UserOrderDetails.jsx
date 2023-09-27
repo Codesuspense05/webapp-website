@@ -64,22 +64,22 @@ const UserOrderDetails = ({active}) => {
   };
 
   return (
-    <div className={`py-4 min-h-screen ${styles.section}`}>
+    <div className={`py-2 min-h-screen ${styles.section}`}>
       <Link to={"/user-orders"}>
         <RxCaretLeft size={40} color={`${active === 2 ? "gray" : "blue"}`} className="cursor pointer"/>
       </Link>
       <div className="w-full flex items-center justify-center">
         <div className="flex items-center justify-center">
-          <TbListDetails size={50} className="text-blue-500"/>
-          <h1 className="pl-2 text-[25px]">Order Details</h1>
+          <TbListDetails size={30} className="text-blue-500"/>
+          <h1 className="pl-2 max-400px:text-[15px] max-500px:text-[17px] max640px:text-[18px] max-768px:text-[20px]">Order Details</h1>
         </div>
       </div>
 
       <div className="w-full flex items-center justify-center pt-6">
-        <h5 className="text-[#0f21ae84]">
+        <h5 className="text-[#0f21ae84] max-400px:text-[12px] max-500px:text-[13px] max640px:text-[18px] max-768px:text-[20px] ">
           Order ID: <span className="mr-2">#{data?._id?.slice(0, 8)}</span><span className="mr-2">|</span>
         </h5>
-        <h5 className="text-[#00000084]">
+        <h5 className="text-[#00000084] max-400px:text-[12px] max-500px:text-[17px] max640px:text-[18px] max-768px:text-[20px]">
           Ordered on: <span>{data?.createdAt?.slice(0, 10)}</span>
         </h5>
       </div>
@@ -97,16 +97,16 @@ const UserOrderDetails = ({active}) => {
               className="w-[80x] h-[80px]"
             />
             <div className="w-full">
-              <h5 className="pl-3 text-[20px] max-400px:text-[15px]">{item.name}</h5>
-              <h5 className="pl-3 text-[20px] text-[#00000091]">
+              <h5 className="pl-3 text-[20px] max-400px:text-[12px]">{item.name}</h5>
+              <h5 className="pl-3 text-[20px] text-[#00000091] max-400px:text-[13px]">
                 P{item.discountPrice} x {item.qty}
               </h5>
             </div>
             {!item.isReviewed && data?.status === "Delivered" ?  <div
-                className="w-[150px] border border-blue-500 h-[50px] my-3 flex items-center justify-center rounded-xl cursor-pointer text-blue-500 max-400px:h-[30px]"
+                className="w-[150px]  border h-[50px] my-3 flex items-center shadow-md justify-center rounded-xl cursor-pointer text-orange-600 max-400px:h-[30px] 320px:h-[30px]"
                 onClick={() => setOpen(true) || setSelectedItem(item)}
               >
-               <h4 className="max-400px:text-[11px]">Write a review</h4> 
+               <h4 className=" max-400px:text-[10px] max-500px:text-[11px] max-640px:text-[12px] max-768px:text-[13px]">Write a review</h4> 
               </div> : (
              null
             )}
@@ -117,16 +117,16 @@ const UserOrderDetails = ({active}) => {
       {/* review popup */}
       {open && (
         <div className="w-full fixed top-0 left-0 h-screen bg-[#0005] z-50 flex items-center justify-center">
-          <div className="w-[50%] h-min bg-[#fff] shadow rounded-md p-3 max-400px:w-[90%]">
+          <div className="w-[50%] h-min bg-[#fff] shadow rounded-md p-3 max-400px:w-[90%]  max-500px:w-[90%]  max-640px:w-[90%]  max-768px:w-[90%]">
             <div className="w-full flex justify-end p-3">
               <RxCross1
-                size={30}
+                size={20}
                 onClick={() => setOpen(false)}
                 className="cursor-pointer"
               />
             </div>
-            <h2 className="text-[30px] font-[500] font-Poppins text-center max-400px:text-[20px]">
-              Hi ! {data?.user?.name} <br />Please Give me a Review
+            <h2 className="text-[30px] font-[500] font-Poppins text-center max-400px:text-[15px] max-500px:text-[15px] max-640px:text-[20px] max-768px:text-[25px]">
+              Hi ! {data?.user?.name} <br />Please Give me a Review🌟
             </h2>
             <br />
             <div className="w-full flex">
@@ -136,18 +136,16 @@ const UserOrderDetails = ({active}) => {
                 className="w-[80px] h-[80px]"
               />
               <div>
-                <div className="pl-3 text-[20px]">{selectedItem?.name}</div>
-                <h4 className="pl-3 text-[20px]">
+                <div className="pl-3 max-400px:text-[14px] max-500px:text-[14px] max-640px:text-[15px] max-768px:text-[18px]">{selectedItem?.name}</div>
+                <h4 className="pl-3 max-400px:text-[15px] max-500px:text-[15px] max-640px:text-[16px] max-768px:text-[19px] text-gray-500">
                   P{selectedItem?.discountPrice} x {selectedItem?.qty}
                 </h4>
               </div>
             </div>
 
             <br />
-            <br />
-
             {/* ratings */}
-            <h5 className="pl-3 text-[20px] font-[500]">
+            <h5 className="pl-3 max-400px:text-[16px] max-500px:text-[17px] max-640px:text-[18px] max-768px:text-[20px] font-[500]">
               Give a Rating <span className="text-red-500">*</span>
             </h5>
             <div className="flex w-full ml-2 pt-1">
@@ -157,7 +155,7 @@ const UserOrderDetails = ({active}) => {
                     key={i}
                     className="mr-1 cursor-pointer"
                     color="rgb(246,186,0)"
-                    size={25}
+                    size={20}
                     onClick={() => setRating(i)}
                   />
                 ) : (
@@ -165,17 +163,18 @@ const UserOrderDetails = ({active}) => {
                     key={i}
                     className="mr-1 cursor-pointer"
                     color="rgb(246,186,0)"
-                    size={25}
+                    size={20}
                     onClick={() => setRating(i)}
                   />
                 )
               )}
             </div>
             <br />
+           
             <div className="w-full ml-3">
-              <label className="block text-[20px] font-[500]">
+              <label className="block text-[20px] font-[500] max-400px:text-[15px] max-500px:text-[15px] max-640px:text-[16px] max-768px:text-[19px]">
                 Write a comment
-                <span className="ml-1 font-[400] text-[16px] text-[#00000052]">
+                <span className="ml-1 font-[400] max-400px:text-[15px] max-500px:text-[15px] max-640px:text-[16px] max-768px:text-[19px] text-[#00000052]">
                   (optional)
                 </span>
               </label>
@@ -186,15 +185,15 @@ const UserOrderDetails = ({active}) => {
                 rows="5"
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
-                placeholder="How was your product? write your expresion about it!"
+                placeholder="🥰 How was your product? write your expresion about it!"
                 className="mt-2 w-[95%] border p-2 outline-none"
               ></textarea>
             </div>
             <div
-              className={`${styles.button} text-white text-[20px] ml-3`}
+              className="w-[100px] bg-blue-500 h-[35px] my-1 flex items-center text-white justify-center rounded-xl cursor-pointer ml-2"
               onClick={rating > 1 ? reviewHandler : null}
             >
-              Submit
+              🤩Submit
             </div>
           </div>
         </div>
@@ -205,20 +204,22 @@ const UserOrderDetails = ({active}) => {
           Total Price: <strong>P{data?.totalPrice}</strong>
         </h5>
       </div>
-      <br />
-      <br />
+    
+      
       <hr />
       <div className="w-full 800px:flex items-center border p-2 bg-white">
         <div className="w-full 800px:w-[60%]">
-        <h4 className="pt-3 text-[20px] font-[600]">Customer Info:</h4>
-        <div className="flex "><h1 className="max-400px:text-[15px] mr-1 pt-2 ">Customer Name: </h1><h4 className="max-400px:text-[15px]  pt-2"> {data?.user?.name}</h4></div>
-          <div className="flex "><h1 className="text-[15px] mr-1">Conctact Number : </h1><h4 className="max-400px:text-[15px] "># {data?.user?.phoneNumber}</h4></div>
+        <h4 className="pt-1 max-400px:text-[16px] max-500px:text-[16px]  max-640px:text-[18px] max-768px:text-[20px] font-[600]">ℹ️ Customer Info:</h4>
+        <div className="flex ">
+          <h1 className="max-400px:text-[14px] max-500px:text-[14px] max-640px:text-[16px] max-768px:text-[18px] mr-1 pt-2 ">Customer Name: </h1><h4 className="max-400px:text-[12px] max-500px:text-[12px] max-640px:text-[13px] max-768px:text-[15px] text-gray-500 pt-2"> {data?.user?.name}</h4></div>
+          <div className="flex "><h1 className="max-400px:text-[14px] max-500px:text-[14px] max-640px:text-[16px] max-768px:text-[18px] mr-1">Contact Number : </h1><h4 className="max-400px:text-[12px] max-500px:text-[12px] max-640px:text-[13px] max-768px:text-[15px] text-gray-500  ">#{data?.user?.phoneNumber}</h4></div>
           
-
+                  
         </div>
+        
         <div className="w-full 800px:w-[60%]">
-          <h4 className="pt-3 text-[20px] font-[600]">Delivery Address:</h4>
-          <h4 className="pt-3 800px:text-[15px]   max-400px:text-[15px]">
+          <h4 className="pt-3 max-400px:text-[15px] max-500px:text-[15px] max-640px:text-[18px] font-[600] max-768px:text-[20px]">📌Delivery Address:</h4>
+          <h4 className="pt-2 800px:text-[15px]   max-400px:text-[14px] max-500px:text-[14px] max-640px:text-[16px] max-768px:text-[18px]">
             {data?.shippingAddress.address1 +
               ", " +
               data?.shippingAddress.address2}
@@ -230,28 +231,24 @@ const UserOrderDetails = ({active}) => {
         <br />
         <hr />
         <div className="w-full 800px:w-[40%]">
-          <div className="flex pt-4 text-[20px] max-400px:text-[17px] items-center max-400px:justify-end">
+          <div className="flex pt-2 text-[20px] max-400px:text-[17px] items-center max-400px:justify-end">
           <h4 className="shadow-sm">
-             Payment Status:{" "}
+          💳Payment Status:{" "}
             {data?.paymentInfo?.status ? data?.paymentInfo?.status : "Not Paid"}
           </h4>
           </div>
-          <br />
+         
            {
             data?.status === "Delivered" && (
-              <div className={`${styles.button} text-white`}
+              <div className="w-[100px] border h-[40px] flex shadow-md items-center justify-center rounded-xl cursor-pointer text-gray-500 max-400px:text-[13px]"
               onClick={refundHandler}
               >Give a Refund</div>
             )
            }
+           
         </div>
       </div>
-      <br />
-      <Link to="/">
-        <div className={`${styles.button} text-white`}>Send Message</div>
-      </Link>
-      <br />
-      <br />
+     
     </div>
   );
 };

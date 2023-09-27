@@ -22,8 +22,8 @@ const Checkout = () => {
   // const [country, setCountry] = useState("");
   // const [city, setCity] = useState("");
   const [userInfo, setUserInfo] = useState(false);
-  const [address1, setAddress1] = useState("");
-  const [address2, setAddress2] = useState("");
+  const [address, setAddress] = useState("");
+  const [landmark, setLandmark] = useState("");
   const [zipCode, setZipCode] = useState(null);
   const [couponCode, setCouponCode] = useState("");
   const [couponCodeData, setCouponCodeData] = useState(null);
@@ -35,12 +35,12 @@ const Checkout = () => {
   }, []);
 
   const paymentSubmit = () => {
-   if(address1 === "" || address2 === ""){
+   if(address === "" || landmark === ""){
       toast.error("Please Provide complete address!")
    } else{
     const shippingAddress = {
-      address1,
-      address2,
+      address,
+      landmark,
       zipCode,
       // country,
       // city,
@@ -122,10 +122,10 @@ const Checkout = () => {
             // setCity={setCity}
             userInfo={userInfo}
             setUserInfo={setUserInfo}
-            address1={address1}
-            setAddress1={setAddress1}
-            address2={address2}
-            setAddress2={setAddress2}
+            address={address}
+            setAddress={setAddress}
+           landmark={landmark}
+            setLandmark={setLandmark}
             zipCode={zipCode}
             setZipCode={setZipCode}
           />
@@ -160,10 +160,10 @@ const ShippingInfo = ({
   // setCity,
   userInfo,
   setUserInfo,
-  address1,
-  setAddress1,
-  address2,
-  setAddress2,
+  address,
+  setAddress,
+ landmark,
+  setLandmark,
   // zipCode,
   // setZipCode,
   
@@ -250,8 +250,8 @@ const ShippingInfo = ({
             <input
               type="address"
               required
-              value={address1}
-              onChange={(e) => setAddress1(e.target.value)}
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
               className={`${styles.input} !w-[100%] border border-gray-400`}
             />
             
@@ -260,8 +260,8 @@ const ShippingInfo = ({
             <label className="block pb-2"><div className="flex"><HiLocationMarker size={22} color="gray"/>Land Mark</div></label>
             <input
               type="address"
-              value={address2}
-              onChange={(e) => setAddress2(e.target.value)}
+              value={landmark}
+              onChange={(e) => setLandmark(e.target.value)}
               required
               className={`${styles.input} border border-gray-400`}
             />
@@ -288,8 +288,8 @@ const ShippingInfo = ({
                   className="mr-3"
                   value={item.addressType}
                   onClick={() =>
-                    setAddress1(item.address1) ||
-                    setAddress2(item.address2) 
+                    setAddress(item.address) ||
+                    setLandmark(item.landmark) 
                     // setZipCode(item.zipCode) ||
                     // setCountry(item.country) ||
                     // setCity(item.city)

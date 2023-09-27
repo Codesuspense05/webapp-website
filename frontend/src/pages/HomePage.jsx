@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Header from "../components/Layout/Header";
 // import Hero from "../components/Route/Hero/Hero";
 import Categories from "../components/Route/Categories/Categories";
@@ -12,45 +12,9 @@ import Footer from "../components/Layout/Footer";
 
 const HomePage = () => {
   
-  const [shouldRefresh, setShouldRefresh] = useState(false);
-
-
-  useEffect(() => {
-    // Add a scroll event listener to the window
-    window.addEventListener('scroll', handleScroll);
-    
-    // Clean up the event listener when the component unmounts
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-
-  const handleScroll = () => {
-    // Check if the user has scrolled to the bottom (you can adjust the threshold as needed)
-    const scrollY = window.scrollY;
-    const windowHeight = window.innerHeight;
-    const documentHeight = document.documentElement.scrollHeight;
-
-    if (scrollY + windowHeight >= documentHeight - 100) {
-      // Set shouldRefresh to true to trigger a refresh
-      setShouldRefresh(true);
-    }
-  };
-
-  useEffect(() => {
-    // Check if shouldRefresh is true, and if so, trigger your refresh logic
-    if (shouldRefresh) {
-      // Add your refresh logic here
-      // For example, you can fetch new data from an API or update the component's state
-      console.log('Refreshing...');
-      
-      // After refreshing, reset shouldRefresh to false
-      setShouldRefresh(false);
-    }
-  }, [shouldRefresh]);
+ 
   return (
-    <div className='max-400px:scrollbar-hidden'>
+    <div className='scrollbar-hidden'>
         <Header activeHeading={1} />
          {/* <Hero /> */}
 

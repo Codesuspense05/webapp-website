@@ -4,7 +4,6 @@ import { brandingData, categoriesData } from "../../../static/data";
 import styles from "../../../styles/styles";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -198,11 +197,11 @@ const Categories = () => {
               return (
                 
                 <div
-                  className=" w-full  max-400px:flex max-500px:flex max-640px:flex gap-[10px] md:grid-cols-3 md:gap-[5px] lg:grid-cols-4 lg:gap-[20px] xl:grid-cols-5 xl:gap-[30px] items-center  cursor-pointer overflow-hidden"
+                  className=" w-full  max-400px:flex max-500px:flex max-640px:flex gap-[10px] md:grid-cols-3 md:gap-[30px] lg:grid-cols-4 lg:gap-[30px] xl:grid-cols-5 xl:gap-[30px] items-center  cursor-pointer overflow-hidden"
                   key={i.id}
                   onClick={() => handleSubmit(i)}
                 >
-                  <h5 className={`text-[12px] leading-[1.3] `}>{i.title}</h5>
+                  <h5 className={`text-[15px] leading-[1.3] `}>{i.title}</h5>
                   <img
                     src={i.image_Url}
                     className="h-[25vh] w-[25vh] max-400px:h-[80px] max-400px:w-[80px] max-500px:h-[100px] max-500px:w-[100px] max-640px:h-[100px] max-640px:w-[100px] max-768px:h-[100px] max-768px:w-[100px]object-cover"

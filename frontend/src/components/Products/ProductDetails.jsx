@@ -270,7 +270,7 @@ const ProductDetailsInfo = ({
 
   return (
     <div className="border-[2px] px-3 800px:px-10 py-2 rounded">
-      <div className="w-full flex justify-between border-b pt-1 pb-2">
+      <div className="w-full flex justify-between border-b pt-1 ">
         <div className="relative">
           <h5
             className={
