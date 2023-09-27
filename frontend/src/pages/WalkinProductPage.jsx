@@ -7,7 +7,6 @@ import Loader from "../components/Layout/Loader";
 import ProductCard from "../components/Route/ProductCard/ProductCard";
 import styles from "../styles/styles";
 import { BiCart } from "react-icons/bi";
-import { AiFillHeart } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
 import Cart from "../components/cart/Cart";
 import Wishlist from "../components/Wishlist/Wishlist";
@@ -19,7 +18,7 @@ const ProductsPage = () => {
   const {allProducts,isLoading} = useSelector((state) => state.products);
   const { isAuthenticated, user } = useSelector((state) => state.user);
   //const { isSeller } = useSelector((state) => state.seller);
-  const { wishlist } = useSelector((state) => state.wishlist);
+  // const { wishlist } = useSelector((state) => state.wishlist);
   const { cart } = useSelector((state) => state.cart);
   const [openCart, setOpenCart] = useState(false);
   const [openWishlist, setOpenWishlist] = useState(false);
@@ -50,7 +49,7 @@ const ProductsPage = () => {
       <RxPinLeft size={30} className="m-2 hover:text-blue-500"/>  
       </Link>
       <div className="flex bg-blue-500 h-[70px] items-center justify-end ">
-            <div className={`${styles.noramlFlex} `}>
+            {/* <div className={`${styles.noramlFlex} `}>
               <div
                 className="relative cursor-pointer mr-[15px]"
                 onClick={() => setOpenWishlist(true)}
@@ -60,7 +59,7 @@ const ProductsPage = () => {
                   {wishlist && wishlist.length}
                 </span>
               </div>
-            </div>
+            </div> */}
 
             <div className={`${styles.noramlFlex}  `}>
               <div

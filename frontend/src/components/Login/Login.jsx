@@ -5,9 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { server } from "../../server";
 import { toast } from "react-toastify";
-import { IoLogIn } from "react-icons/io5";
-import { MdOutlineEmail} from "react-icons/md";
-import { RiLockPasswordLine } from "react-icons/ri";
+
 
 const Login = () => {
   const navigate = useNavigate();

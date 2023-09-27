@@ -14,9 +14,9 @@ const Navbar = ({active}) => {
                     className={`${active === index + 1 ? "text-violet-600" : "text-black 800px:text-[#fff] "} pb-[15px] m-6 800px:pb-0 font-[500]  cursor-pointer `}
                     >
                   
-                     <span class="border-b border-transparent absolute bottom-0 left-0 w-full"></span>
+                     <span className="border-b border-transparent absolute bottom-0 left-0 w-full"></span>
                         <div className='relative'>
-                           <p class="hover:border-b  hover:border-white transition duration-200">
+                           <p className="hover:border-b  hover:border-white transition duration-200">
                             {i.title}
                             </p>
                             </div>

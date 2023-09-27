@@ -115,21 +115,21 @@ const Header = ({ activeHeading }) => {
               />
             </Link>
           </div>
-          <div class="relative flex overflow-x-hidden">
-  <div class="py-12 animate-marquee whitespace-nowrap">
-    <span class="text-2xl mx-4">(02)-888888 / 09123456789 | OPEN 9am-10pm (Mon-Sun)</span>
-    <span class="text-2xl mx-4">9123456789</span>
-    <span class="text-2xl mx-4">|</span>
-    <span class="text-2xl mx-4">OPEN 9am-10pm</span>
-    <span class="text-2xl mx-4">(Mon-Sun)</span>
+          <div className="relative flex overflow-x-hidden">
+  <div className="py-12 animate-marquee whitespace-nowrap">
+    <span className="text-2xl mx-4">(02)-888888 / 09123456789 | OPEN 9am-10pm (Mon-Sun)</span>
+    <span className="text-2xl mx-4">9123456789</span>
+    <span className="text-2xl mx-4">|</span>
+    <span className="text-2xl mx-4">OPEN 9am-10pm</span>
+    <span className="text-2xl mx-4">(Mon-Sun)</span>
   </div>
 
-  <div class="absolute top-0 py-12 animate-marquee2 whitespace-nowrap">
-  <span class="text-2xl mx-4">(02)-888888 / 09123456789 | OPEN 9am-10pm (Mon-Sun)</span>
-    <span class="text-2xl mx-4">9123456789</span>
-    <span class="text-2xl mx-4">|</span>
-    <span class="text-2xl mx-4">OPEN 9am-10pm</span>
-    <span class="text-2xl mx-4">(Mon-Sun)</span>
+  <div className="absolute top-0 py-12 animate-marquee2 whitespace-nowrap">
+  <span className="text-2xl mx-4">(02)-888888 / 09123456789 | OPEN 9am-10pm (Mon-Sun)</span>
+    <span className="text-2xl mx-4">9123456789</span>
+    <span className="text-2xl mx-4">|</span>
+    <span className="text-2xl mx-4">OPEN 9am-10pm</span>
+    <span className="text-2xl mx-4">(Mon-Sun)</span>
   </div>
 </div>
 
@@ -352,7 +352,7 @@ const Header = ({ activeHeading }) => {
             >
               <BiCart className="text-white mt-3"
               size={30} />
-              <span class="absolute right-0 top-0 rounded-full bg-[#ec3a3a] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px]  leading-tight text-center">
+              <span className="absolute right-0 top-0 rounded-full bg-[#ec3a3a] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px]  leading-tight text-center">
                 {cart && cart.length}
               </span>
             </div>
