@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 // import styles from "../../../styles/styles";
-import YouTubeVideo from "../Hero/Video";
+import YouTubeVideo from "../Hero/Video.jsx";
 import AOS from "aos";
 import "aos/dist/aos.css"; // You can also use <link> for styles
 import { BsDropletHalf } from "react-icons/bs";
