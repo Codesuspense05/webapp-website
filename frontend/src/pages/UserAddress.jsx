@@ -61,7 +61,7 @@ const UserAddress = () => {
     return (
       <div className="w-full p-2">
           <div>
-        <Link to={"/profile"}><div className="flex bg-blue-500 h-10 w-full rounded-t-[4px] items-center "><BsArrowLeft size={20} color="white" className="m-2"/> <h2 className="text-white">Address</h2></div></Link>
+        <Link to={"/"}><div className="flex bg-blue-500 h-10 w-full rounded-t-[4px] items-center "><BsArrowLeft size={20} color="white" className="m-2"/> <h2 className="text-white">Address</h2></div></Link>
         </div>
         {open && (
           <div className="fixed w-full h-screen bg-[#0000004b] top-0 left-0 flex items-center justify-center ">

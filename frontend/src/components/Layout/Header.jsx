@@ -22,7 +22,7 @@ import { RxCaretDown, RxCaretUp, RxCross1, RxHamburgerMenu} from "react-icons/rx
 import {  MdFacebook } from "react-icons/md";
 import {  BsDropletFill } from "react-icons/bs";
 import { HiQuestionMarkCircle } from "react-icons/hi";
-import { RiShutDownLine } from "react-icons/ri";
+import { RiFacebookCircleFill, RiShutDownLine, RiYoutubeFill } from "react-icons/ri";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { server } from "../../server";
@@ -47,7 +47,9 @@ const Header = ({ activeHeading }) => {
 
 
 
-  
+  const refreshPage = () => {
+    window.location.reload();
+  };
 
   const handleSearchChange = (e) => {
     const term = e.target.value;
@@ -344,8 +346,12 @@ const Header = ({ activeHeading }) => {
                 )}
                 
               </div>
-        
-          <div>
+           <div className="relative mr-[20px] mt-3 bg-transparent">
+                 <Link to={"/"}><img src="https://i.ibb.co/ZVVMVrH/Lcd5nd-Bri-removebg-preview.png" onClick={refreshPage} alt=""
+              className=" h-[50px] w-[50px] bg-none ml-1"/></Link>
+              </div>
+             
+          {/* <div>
             <div
               className="relative mr-[20px]"
               onClick={() => setOpenCart(true)}
@@ -356,12 +362,12 @@ const Header = ({ activeHeading }) => {
                 {cart && cart.length}
               </span>
             </div>
-          </div>
+          </div> */}
           {/* cart popup */}
-          {openCart ? <Cart setOpenCart={setOpenCart} /> : null}
+          {/* {openCart ? <Cart setOpenCart={setOpenCart} /> : null} */}
 
           {/* wishlist popup */}
-          {openWishlist ? <Wishlist setOpenWishlist={setOpenWishlist} /> : null}
+          {/* {openWishlist ? <Wishlist setOpenWishlist={setOpenWishlist} /> : null} */}
         </div>
 
         {/* mobile header sidebar */}
@@ -383,33 +389,6 @@ const Header = ({ activeHeading }) => {
               </div>
 
 
-                  {/* <div className="flex items-center justify-center">
-            <Link to="/">
-              <img
-                src="https://see.fontimg.com/api/renderfont4/ow59x/eyJyIjoiZnMiLCJoIjozMywidyI6MTAwMCwiZnMiOjMzLCJmZ2MiOiIjMUE1N0IwIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/TVdSU01T/airtravelerspersonaluse-bdit.png"
-                alt=""
-                className="mt-3 cursor-pointer"
-              />
-            </Link>
-          </div>  */}
-              {/* <hr />
-              <div className="flex items-center justify-between m-2">
-              <Link to="/"><RxHome size={30}/></Link>
-              <Link to="/events"><MdOutlineLocalOffer size={30}/></Link>
-                <div>
-                  <div
-                    className="relative mr-[15px]"
-                    onClick={() => setOpenWishlist(true) || setOpen(false)}
-                  >
-                    <CgHeart  size={30} className="mt-3 ml-3 text-blue-500" />
-                    <span class="absolute right-0 top-0 rounded-full bg-red-500 w-3.5 h-3.5 top right p-0 m-0 text-white font-mono text-[12px]  leading-tight text-center">
-                      {wishlist && wishlist.length}
-                    </span>
-                  </div>
-                </div>
-                <Link to="/inbox"><BiMessage color="black" size={30}/></Link>
-                <Link to="/profile"><BiUser size={30} className="cursor-pointer"/></Link>
-               </div> */}
                <div className="w-50 bg-gray-100 text-white">
       <div className="">
       <div className="flex w-full justify-center h-[10%] mb-2  ">
@@ -533,31 +512,28 @@ const Header = ({ activeHeading }) => {
           )}
          
         </li>
-        <div  className="text-gray-500 flex mt-4 pl-4" >
+        <div  className="text-gray-500 flex mt-4 pl-4 " >
             <RiShutDownLine  className="mr-1 text-[red]" size={24} onClick={logoutHandler} /> Logout
             
           </div>
+          
+          
         
         
       </ul>
-     
-    </div>
-             <hr />
-             
-             
-              
-              
-
-              
-            </div>
-            
+      <br />
+      <div  className="text-gray-500 flex mt-4  justify-evenly" >
+            <Link to={"https://www.facebook.com"}><RiFacebookCircleFill  className="mr-1 text-[blue]" size={24} /><h5 className="text-[7px]">Facebook</h5></Link>
+            <Link to={"https://www.instagram.com"}><AiOutlineInstagram  className="mr-1 text-white bg-gradient-to-r from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] rounded-full" size={24} /> <h5 className="text-[7px]">Instagram</h5></Link>
+            <Link to={"https://www.youtube.com"}><RiYoutubeFill  className="mr-1 text-[red]" size={24}  /><h5 className="text-[7px]">Youtube</h5></Link>
             
           </div>
-          
-          
+    </div>
+       <hr />
+             </div>
+             
+          </div>
         )}
-        
-        
       </div>
       
     </>

@@ -104,7 +104,7 @@ const UserTrackOrder = () => {
     return (
       <div className=" p-2">
         <div>
-        <Link to={"/profile"}><div className="flex bg-blue-500 h-10 w-full rounded-t-[4px] items-center "><BsArrowLeft size={20} color="white" className="m-2"/> <h2 className="text-white">Track Orders</h2></div></Link>
+        <Link to={"/"}><div className="flex bg-blue-500 h-10 w-full rounded-t-[4px] items-center "><BsArrowLeft size={20} color="white" className="m-2"/> <h2 className="text-white">Track Orders</h2></div></Link>
         </div>
         <DataGrid
           rows={row}

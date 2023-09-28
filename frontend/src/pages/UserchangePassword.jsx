@@ -33,7 +33,7 @@ const ChangePassword = () => {
     return (
       <div className="w-full p-5 border">
           <div>
-        <Link to={"/profile"}><div className="flex bg-blue-500 h-10 w-full rounded-t-[4px] items-center "><BsArrowLeft size={20} color="white" className="m-2"/> <h2 className="text-white">Change Password</h2></div></Link>
+        <Link to={"/"}><div className="flex bg-blue-500 h-10 w-full rounded-t-[4px] items-center "><BsArrowLeft size={20} color="white" className="m-2"/> <h2 className="text-white">Change Password</h2></div></Link>
         </div>
         
         <h1 className="block text-[20px] text-center font-[600] text-[#000000ba] pb-2 pt-5">

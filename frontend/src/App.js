@@ -28,6 +28,7 @@ import {
   UserTrackOrder,
   UserchangePassword,
   UserAddress,
+  HomeWeb,
  
 } from "./routes/Routes.js";
 import {
@@ -106,6 +107,7 @@ const App = () => {
       )}
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/website" element={<HomeWeb />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/sign-up" element={<SignupPage />} />
         <Route
