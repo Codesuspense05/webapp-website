@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 // import styles from "../../../styles/styles";
-
+import YouTubeVideo from "../Hero/Video.jsx";
 import AOS from "aos";
 import "aos/dist/aos.css"; // You can also use <link> for styles
 import { BsDropletHalf } from "react-icons/bs";
@@ -225,7 +225,9 @@ const Hero = () => {
               cum, ratione saepe distinctio necessitatibus atque beatae!
             </h1>
           </div>
-         
+          <main className="p-20 w-full">
+            <YouTubeVideo videoId="https://youtu.be/X7-X89zzIUU" />
+          </main>
         </div>
       </section>
     </section>
