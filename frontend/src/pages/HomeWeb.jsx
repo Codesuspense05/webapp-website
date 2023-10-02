@@ -2,25 +2,27 @@ import React, { useState } from "react";
 import Hero from "../components/Route/Hero/Hero";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineInstagram, AiOutlineProfile } from "react-icons/ai";
-import { IoLogoYoutube } from "react-icons/io";
-import { MdFacebook } from "react-icons/md";
+import { IoIosCall, IoLogoYoutube } from "react-icons/io";
+import { MdFacebook, MdOutlineFacebook } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import styles from "../styles/styles";
 import { useSelector } from "react-redux";
-import { BsDropletFill } from "react-icons/bs";
+import { BsDropletFill, BsDropletHalf, BsQuestionCircle } from "react-icons/bs";
 
-import { BiMenuAltRight, BiUserCircle } from "react-icons/bi";
+import { BiBookmark, BiMenuAltRight, BiQuestionMark, BiUserCircle } from "react-icons/bi";
 import {
   RxCaretDown,
   RxCaretUp,
+  RxContainer,
   RxCross1,
   RxHamburgerMenu,
 } from "react-icons/rx";
-import { HiQuestionMarkCircle } from "react-icons/hi";
-import { RiShutDownLine } from "react-icons/ri";
+import { HiHome, HiQuestionMarkCircle } from "react-icons/hi";
+import { RiHome3Line, RiShutDownLine } from "react-icons/ri";
 import axios from "axios";
 import { server } from "../server";
 import { toast } from "react-toastify";
+import { IoAlbumsOutline, IoCallOutline } from "react-icons/io5";
 // import Navigation from "./components/Navigation.jsx";
 
 const HomeWeb = () => {
@@ -55,19 +57,10 @@ const HomeWeb = () => {
     <>
       {/* <div className="bg-blue-500 800px:w-[100%] h-1 max-400px:hidden max-500px:hidden max-640px:hidden  max-768px:hidden"></div> */}
 
-      <div className={`${styles.section}`}>
-        <div className="hidden 800px:h-[50px] 1024px:my-[10px] 800px:flex items-center justify-between">
-          <div>
-            <Link to="/">
-              <img
-                src="https://see.fontimg.com/api/renderfont4/ow59x/eyJyIjoiZnMiLCJoIjozMywidyI6MTAwMCwiZnMiOjMzLCJmZ2MiOiIjMUE1N0IwIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/TVdSU01T/airtravelerspersonaluse-bdit.png"
-                alt=""
-                className="mr-5"
-              />
-            </Link>
-          </div>
+      <div className="">
+        <div className="hidden 800px:h-[50px]  800px:flex items-center justify-between px-10 py-10 bg-[#0099ff]">
           
-          <div className="relative flex overflow-x-hidden">
+          <div className="relative flex overflow-x-hidden text-white">
             <div className="py-12 animate-marquee whitespace-nowrap">
               <span className="text-xl mx-4">
                 (02)-888888 / 09123456789 | OPEN 9am-10pm (Mon-Sun)
@@ -89,19 +82,17 @@ const HomeWeb = () => {
             </div>
           </div>
 
-          <div>
+          <div className="flex">
             {" "}
-            <h4 className="font-Roboto text-[15px] max-400px:hidden ml-5 ">
+            <h4 className="flex font-Roboto text-[15px] max-400px:hidden ml-5 text-white">
               Hi👋 Welcome,
-              <div className="flex">
-                <CgProfile color="blue" size={20} className="mr-1" />{" "}
                 {user?.name}
-              </div>
+              
             </h4>
           </div>
 
           <div className="flex items-center ">
-            <MdFacebook size={30} color="blue" className="mr-2 " />
+            <MdOutlineFacebook size={30} color="white" className="mr-2 " />
             <AiOutlineInstagram
               size={27}
               color="white"
@@ -112,14 +103,14 @@ const HomeWeb = () => {
         </div>
       </div>
 
-      <div className="transition shadow-xl hidden 800px:flex items-center justify-between w-full bg-blue-600 h-[70px]">
+      <div className="transition  shadow-lg shadow-black hidden 800px:flex items-center justify-between w-full bg-blue-900 h-[70px]">
         <div
-          className={`${styles.section} relative ${styles.noramlFlex} justify-between`}
+          className={`${styles.section} relative ${styles.noramlFlex} justify-between shadow-gray-500`}
         >
           {/* categories */}
           <div>
             <div className="relative h-[60px] mb-[10px] w-[270px]  1000px:block">
-              <BsDropletFill
+              <BsDropletHalf
                 size={40}
                 className="absolute top-3 left-5 text-blue-500"
               />
@@ -129,9 +120,22 @@ const HomeWeb = () => {
             </div>
           </div>
 
+
           {/* navitems */}
-          <div className="flex ">
-            <div className={`${styles.noramlFlex}`}>
+          <div className="flex justify-evenly">
+                <ul className="flex items-center justify-evenly font-Roboto font-semibold text-white ">
+                  <li className="px-4"><div className="flex"><RiHome3Line size={20}/>Home</div></li>
+                  <li className="px-4"><div className="flex"><BiBookmark color="white"  size={20}/>About</div></li>
+                  <li className="px-4"><div className="flex"><RxContainer color="white"  size={20}/>Container</div></li>
+                  <li className="px-4"><div className="flex"><IoCallOutline color="white"  size={20}/>Support</div></li>
+                  <li className="px-4"><div className="flex"><BsQuestionCircle color="white"  size={20}/>FAQ</div></li>
+                </ul>
+              </div>
+
+        {/* user-profile */}
+          <div className="flex justify-between">
+            <div className={`${styles.noramlFlex} !justify-between`}>
+             
               <div className="relative cursor-pointer mr-[15px]">
                 {isAuthenticated ? (
                   <Link to="/profile">

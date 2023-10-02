@@ -6,9 +6,9 @@ import styles from "../styles/styles";
 const FAQPage = () => {
   return (
     <div>
-      <Header activeHeading={5} />
+      <div className="800px:hidden"><Header activeHeading={5}  /></div>
       <Faq />
-      <div className="max-400px:hidden"><Footer /></div>
+      <div className="max-400px:hidden 800px:hidden"><Footer /></div>
     </div>
   );
 };
