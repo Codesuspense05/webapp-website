@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import Hero from "../components/Route/Hero/Hero";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineInstagram, AiOutlineProfile } from "react-icons/ai";
-import { IoIosCall, IoLogoYoutube } from "react-icons/io";
-import { MdFacebook, MdOutlineFacebook } from "react-icons/md";
+import {  IoLogoYoutube } from "react-icons/io";
+import {  MdOutlineFacebook } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import styles from "../styles/styles";
 import { useSelector } from "react-redux";
-import { BsDropletFill, BsDropletHalf, BsQuestionCircle } from "react-icons/bs";
+import {  BsDropletHalf, BsQuestionCircle } from "react-icons/bs";
 
 import { BiBookmark, BiMenuAltRight, BiQuestionMark, BiUserCircle } from "react-icons/bi";
 import {
@@ -17,7 +17,7 @@ import {
   RxCross1,
   RxHamburgerMenu,
 } from "react-icons/rx";
-import { HiHome, HiQuestionMarkCircle } from "react-icons/hi";
+import {  HiQuestionMarkCircle } from "react-icons/hi";
 import { RiHome3Line, RiShutDownLine } from "react-icons/ri";
 import axios from "axios";
 import { server } from "../server";
@@ -158,7 +158,7 @@ const HomeWeb = () => {
 
       {/* mobile header */}
      
-      <div className="w-full h-[70px] bg-white z-50 top-0 left-0 shadow-lg 800px:hidden">
+      <div className="w-full h-[70px] bg-gray-100 z-50 top-0 left-0 shadow-lg 800px:hidden">
         <div className="w-full flex items-center justify-between p-4">
           <div>
             <RxHamburgerMenu

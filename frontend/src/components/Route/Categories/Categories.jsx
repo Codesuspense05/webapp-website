@@ -84,14 +84,14 @@ const Categories = () => {
             <p>Description for Product 1</p> */}
           </div>
           <div>
-            <img src="https://cdn.vectorstock.com/i/preview-1x/64/17/water-delivery-truck-male-bottle-vector-48056417.webp" alt="Product 1" 
+            <img src="https://cdn.vectorstock.com/i/preview-1x/51/69/banner-of-water-delivery-to-people-a-man-carries-vector-44615169.webp" alt="Product 1" 
              className="w-full h-[230px]"
             />
             {/* <h3>Product 1</h3>
             <p>Description for Product 1</p> */}
           </div>
           <div>
-            <img src="https://cdn.vectorstock.com/i/preview-1x/08/75/man-holding-two-paper-cups-with-hot-or-cold-drink-vector-34500875.webp" alt="Product 1" 
+            <img src="https://cdn.vectorstock.com/i/preview-1x/55/40/water-delivery-cartoon-flat-vector-32785540.webp" alt="Product 1" 
              className="w-full h-[230px]"
             />
             {/* <h3>Product 1</h3>
