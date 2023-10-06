@@ -3,6 +3,9 @@ import SignupPage from "../pages/SignupPage";
 import ActivationPage from "../pages/ActivationPage";
 import HomePage from "../pages/HomePage";
 import HomeWeb from "../pages/HomeWeb";
+import WebAbout from "../pages/WebAbout";
+import WebProducts from "../pages/WebProducts.jsx";
+import WebSupport from "../pages/WebSupport";
 import ProductsPage from "../pages/ProductsPage";
 import BestSellingPage from "../pages/BestSellingPage";
 import EventsPage from "../pages/EventsPage";
@@ -25,6 +28,8 @@ import WalkinProductPage from "../pages/WalkinProductPage.jsx"
 import UserchangePassword from "../pages/UserchangePassword"
 import UserTrackOrder from "../pages/UserTrackOrders";
 import UserAddress from "../pages/UserAddress";
+import WebFaq from "../pages/WebFaq";
+
 
 export { 
     LoginPage,
@@ -47,6 +52,7 @@ export {
     ShoploginPrivate,
     OrderDetailsPage,
     TrackOrderPage,
+    WebAbout,
     UserInbox,
     AllUserOrders,
     UserRefundOrder,
@@ -54,5 +60,9 @@ export {
     UserchangePassword,
     UserAddress,
     WalkinProductPage,
+    WebProducts,
+    WebSupport,
+    WebFaq,
+    
     
 };

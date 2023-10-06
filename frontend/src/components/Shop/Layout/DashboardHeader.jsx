@@ -1,10 +1,10 @@
 import React from "react";
-import { MdOutlineCardGiftcard, MdOutlineLocalOffer } from "react-icons/md";
+import { MdOutlineLocalOffer } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { BiMessage} from "react-icons/bi";
-import { RiProductHuntFill } from "react-icons/ri";
+import { RiCoupon3Line, RiProductHuntLine } from "react-icons/ri";
 import { GrOrderedList } from "react-icons/gr";
+import { TbMessageDots } from "react-icons/tb";
 
 const DashboardHeader = () => {
   const { seller } = useSelector((state) => state.seller);
@@ -14,7 +14,8 @@ const DashboardHeader = () => {
       <div className="flex items-center">
         <div className="flex items-center mr-4">
           <Link to="/dashboard-coupouns" className="800px:block hidden">
-            <MdOutlineCardGiftcard
+            <RiCoupon3Line
+            title="Dicount Code"
               color="#555"
               size={30}
               className="mx-5 cursor-pointer"
@@ -22,23 +23,30 @@ const DashboardHeader = () => {
           </Link>
           <Link to="/dashboard-events" className="800px:block hidden">
             <MdOutlineLocalOffer
+            title="Promo Event"
               color="#555"
               size={30}
               className="mx-5 cursor-pointer"
             />
           </Link>
           <Link to="/dashboard-products" className="800px:block hidden">
-            <RiProductHuntFill
+            <RiProductHuntLine
+            title="Products"
               color="#555"
               size={30}
               className="mx-5 cursor-pointer"
             />
           </Link>
           <Link to="/dashboard-orders" className="800px:block hidden">
-            <GrOrderedList color="#555" size={30} className="mx-5 cursor-pointer" />
+            <GrOrderedList 
+            title="Orderlist"
+            color="#555" 
+            size={30} 
+            className="mx-5 cursor-pointer" />
           </Link>
           <Link to="/dashboard-messages" className="800px:block hidden">
-            <BiMessage
+            <TbMessageDots
+              title="Inbox"
               color="#555"
               size={30}
               className="mx-5 cursor-pointer"

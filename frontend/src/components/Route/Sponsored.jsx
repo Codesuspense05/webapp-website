@@ -3,7 +3,7 @@ import styles from "../../styles/styles";
 
 const Sponsored = () => {
   return (
-    <div className={`w-full block bg-white rounded-lg  lg:flex p-2 pl-[10%] pr-[10%] max-768px:hidden max-500px:hidden max-400px:hidden`}>
+    <div className={`w-full block bg-white rounded-lg  lg:flex p-2 pl-[10%] pr-[10%] max-768px:hidden max-500px:hidden max-400px:hidden 800px:hidden`}>
     <div className="w-full lg:[w-50%] flex flex-col justify-center">
     <h1 className={`${styles.productTitle} text-blue-900 text-[20px] text-center max-400px:text-[20px] max-400px:pt-2 max-400px:pb-2  `}>Mineral Water Refilling Station</h1>
     <p className="text-justify max-400px:text-[14px]">

@@ -133,14 +133,14 @@ export const categoriesData = [
     title: "5 Gallon Slim type and other colors",
     subTitle: "",
     image_Url:
-      "https://down-ph.img.susercontent.com/file/93a3211b7ceacf91e6335643cb7b6480",
+      "https://down-ph.img.susercontent.com/file/2a661cca7bbd9e0588d093a8f55e832a",
   },
   {
     id: 2,
     title: "5 Gallon Rounded type and other colors",
     subTitle: "",
     image_Url:
-      "https://w7.pngwing.com/pngs/373/917/png-transparent-two-blue-water-gallons-water-cooler-bottled-water-drinking-water-water-bottle-glass-plastic-bottle-drinking.png",
+      "https://lzd-img-global.slatic.net/g/p/15653d799273368b8c884db26bcc68cb.jpg_360x360q75.jpg_.webp",
   },
   {
     id: 3,
@@ -154,7 +154,8 @@ export const categoriesData = [
     title: "6.6 Liters and other sizes",
     subTitle: "",
     image_Url:
-      "https://i.ibb.co/7y1BQwh/istockphoto-691893008-170667a-removebg-preview.png",
+      "https://www.tradeindia.com/_next/image/?url=https%3A%2F%2Ftiimg.tistatic.com%2Ffp%2F3%2F007%2F635%2Fnatural-and-rich-in-magnesium-fresh-mineral-hygine-drinking-water-bottle-032.jpg&w=750&q=75",
+      
   },
   {
     id: 5,
@@ -167,7 +168,7 @@ export const categoriesData = [
     title: "Accessories parts",
     subTitle: "",
     image_Url:
-      "https://lzd-img-global.slatic.net/g/p/19ef16d4c3a3eb53812370499e494c5c.jpg_200x200q80.jpg_.webp",
+      "https://laz-img-sg.alicdn.com/p/90625c8f09a113ee91c91b89dd73ea80.jpg",
   },
 ];
 
@@ -207,6 +208,11 @@ export const colorTypeData = [
   {
     id: 7,
     title: "⚪White",
+    subTitle: "",
+  },
+  {
+    id: 8,
+    title: "🟢Green",
     subTitle: "",
   },
 ];

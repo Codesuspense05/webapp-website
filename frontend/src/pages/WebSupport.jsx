@@ -5,6 +5,7 @@ import { HiLocationMarker } from "react-icons/hi";
 import { MdOutlineMarkEmailRead } from "react-icons/md";
 import { RiFacebookCircleFill } from "react-icons/ri";
 import { toast } from "react-toastify";
+import WebNavbar from "./WebNavbar";
 
 
 const Contact = () => {
@@ -89,6 +90,7 @@ const Contact = () => {
 
   return (
     <>
+    <WebNavbar/>
       <section
         className="bg-white  800px:pt-20 800px:pb-5  overflow-hidden relative z-10 ease-in duration-300"
         data-aos="fade-down"

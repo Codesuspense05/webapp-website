@@ -1,37 +1,27 @@
-import React, { useState } from "react";
-import Hero from "../components/Route/Hero/Hero";
-import { Link, useNavigate } from "react-router-dom";
-import { AiOutlineInstagram, AiOutlineProfile } from "react-icons/ai";
-import {  IoLogoYoutube } from "react-icons/io";
-import {  MdOutlineFacebook } from "react-icons/md";
-import { CgProfile } from "react-icons/cg";
+import React, { useState } from 'react'
+import { BiBookmark, BiMenuAltRight, BiUserCircle } from 'react-icons/bi'
+import { BsDropletHalf, BsQuestionCircle } from 'react-icons/bs'
+import { CgProfile } from 'react-icons/cg'
+import { IoCallOutline } from 'react-icons/io5'
+import { RiHome3Line, RiShutDownLine } from 'react-icons/ri'
+import { RxCaretDown, RxCaretUp, RxContainer, RxCross1, RxHamburgerMenu } from 'react-icons/rx'
+import { Link, useNavigate } from 'react-router-dom'
 import styles from "../styles/styles";
-import { useSelector } from "react-redux";
-import {  BsDropletHalf, BsQuestionCircle } from "react-icons/bs";
+import { useSelector } from 'react-redux'
+import { HiQuestionMarkCircle } from 'react-icons/hi'
+import { AiOutlineProfile } from 'react-icons/ai'
+import axios from 'axios'
+import { server } from '../server'
+import { toast } from 'react-toastify'
 
-import { BiBookmark, BiMenuAltRight, BiUserCircle } from "react-icons/bi";
-import {
-  RxCaretDown,
-  RxCaretUp,
-  RxContainer,
-  RxCross1,
-  RxHamburgerMenu,
-} from "react-icons/rx";
-import {  HiQuestionMarkCircle } from "react-icons/hi";
-import { RiHome3Line, RiShutDownLine } from "react-icons/ri";
-import axios from "axios";
-import { server } from "../server";
-import { toast } from "react-toastify";
-import {  IoCallOutline } from "react-icons/io5";
-// import Navigation from "./components/Navigation.jsx";
+const WebNavbar = () => {
+    const { isAuthenticated, user } = useSelector((state) => state.user);
+    const [open, setOpen] = useState(false);
+    const navigate = useNavigate();
+    const [isSubItemsOpen, setSubItemsOpen] = useState(false);
+    const [isItemsOpen, setItemsOpen] = useState(false);
 
-const HomeWeb = () => {
-  const { isAuthenticated, user } = useSelector((state) => state.user);
-  const [open, setOpen] = useState(false);
-  const [isSubItemsOpen, setSubItemsOpen] = useState(false);
-  const [isItemsOpen, setItemsOpen] = useState(false);
-  const navigate = useNavigate();
-
+    
   const toggleSubItems = () => {
     setSubItemsOpen(!isSubItemsOpen);
   };
@@ -52,58 +42,9 @@ const HomeWeb = () => {
         console.log(error.response.data.message);
       });
   };
-
   return (
     <>
-      {/* <div className="bg-blue-500 800px:w-[100%] h-1 max-400px:hidden max-500px:hidden max-640px:hidden  max-768px:hidden"></div> */}
-
-      <div className="">
-        <div className="hidden 800px:h-[50px]  800px:flex items-center justify-between px-10 py-10 bg-[#0099ff]">
-          
-          <div className="relative flex overflow-x-hidden text-white">
-            <div className="py-12 animate-marquee whitespace-nowrap">
-              <span className="text-xl mx-4">
-                (02)-888888 / 09123456789 | OPEN 9am-10pm (Mon-Sun)
-              </span>
-              <span className="text-xl mx-4">9123456789</span>
-              <span className="text-xl mx-4">|</span>
-              <span className="text-xl mx-4">OPEN 9am-10pm</span>
-              <span className="text-xl mx-4">(Mon-Sun)</span>
-            </div>
-
-            <div className="absolute top-0 py-12 animate-marquee2 whitespace-nowrap">
-              <span className="text-xl mx-4">
-                (02)-888888 / 09123456789 | OPEN 9am-10pm (Mon-Sun)
-              </span>
-              <span className="text-xl mx-4">9123456789</span>
-              <span className="text-xl mx-4">|</span>
-              <span className="text-xl mx-4">OPEN 9am-10pm</span>
-              <span className="text-xl mx-4">(Mon-Sun)</span>
-            </div>
-          </div>
-
-          <div className="flex">
-            {" "}
-            <h4 className="flex font-Roboto text-[15px] max-400px:hidden ml-5 text-white">
-              Hi👋 Welcome,
-                {user?.name}
-              
-            </h4>
-          </div>
-
-          <div className="flex items-center ">
-            <MdOutlineFacebook size={30} color="white" className="mr-2 " />
-            <AiOutlineInstagram
-              size={27}
-              color="white"
-              className="mr-2 bg-gradient-to-r from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] rounded-full "
-            />
-            <IoLogoYoutube size={30} color="red" className="rounded-full" />
-          </div>
-        </div>
-      </div>
-
-      <div className="transition sticky shadow-lg shadow-gray-400 hidden 800px:flex items-center justify-between w-full bg-blue-900 h-[70px]">
+     <div className="transition sticky shadow-lg shadow-gray-400 hidden 800px:flex items-center justify-between w-full bg-blue-900 h-[70px]">
         <div
           className={`${styles.section} relative ${styles.noramlFlex} justify-between shadow-gray-500`}
         >
@@ -156,8 +97,7 @@ const HomeWeb = () => {
         </div>
       </div>
 
-      {/* mobile header */}
-     
+      
       <div className="w-full h-[70px] bg-gray-100 z-50 top-0 left-0 shadow-lg 800px:hidden">
         <div className="w-full flex items-center justify-between p-4">
           <div>
@@ -410,9 +350,11 @@ const HomeWeb = () => {
         )}
         
       </div>
-      <Hero/>
-    </>
-  );
-};
 
-export default HomeWeb;
+
+      
+    </>
+  )
+}
+
+export default WebNavbar

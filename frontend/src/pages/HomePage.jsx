@@ -27,7 +27,7 @@ const HomePage = () => {
   };
   return (
     <>
-    <div>
+    <div className='mb-5 overflow-hidden'>
       
         <Header activeHeading={1} />
 

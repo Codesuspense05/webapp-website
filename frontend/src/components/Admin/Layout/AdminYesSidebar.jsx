@@ -16,6 +16,7 @@ const AdminSideBar = ({ active }) => {
       <div className="w-full flex items-center p-4">
         <Link to="/admin/dashboard" className="w-full flex items-center">
          <MdDashboard
+         title="Dashboard"
           className="  hover:text-blue-500 hover:scale-125 transition-transform duration-300 ease-in-out text-3xl"
             size={30}
             color={`${active === 1 ? "blue" : "#555"}`}
@@ -61,7 +62,7 @@ const AdminSideBar = ({ active }) => {
               active === 3 ? "text-[blue]" : "text-[#555]"
             }`}
           >
-           All Sellers
+           All Shops
           </h5>
         </Link>
       </div>
@@ -69,6 +70,7 @@ const AdminSideBar = ({ active }) => {
       <div className="w-full flex items-center p-4">
         <Link to="/admin-users" className="w-full flex items-center">
           <HiOutlineUserGroup
+          title="All User"
           className="hover:text-blue-500 hover:scale-125 transition-transform duration-300 ease-in-out text-3xl"
             size={30}
             color={`${active === 4 ? "blue" : "#555"}`}
@@ -86,6 +88,7 @@ const AdminSideBar = ({ active }) => {
       <div className="w-full flex items-center p-4">
         <Link to="/admin-products" className="w-full flex items-center">
           <TbBrandProducthunt
+          title="All Products"
           className="hover:text-blue-500 hover:scale-125 transition-transform duration-300 ease-in-out text-3xl"
             size={30}
             color={`${active === 5 ? "blue" : "#555"}`}

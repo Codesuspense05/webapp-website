@@ -1,29 +1,22 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 import styles from "../styles/styles";
+import WebNavbar from './WebNavbar';
 
-const FAQPage = () => {
+const WebFaq = () => {
+    const [activeTab, setActiveTab] = useState(0);
+
+    const toggleTab = (tab) => {
+      if (activeTab === tab) {
+        setActiveTab(0);
+      } else {
+        setActiveTab(tab);
+      }
+    };
+  
   return (
-    <div>
-      
-      <Faq />
-     
-    </div>
-  );
-};
-
-const Faq = () => {
-  const [activeTab, setActiveTab] = useState(0);
-
-  const toggleTab = (tab) => {
-    if (activeTab === tab) {
-      setActiveTab(0);
-    } else {
-      setActiveTab(tab);
-    }
-  };
-
-  return (
-    <div className={`${styles.section} my-8 text-blue-400`}>
+    <>
+    <WebNavbar/>
+     <div className={`${styles.section} my-8 text-blue-400`}>
       <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">FAQ</h2>
       <div className="mx-auto space-y-4">
         {/* single Faq */}
@@ -325,7 +318,9 @@ const Faq = () => {
         </div>
       </div>
     </div>
-  );
-};
+      
+    </>
+  )
+}
 
-export default FAQPage;
+export default WebFaq

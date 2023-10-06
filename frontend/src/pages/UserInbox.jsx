@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import Header from "../components/Layout/Header";
+// import Header from "../components/Layout/Header";
 import { useSelector } from "react-redux";
 import socketIO from "socket.io-client";
 import { format } from "timeago.js";
@@ -9,8 +9,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineArrowRight, AiOutlineSend } from "react-icons/ai";
 import { TfiGallery } from "react-icons/tfi";
 import styles from "../styles/styles";
-import { RxCaretLeft } from "react-icons/rx";
-const ENDPOINT = "https://socket-ecommerce-tu68.onrender.com/";
+import { BiArrowToLeft, BiMessageDots } from "react-icons/bi";
+const ENDPOINT = "https://predeploy-socket.vercel.app/";
 const socketId = socketIO(ENDPOINT, { transports: ["websocket"] });
 
 const UserInbox = ({active}) => {
@@ -210,12 +210,17 @@ const UserInbox = ({active}) => {
 
   return (
     <div className="w-full">
-      <Link to={"/profile"}>
-        <RxCaretLeft size={40} color={`${active === 2 ? "gray" : "blue"}`} className="cursor pointer"/>
+      <div className="flex items-center justify-between">
+      <Link to={"/"}>
+        <BiArrowToLeft size={35} color={`${active === 2 ? "gray" : "blue"}`} className="cursor pointer"/>
       </Link>
+      <BiMessageDots size={30} className="mx-2"/>
+      </div>
+     <hr />
+
       {!open && (
         <>
-          <Header />
+          {/* <Header /> */}
           <h1 className="text-center text-[30px] py-3 font-Poppins">
             All Messages
           </h1>

@@ -7,6 +7,7 @@ import 'react-multi-carousel/lib/styles.css';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { MdCategory } from "react-icons/md";
 
 
 const Categories = () => {
@@ -66,7 +67,7 @@ const Categories = () => {
 
 
 <div className="w-full h-50 800px:hidden ">
-<Slider {...settings} className="max-400px:h-40  max-500px:h-60 max-640px:h-60 max-768px:h-60">
+<Slider {...settings} className="max-400px:h-40  max-500px:h-60 max-640px:h-60 max-768px:h-60 800px:hidden">
   
           {/* Add your product items here */}
           <div>
@@ -137,8 +138,8 @@ const Categories = () => {
         </div>
       </div>
 
-     <div data-aos="fade-up"
-     data-aos-anchor-placement="top-center" className={`w-full block bg-white rounded-lg  lg:flex p-2 pl-[10%] pr-[10%] max-400px:mb-[10px] max-768px:hidden max-500px:hidden max-400px:hidden`}>
+     {/* <div data-aos="fade-up"
+     data-aos-anchor-placement="top-center" className={`w-full block bg-white rounded-lg  lg:flex p-2 pl-[10%] pr-[10%] max-400px:mb-[10px] max-768px:hidden max-500px:hidden max-400px:hidden 800px:hidden`}>
         <div className="w-full lg:[w-50%] flex flex-col justify-center">
         <h1 className={`${styles.productTitle} text-blue-900 800px:text-[20px] max-400px:text-[20px] text-center `}>Our Services & Offer Promo's</h1>
     <p className="text-justify  max-400px:text-[12px]">
@@ -160,7 +161,7 @@ const Categories = () => {
   
 
 
-</div>
+</div> */}
       <div className={`${styles.section} hidden sm:block`}>
         <div
           className={`branding  my-12 flex justify-between w-full shadow-sm bg-white p-5 rounded-md`}
@@ -179,10 +180,10 @@ const Categories = () => {
       </div>
 
       <div
-        className={`${styles.section}  bg-transparent p-3 rounded-lg 800px:mb-12`}
+        className={`${styles.section}  bg-white p-3 rounded-lg 800px:mb-12`}
         id="categories"
       >
- <div className="flex"><h4 className="text-blue-500">✨ Categories</h4></div>
+ <div className="flex"><MdCategory className="flex mr-1" color="orange" size={20}/><h4 className="text-blue-500">Item Categories</h4></div>
         <Carousel 
    
   showDots={true}

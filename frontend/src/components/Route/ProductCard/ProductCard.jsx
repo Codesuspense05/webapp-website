@@ -89,6 +89,7 @@ const { seller } = useSelector((state) => state.seller);
        <div className=" flex items-center justify-center">
           <h5 className={"text-[15px] max-400px:text-[10px] max-500px:text-[10px] max-640px:text-[10px] max-768px:text-[10px] text-gray-500 pt-0 pb-0.5 text-shadow flex"}><h4 className="text-orange-500 flex pr-2">Colortype:</h4> {data.color}</h5>
           </div>
+          <hr />
 
       
         
@@ -142,14 +143,14 @@ const { seller } = useSelector((state) => state.seller);
            
             className="cursor-pointer absolute right-2 800px:top-28 max-400px:top-14 max-500px:top-14 max-640px:top-14 max-768px:top-14 800px:text-[30px]"
             onClick={() => setOpen(!open)}
-            color="#333"
+            color="blue"
             title="Quick view"
           />
           <AiOutlineShoppingCart
             
             className="cursor-pointer absolute right-2 800px:top-40 max-400px:top-20 max-500px:top-20 max-640px:top-20 max-768px:top-20 800px:text-[30px]"
             onClick={() => addToCartHandler(data._id)}
-            color="#444"
+            color="green"
             title="Add to cart"
           />
           {open ? <ProductDetailsCard setOpen={setOpen} data={data} /> : null}

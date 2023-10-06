@@ -29,6 +29,11 @@ import {
   UserchangePassword,
   UserAddress,
   HomeWeb,
+  WebAbout,
+  WebProducts,
+  WebSupport,
+  WebFaq,
+
  
 } from "./routes/Routes.js";
 import {
@@ -106,6 +111,17 @@ const App = () => {
         </Elements>
       )}
       <Routes>
+
+              {/* For Website */}
+
+        <Route path="/about" element={<WebAbout />} />
+        <Route path="/webproducts" element={<WebProducts />} />
+        <Route path="/websupport" element={<WebSupport />} />
+        <Route path="/webfaq" element={<WebFaq />} />
+        
+
+
+
         <Route path="/" element={<HomePage />} />
         <Route path="/website" element={<HomeWeb />} />
         <Route path="/login" element={<LoginPage />} />

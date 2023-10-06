@@ -106,7 +106,7 @@ const Header = ({ activeHeading }) => {
    
     
       <div className={`${styles.section}`}>
-        <div className="hidden 800px:h-[50px] 1024px:my-[20px] 800px:flex items-center justify-between">
+        <div className="hidden 800px:h-[50px] 1024px:my-[20px]  items-center justify-between 800px:hidden">
           <div>
             <Link to="/">
               <img
@@ -188,7 +188,7 @@ const Header = ({ activeHeading }) => {
       <div
         className={`${
           active === true ? "shadow-sm fixed top-0 left-0 z-10" : null
-        } transition hidden 800px:flex items-center justify-between w-full bg-blue-500 h-[70px]`}
+        } transition hidden  items-center justify-between w-full bg-blue-500 h-[70px] 800px:hidden`}
       >
         <div
           className={`${styles.section} relative ${styles.noramlFlex} justify-between`}
