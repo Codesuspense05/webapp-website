@@ -15,7 +15,7 @@ const SuggestedProduct = ({ data }) => {
   }, [allProducts,data.category]);
 
   return (
-    <div>
+    <div className="800px:hidden ">
       {data ? (
         <div className={`p-1 ${styles.section}`}>
           <h2

@@ -14,6 +14,10 @@ const orderSchema = new mongoose.Schema({
         type: Object,
         required: true,
     },
+    penName:{
+        type: String,
+        
+    },
     totalPrice:{
         type: Number,
         required: true,
@@ -21,6 +25,10 @@ const orderSchema = new mongoose.Schema({
     status:{
         type: String,
         default: "Processing",
+    },
+    shopname:{
+        type: Object,
+        required: true,
     },
     paymentInfo:{
         id:{

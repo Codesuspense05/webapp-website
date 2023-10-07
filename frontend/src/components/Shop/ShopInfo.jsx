@@ -54,7 +54,7 @@ const ShopInfo = ({ isOwner }) => {
     ) : (
       <div>
       <div className="w-full p-2 ">
-        <Link to={"/"}><BiArrowToLeft size={20} className="text-blue-500"/></Link>
+        <Link to={"/"}><BiArrowToLeft size={20} className="text-blue-500  500px:hidden 800px:hidden"/></Link>
         <div className="w-full flex item-center justify-center">
           <img
             src={`${data.avatar?.url}`}

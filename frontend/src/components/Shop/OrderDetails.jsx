@@ -133,6 +133,7 @@ const OrderDetails = () => {
         <h4 className="pt-3 text-[20px] font-bold">Customer Info:</h4>
         <div className="flex "><h1 className="max-400px:text-[15px] mr-1 pt-2 text-[18px] font-semibold">Customer Name: </h1><h4 className="max-400px:text-[15px]  text-[18px] pt-2"> {data?.user?.name}</h4></div>
           <div className="flex "><h1 className="text-[18px] mr-1 max-400px:text-[15px] font-semibold">Conctact Number : </h1><h4 className="max-400px:text-[15px] text-[18px]"># {data?.user?.phoneNumber}</h4></div>
+          <div className="flex "><h1 className="text-[18px] mr-1 max-400px:text-[15px] font-semibold">Nick Name : </h1><h4 className="max-400px:text-[15px] text-[18px]">{data?.shippingAddress.penname}</h4></div>
           
 
         </div>
@@ -140,12 +141,12 @@ const OrderDetails = () => {
         <hr />
           <h4 className="pt-3 text-[20px] font-[600]">Delivery Address:</h4>
           <h4 className="pt-3 text-[17px] max-400px:text-[15px]">
-            {data?.shippingAddress.address1 +
+            {data?.shippingAddress.address +
               " " +
-              data?.shippingAddress.address2}
+              data?.shippingAddress.landmark}
           </h4>
-          <h4 className=" text-[17px] max-400px:text-[15px]">{data?.shippingAddress.country}</h4>
-          <h4 className=" text-[17px] max-400px:text-[15px]">{data?.shippingAddress.city}</h4>
+          {/* <h4 className=" text-[17px] max-400px:text-[15px]">{data?.shippingAddress.country}</h4>
+          <h4 className=" text-[17px] max-400px:text-[15px]">{data?.shippingAddress.city}</h4> */}
          
         </div>
         <hr />

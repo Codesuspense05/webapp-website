@@ -388,7 +388,7 @@ const ProductDetailsInfo = ({
               <br />
               <Link to="/">
                 <div
-                  className="w-[150px] bg-blue-500 h-[40px] my-3 flex items-center justify-center rounded-xl cursor-pointer"
+                  className="w-[150px] bg-blue-500 h-[40px] my-3 flex items-center justify-center rounded-xl cursor-pointer 800px:hidden"
                 >
                   <h4 className="text-white">🏠 Back to Home</h4>
                 </div>

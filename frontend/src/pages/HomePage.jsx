@@ -27,7 +27,7 @@ const HomePage = () => {
   };
   return (
     <>
-    <div className='mb-5 overflow-hidden'>
+    <div className='mb-5 overflow-hidden 800px:hidden'>
       
         <Header activeHeading={1} />
 
@@ -42,7 +42,7 @@ const HomePage = () => {
         <FeaturedProduct/>
         <Sponsored />
         <Footer />
-        <div className="fixed bottom-0 left-0 w-full bg-white border-t border-gray-300 ">
+        <div className="fixed bottom-0 left-0 w-full bg-white border-t border-gray-300 800px:hidden ">
       <div className="container mx-auto  ">
         <div className="flex  w-full">
           <div className="flex w-full ">

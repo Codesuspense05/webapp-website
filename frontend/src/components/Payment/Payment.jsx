@@ -22,6 +22,7 @@ const Payment = () => {
   const [orderData, setOrderData] = useState([]);
   const [open, setOpen] = useState(false);
   const { user } = useSelector((state) => state.user);
+  const { seller } = useSelector((state) => state.seller);
   const navigate = useNavigate();
   const stripe = useStripe();
   const elements = useElements();
@@ -57,6 +58,7 @@ const Payment = () => {
     cart: orderData?.cart,
     shippingAddress: orderData?.shippingAddress,
     user: user && user,
+    shopname: seller && seller,
     totalPrice: orderData?.totalPrice,
   };
 

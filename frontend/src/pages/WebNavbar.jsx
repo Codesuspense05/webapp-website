@@ -65,7 +65,7 @@ const WebNavbar = () => {
           {/* navitems */}
           <div className="flex justify-evenly">
                 <ul className="flex items-center justify-evenly font-Roboto font-semibold text-white ">
-                  <Link to={"/website"}><li className="px-4"><div className="flex"><RiHome3Line size={20}/>Home</div></li></Link>
+                  <Link to={"/"}><li className="px-4"><div className="flex"><RiHome3Line size={20}/>Home</div></li></Link>
                   <Link to={"/about"}><li className="px-4"><div className="flex"><BiBookmark color="white"  size={20}/>About</div></li></Link>
                   <Link to={"/webproducts"}><li className="px-4"><div className="flex"><RxContainer color="white"  size={20}/>Container</div></li></Link>
                   <Link to={"/websupport"}><li className="px-4"><div className="flex"><IoCallOutline color="white"  size={20}/>Support</div></li></Link>
@@ -79,7 +79,7 @@ const WebNavbar = () => {
              
               <div className="relative cursor-pointer mr-[15px]">
                 {isAuthenticated ? (
-                  <Link to="/profile">
+                  <Link to="/">
                     <img
                       src={`${user?.avatar?.url}`}
                       className="w-[30px] h-[30px] 800px:w-[40px] 800px:h-[40px] rounded-full"

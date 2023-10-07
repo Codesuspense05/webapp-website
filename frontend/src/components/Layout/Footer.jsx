@@ -10,7 +10,7 @@ import { IoLogoFacebook } from "react-icons/io5";
 
 const Footer = () => {
   return (
-    <div className="bg-blue-800 text-white max-768px:hidden max-500px:hidden max-400px:hidden ">
+    <div className="bg-blue-800 text-white max-768px:hidden max-500px:hidden max-400px:hidden 800px:hidden ">
       <div className="md:flex md:justify-between md:items-center sm:px-12 px-4 bg-blue-600 py-7">
         {/* <h1 className="lg:text-4xl text-3xl md:mb-0 mb-6 lg:leading-normal font-semibold md:w-2/5">
           <span className="text-blue-500">Subscribe</span> us for get news{" "}

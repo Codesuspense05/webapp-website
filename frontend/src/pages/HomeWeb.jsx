@@ -30,7 +30,27 @@ const HomeWeb = () => {
   const [open, setOpen] = useState(false);
   const [isSubItemsOpen, setSubItemsOpen] = useState(false);
   const [isItemsOpen, setItemsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
+
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleLogout = () => {
+    axios
+    .get(`${server}/user/logout`, { withCredentials: true })
+    .then((res) => {
+      toast.success(res.data.message);
+      window.location.reload(true);
+      navigate("/login");
+    })
+    .catch((error) => {
+      console.log(error.response.data.message);
+    });
+  };
+
 
   const toggleSubItems = () => {
     setSubItemsOpen(!isSubItemsOpen);
@@ -53,6 +73,9 @@ const HomeWeb = () => {
       });
   };
 
+  
+
+  
   return (
     <>
       {/* <div className="bg-blue-500 800px:w-[100%] h-1 max-400px:hidden max-500px:hidden max-640px:hidden  max-768px:hidden"></div> */}
@@ -124,7 +147,7 @@ const HomeWeb = () => {
           {/* navitems */}
           <div className="flex justify-evenly">
                 <ul className="flex items-center justify-evenly font-Roboto font-semibold text-white ">
-                  <Link to={"/website"}><li className="px-4"><div className="flex"><RiHome3Line size={20}/>Home</div></li></Link>
+                  <Link to={"/"}><li className="px-4"><div className="flex"><RiHome3Line size={20}/>Home</div></li></Link>
                   <Link to={"/about"}><li className="px-4"><div className="flex"><BiBookmark color="white"  size={20}/>About</div></li></Link>
                   <Link to={"/webproducts"}><li className="px-4"><div className="flex"><RxContainer color="white"  size={20}/>Container</div></li></Link>
                   <Link to={"/websupport"}><li className="px-4"><div className="flex"><IoCallOutline color="white"  size={20}/>Support</div></li></Link>
@@ -138,11 +161,12 @@ const HomeWeb = () => {
              
               <div className="relative cursor-pointer mr-[15px]">
                 {isAuthenticated ? (
-                  <Link to="/profile">
+                  <Link to="/">
                     <img
                       src={`${user?.avatar?.url}`}
                       className="w-[30px] h-[30px] 800px:w-[40px] 800px:h-[40px] rounded-full"
                       alt=""
+                      onClick={toggleDropdown}
                     />
                   </Link>
                 ) : (
@@ -151,6 +175,11 @@ const HomeWeb = () => {
                   </Link>
                 )}
               </div>
+              {isOpen && (
+        <div className="text-white hover:text-red-500">
+          <button onClick={handleLogout}>Logout</button>
+        </div>
+      )}
             </div>
           </div>
         </div>

@@ -96,6 +96,20 @@ const AdminDashboardOrders = () => {
       flex: 0.8,
     },
     {
+      field: "shopname",
+      headerName: "ShopName",
+      type: "text",
+      minWidth: 130,
+      flex: 0.8,
+    },
+    {
+      field: "shopaddress",
+      headerName: "ShopAddress",
+      type: "text",
+      minWidth: 200,
+      flex: 1,
+    },
+    {
       field: "status",
       headerName: "Status",
       minWidth: 130,
@@ -135,6 +149,8 @@ const AdminDashboardOrders = () => {
         itemsQty: item?.cart?.reduce((acc, item) => acc + item.qty, 0),
         total: item?.totalPrice + " ₱",
         status: item?.status,
+        shopname: item.shopname?.name,
+        shopaddress: item.shopname?.address,
         createdAt:"📅 " + item?.createdAt.slice(0,10),
         deliveredAt:"📅 " + item?.deliveredAt,
       });

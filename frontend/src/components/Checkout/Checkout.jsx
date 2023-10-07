@@ -14,7 +14,7 @@ import { MdOutlineEmail } from "react-icons/md";
 import { BsHouseFill, BsTruck } from "react-icons/bs";
 import { HiLocationMarker } from "react-icons/hi";
 import { RiCoupon2Fill } from "react-icons/ri";
-import { BiHomeAlt } from "react-icons/bi";
+import { BiHomeAlt, BiPen } from "react-icons/bi";
 
 const Checkout = () => {
   const { user } = useSelector((state) => state.user);
@@ -22,6 +22,7 @@ const Checkout = () => {
   // const [country, setCountry] = useState("");
   // const [city, setCity] = useState("");
   const [userInfo, setUserInfo] = useState(false);
+  const [penname, setPenName] = useState("");
   const [address, setAddress] = useState("");
   const [landmark, setLandmark] = useState("");
   const [zipCode, setZipCode] = useState(null);
@@ -42,6 +43,7 @@ const Checkout = () => {
       address,
       landmark,
       zipCode,
+      penname
       // country,
       // city,
     };
@@ -54,6 +56,7 @@ const Checkout = () => {
       discountPrice,
       shippingAddress,
       user,
+      penname
     }
 
     // update local storage with the updated orders array
@@ -120,6 +123,8 @@ const Checkout = () => {
             // setCountry={setCountry}
             // city={city}
             // setCity={setCity}
+            penname={penname}
+            setPenName={setPenName}
             userInfo={userInfo}
             setUserInfo={setUserInfo}
             address={address}
@@ -158,12 +163,15 @@ const ShippingInfo = ({
   // setCountry,
   // city,
   // setCity,
+  penname,
+  setPenName,
   userInfo,
   setUserInfo,
   address,
   setAddress,
  landmark,
   setLandmark,
+  
   // zipCode,
   // setZipCode,
   
@@ -180,7 +188,7 @@ const ShippingInfo = ({
             <label className="block pb-2"><div className="flex"><CgNametag size={25} color="gray"/>Full Name</div></label>
             <input
               type="text"
-              value={user && user.name}
+              value={user.name}
               required
               className={`${styles.input} !w-[100%] border border-gray-400`}
             />
@@ -241,6 +249,21 @@ const ShippingInfo = ({
                 ))}
             </select>
           </div> */}
+         
+        </div>
+        <div className="w-full flex pb-3">
+          <div className="w-[100%]">
+            <label className="block pb-2"><div className="flex"><BiPen size={20} color="gray"/> Pen Name</div></label>
+            <input
+              type="name"
+              required
+              value={penname}
+              onChange={(e) => setPenName(e.target.value)}
+              className={`${styles.input} !w-[100%] border border-gray-400`}
+            />
+            
+           
+          </div>
          
         </div>
 

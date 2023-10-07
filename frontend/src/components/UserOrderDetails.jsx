@@ -220,12 +220,12 @@ const UserOrderDetails = ({active}) => {
         <div className="w-full 800px:w-[60%]">
           <h4 className="pt-3 max-400px:text-[15px] max-500px:text-[15px] max-640px:text-[18px] font-[600] max-768px:text-[20px]">📌Delivery Address:</h4>
           <h4 className="pt-2 800px:text-[15px]   max-400px:text-[14px] max-500px:text-[14px] max-640px:text-[16px] max-768px:text-[18px]">
-            {data?.shippingAddress.address1 +
+            {data?.shippingAddress.address +
               ", " +
-              data?.shippingAddress.address2}
+              data?.shippingAddress.landmark}
           </h4>
-          <h4 className=" text-[20px] 800px:text-[15px]">{data?.shippingAddress.country}</h4>
-          <h4 className=" text-[20px] 800px:text-[15px]">{data?.shippingAddress.city}</h4>
+          {/* <h4 className=" text-[20px] 800px:text-[15px]">{data?.shippingAddress.country}</h4>
+          <h4 className=" text-[20px] 800px:text-[15px]">{data?.shippingAddress.city}</h4> */}
          
         </div>
         <br />
