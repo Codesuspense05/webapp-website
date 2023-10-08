@@ -4,7 +4,7 @@ import { MdCardGiftcard, MdSettings } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { BiBookAdd, BiChat, BiFolderPlus, BiPurchaseTag, BiWalk } from "react-icons/bi";
-import {  RiProductHuntFill, } from "react-icons/ri";
+import {  RiMotorbikeLine, RiProductHuntFill, } from "react-icons/ri";
 
 const DashboardSideBar = ({ active }) => {
   const { seller } = useSelector((state) => state.seller);
@@ -208,16 +208,31 @@ const DashboardSideBar = ({ active }) => {
           </h5>
         </Link>
       </div>
+      <div className="w-full flex items-center p-4 shadow">
+        <Link to="/deliverySignup" className="w-full flex items-center">
+          <RiMotorbikeLine
+            size={30}
+            color={`${active === 12 ? "orange" : "#555"}`}
+          />
+          <h5
+            className={`hidden 800px:block pl-2 text-[18px] font-[400] ${
+              active === 12 ? "text-blue-600" : "text-[#555]"
+            }`}
+          >
+            Create Delivery Staff
+          </h5>
+        </Link>
+      </div>
     
       <div className="w-full flex items-center p-4 shadow">
         <Link to="/settings" className="w-full flex items-center">
           <MdSettings
             size={30}
-            color={`${active === 12 ? "orange" : "#555"}`}
+            color={`${active === 13 ? "orange" : "#555"}`}
           />
           <h5
             className={`hidden 800px:block pl-2 text-[18px] font-[400]   ${
-              active === 12 ? "text-blue-600" : "text-[#555]"
+              active === 13 ? "text-blue-600" : "text-[#555]"
             }`}
           >
             Account Settings

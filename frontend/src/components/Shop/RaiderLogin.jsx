@@ -6,7 +6,7 @@ import axios from "axios";
 import { server } from "../../server";
 import { toast } from "react-toastify";
 
-const ShopLogin = () => {
+const RiderLogin = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,7 +17,7 @@ const ShopLogin = () => {
 
     await axios
       .post(
-        `${server}/seller/login-seller`,
+        `${server}/rider/login-rider`,
         {
           email,
           password,
@@ -140,4 +140,4 @@ const ShopLogin = () => {
   );
 };
 
-export default ShopLogin;
+export default RiderLogin;

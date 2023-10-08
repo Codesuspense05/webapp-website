@@ -43,6 +43,27 @@ export const loadSeller = () => async (dispatch) => {
   }
 };
 
+// load rider
+export const loadRider = () => async (dispatch) => {
+  try {
+    dispatch({
+      type: "LoadRiderRequest",
+    });
+    const { data } = await axios.get(`${server}/rider/getRider`, {
+      withCredentials: true,
+    });
+    dispatch({
+      type: "LoadRiderSuccess",
+      payload: data.seller,
+    });
+  } catch (error) {
+    dispatch({
+      type: "LoadRiderFail",
+      payload: error.response.data.message,
+    });
+  }
+};
+
 // user update information
 export const updateUserInformation =
   (name, email, phoneNumber,facebooklink, password) => async (dispatch) => {

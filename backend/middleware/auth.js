@@ -3,6 +3,8 @@ const catchAsyncErrors = require("./catchAsyncErrors");
 const jwt = require("jsonwebtoken");
 const User = require("../model/user");
 const Shop = require("../model/shop");
+const Rider = require("../model/rider");
+
 
 exports.isAuthenticated = catchAsyncErrors(async(req,res,next) => {
     const {token} = req.cookies;
@@ -19,6 +21,7 @@ exports.isAuthenticated = catchAsyncErrors(async(req,res,next) => {
 });
 
 
+
 exports.isSeller = catchAsyncErrors(async(req,res,next) => {
     const {seller_token} = req.cookies;
     if(!seller_token){
@@ -32,6 +35,18 @@ exports.isSeller = catchAsyncErrors(async(req,res,next) => {
     next();
 });
 
+exports.isRider = catchAsyncErrors(async(req,res,next) => {
+    const {rider_token} = req.cookies;
+    if(!rider_token){
+        return next(new ErrorHandler("Please login to continue", 401));
+    }
+
+    const decoded = jwt.verify(rider_token, process.env.JWT_SECRET_KEY);
+
+    req.rider = await Rider.findById(decoded.id);
+
+    next();
+});
 
 exports.isAdmin = (...roles) => {
     return (req,res,next) => {

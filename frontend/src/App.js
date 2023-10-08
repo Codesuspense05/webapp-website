@@ -5,7 +5,7 @@ import {
   LoginPage,
   SignupPage,
   ActivationPage,
- HomePage,
+//  HomePage,
   ProductsPage,
   BestSellingPage,
   EventsPage,
@@ -33,6 +33,7 @@ import {
   WebProducts,
   WebSupport,
   WebFaq,
+  RiderActivationPage,
 
  
 } from "./routes/Routes.js";
@@ -52,6 +53,10 @@ import {
   ShopWithDrawMoneyPage,
   ShopInboxPage,
   ShopCreateOrder,
+  RiderCreate,
+  RiderDashboardPage,
+
+
 } from "./routes/ShopRoutes";
 import {
   AdminDashboardPage,
@@ -65,7 +70,7 @@ import {
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Store from "./redux/store";
-import { loadSeller, loadUser } from "./redux/actions/user";
+import { loadSeller, loadUser, loadRider } from "./redux/actions/user";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import ProtectedAdminRoute from "./routes/ProtectedAdminRoute";
 import { ShopHomePage } from "./ShopRoutes.js";
@@ -76,6 +81,7 @@ import axios from "axios";
 import { server } from "./server";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import RiderLoginPrivate from "./pages/RiderLoginPrivate";
 
 
 
@@ -88,6 +94,7 @@ const App = () => {
   }
   useEffect(() => {
     Store.dispatch(loadUser());
+    Store.dispatch(loadRider());
     Store.dispatch(loadSeller());
     Store.dispatch(getAllProducts());
     Store.dispatch(getAllEvents());
@@ -118,22 +125,32 @@ const App = () => {
         <Route path="/webproducts" element={<WebProducts />} />
         <Route path="/websupport" element={<WebSupport />} />
         <Route path="/webfaq" element={<WebFaq />} />
+
+
+    
         
 
 
 
-         <Route path="/" element={<HomePage />} /> 
-        <Route path="/website" element={<HomeWeb />} />
+         {/* <Route path="/" element={<HomePage />} />  */}
+        <Route path="/" element={<HomeWeb />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/sign-up" element={<SignupPage />} />
         <Route
           path="/activation/:activation_token"
           element={<ActivationPage />}
         />
+            {/* seller activation */}
         <Route
           path="/seller/activation/:activation_token"
           element={<SellerActivationPage />}
         />
+            {/* rideractivation */}
+        <Route
+          path="/rider/activation/:activation_token"
+          element={<RiderActivationPage />}
+        />
+
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/product/:id" element={<ProductDetailsPage />} />
         <Route path="/best-selling" element={<BestSellingPage />} />
@@ -225,8 +242,10 @@ const App = () => {
         {/* shop Routes */}
         {/* <Route path="/shop-login" element={<ShopLoginPage />} />  */}
         
+        <Route path="/rider-create" element={ <ProtectedAdminRoute><RiderCreate /> </ProtectedAdminRoute>} />
         <Route path="/shop-create" element={ <ProtectedAdminRoute><ShopCreate /> </ProtectedAdminRoute>} />
         <Route path="/shop-private" element={<ShoploginPrivate />} />
+        <Route path="/rider-private" element={<RiderLoginPrivate />} />
         <Route
           path="/shop/:id"
           element={
@@ -251,6 +270,17 @@ const App = () => {
             </SellerProtectedRoute>
           }
         />
+
+      <Route
+          path="/deliveryrider"
+          element={
+            <SellerProtectedRoute>
+              <RiderDashboardPage />
+            </SellerProtectedRoute>
+          }
+        />
+       
+        
         <Route
           path="/dashboard-create-product"
           element={

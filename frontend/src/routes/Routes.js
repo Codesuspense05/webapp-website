@@ -17,8 +17,10 @@ import ProductDetailsPage from "../pages/ProductDetailsPage";
 import ProfilePage from "../pages/ProfilePage";
 import ShopCreatePage from "../pages/ShopCreate";
 import SellerActivationPage from "../pages/SellerActivationPage";
+import RiderActivationPage from "../pages/RiderActivationPage";
 import ShopLoginPage from "../pages/ShopLoginPage";
 import ShoploginPrivate from "../pages/ShoploginPrivate"
+import RiderloginPrivate from "../pages/RiderLoginPrivate"
 import OrderDetailsPage from "../pages/OrderDetailsPage";
 import TrackOrderPage from "../pages/TrackOrderPage";
 import UserInbox from "../pages/UserInbox.jsx";
@@ -29,6 +31,8 @@ import UserchangePassword from "../pages/UserchangePassword"
 import UserTrackOrder from "../pages/UserTrackOrders";
 import UserAddress from "../pages/UserAddress";
 import WebFaq from "../pages/WebFaq";
+
+
 
 
 export { 
@@ -48,8 +52,10 @@ export {
     ProfilePage,
     ShopCreatePage,
     SellerActivationPage,
+    RiderActivationPage,
     ShopLoginPage,
     ShoploginPrivate,
+    RiderloginPrivate,
     OrderDetailsPage,
     TrackOrderPage,
     WebAbout,
@@ -63,6 +69,7 @@ export {
     WebProducts,
     WebSupport,
     WebFaq,
+    
     
     
 };

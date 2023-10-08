@@ -3,8 +3,9 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { server } from "../server";
+import { MdBikeScooter } from "react-icons/md";
 
-const SellerActivationPage = () => {
+const RiderActivationPage = () => {
   const { activation_token } = useParams();
   const [error, setError] = useState(false);
 
@@ -12,7 +13,7 @@ const SellerActivationPage = () => {
     if (activation_token) {
       const sendRequest = async () => {
         await axios
-          .post(`${server}/seller/activation`, {
+          .post(`${server}/rider/activation`, {
             activation_token,
           })
           .then((res) => {
@@ -37,12 +38,12 @@ const SellerActivationPage = () => {
       }}
     >
       {error ? (
-        <p>Your token is expired!</p>
+        <p><MdBikeScooter/>Your token is expired!</p>
       ) : (
-        <p>Your account has been created suceessfully!</p>
+        <p><MdBikeScooter/>Your account has been created suceessfully!</p>
       )}
     </div>
   );
 };
 
-export default SellerActivationPage;
+export default RiderActivationPage;

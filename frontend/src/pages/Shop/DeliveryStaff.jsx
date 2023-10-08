@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import { BiCamera } from "react-icons/bi";
 import { IoPersonCircle } from "react-icons/io5";
 
-const Singup = () => {
+const DeliverySingup = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [gender, setSelectedGender] = useState("");
@@ -57,7 +57,7 @@ const Singup = () => {
     const isnotValidPassword = smallLetters.test(password);
     setIsValid(isnotValidPassword);
 
-    // You can replace this with an API call to fetch suggested numbers based on user input
+    // You can replace this with an API call to fetch suggested numbers based on User input
     // For this example, we'll simulate some suggested numbers.
     const suggested = ["ex.090****567", " 091****678", "092****789"].filter(
       (number) => number.startsWith("09" + phoneNumber)
@@ -470,4 +470,4 @@ const Singup = () => {
   );
 };
 
-export default Singup;
+export default DeliverySingup;
