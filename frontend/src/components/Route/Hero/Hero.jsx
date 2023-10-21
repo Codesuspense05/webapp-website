@@ -13,12 +13,16 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styles from "../../../styles/styles";
 import ReactPlayer from "react-player";
-import { BiArrowToTop} from "react-icons/bi";
+import { BiArrowToTop } from "react-icons/bi";
 
 // ..
 AOS.init();
 
 const Hero = () => {
+  const [hoveredone, setHoveredone] = useState(false);
+  const [hoveredtwo, setHoveredtwo] = useState(false);
+  const [hoveredthree, setHoveredthree] = useState(false);
+
   const settings = {
     arrows: null,
     nextArrow: null,
@@ -61,15 +65,14 @@ const Hero = () => {
     ],
   };
 
-
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     // Add a scroll event listener to track the user's scroll position
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
       // Remove the event listener when the component unmounts
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -86,7 +89,7 @@ const Hero = () => {
     // Scroll to the top of the page when the button is clicked
     window.scrollTo({
       top: 0,
-      behavior: 'smooth', // For a smooth scrolling animation
+      behavior: "smooth", // For a smooth scrolling animation
     });
   };
 
@@ -97,7 +100,6 @@ const Hero = () => {
         viewBox="0 110 1440 170"
         data-aos="fade-right"
         data-aos-delay="400"
-   
       >
         <path
           fill="#0099ff"
@@ -157,9 +159,12 @@ const Hero = () => {
             <p
               data-aos="fade-right"
               data-aos-delay="400"
-              className="mt-4 mb-8  w-full ease-in duration-300 text-[12px]"
+              className="mt-4 mb-8 text-justify w-full ease-in duration-300 text-[12px]"
             >
-              Dictum aliquam porta in condimentum ac integer
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Consequuntur, incidunt quisquam tempore dolorem adipisci voluptas
+              ipsa, optio debitis asperiores doloremque voluptate saepe
+              deserunt, aliquam earum voluptates velit non. Mollitia, quidem?
               <br
                 data-aos="fade-right"
                 data-aos-delay="400"
@@ -183,25 +188,53 @@ const Hero = () => {
             </div>
           </div>
         </div>
+        {/* <div className="relative">
+      <img
+        src={hovered ? 'image2.jpg' : 'image1.jpg'}
+        alt="Image"
+        className="w-48 h-48 transition-transform transform hover:scale-105"
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      />
+      
+    </div> */}
         <div
           data-aos="fade-left"
           data-aos-delay="400"
           className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128 max-400px:hidden max-500px:hidden max-640px:hidden max-768px:hidden"
         >
           <img
-            src="https://media.istockphoto.com/id/1131617171/photo/water-delivery-man-in-blue-t-shirt-and-cap.jpg?s=612x612&w=0&k=20&c=kG8v7OJpptuVfbkA2bLx_Op7GyjnsnW-FYhdebHqvfo="
+            src={
+              hoveredone
+                ? "https://media.istockphoto.com/id/1131617158/photo/water-delivery-man-in-blue-t-shirt-and-cap.jpg?s=612x612&w=0&k=20&c=03XUe2UWM_qa4-c64FJ6TigjI-XPNrZbExDpCW06SXE="
+                : "https://media.istockphoto.com/id/1131617171/photo/water-delivery-man-in-blue-t-shirt-and-cap.jpg?s=612x612&w=0&k=20&c=kG8v7OJpptuVfbkA2bLx_Op7GyjnsnW-FYhdebHqvfo="
+            }
             alt=""
-            className="object-contain h-80  rounded-[30px] hover:opacity-70 "
+            className="object-contain h-80  rounded-[30px] "
+            onMouseEnter={() => setHoveredone(true)}
+            onMouseLeave={() => setHoveredone(false)}
           />
           <img
-            src="https://media.istockphoto.com/id/1131617173/photo/water-delivery-man-in-blue-t-shirt-and-cap.jpg?s=612x612&w=0&k=20&c=qNjLodfiNQBUgwoBSJEd_sh3x0xX0E_2aU5UIclxOIs="
+            src={
+              hoveredtwo
+                ? "https://media.istockphoto.com/id/1131617155/photo/water-delivery-man-in-blue-t-shirt-and-cap.jpg?s=612x612&w=0&k=20&c=2OmGgMF6JeOjIFOasTICV2JLEktgkqSQJyOUR2f6o0M="
+                : "https://media.istockphoto.com/id/1131617173/photo/water-delivery-man-in-blue-t-shirt-and-cap.jpg?s=612x612&w=0&k=20&c=qNjLodfiNQBUgwoBSJEd_sh3x0xX0E_2aU5UIclxOIs="
+            }
             alt=""
-            className="object-contain h-80  rounded-[30px] hover:opacity-70 "
+            className="object-contain h-80  rounded-[30px] "
+            onMouseEnter={() => setHoveredtwo(true)}
+            onMouseLeave={() => setHoveredtwo(false)}
           />
           <img
-            src="https://media.istockphoto.com/id/1131616903/photo/water-delivery-man-in-blue-t-shirt-and-cap.jpg?s=612x612&w=0&k=20&c=81oUw_ENCWadxlA1v_Zo28CGQDlcma1VgqMmDI2oiW4="
+            src={
+              hoveredthree
+                ? "https://media.istockphoto.com/id/1131616935/photo/water-delivery-man-in-blue-t-shirt-and-cap.jpg?s=612x612&w=0&k=20&c=TDu7OkkHAi3jXOsJsglwfSmw9EasE6Kzzy1aR65oxf4="
+                : "https://media.istockphoto.com/id/1131617158/photo/water-delivery-man-in-blue-t-shirt-and-cap.jpg?s=612x612&w=0&k=20&c=03XUe2UWM_qa4-c64FJ6TigjI-XPNrZbExDpCW06SXE="
+            }
             alt=""
-            className="object-contain h-80  rounded-[30px] hover:opacity-70 "
+            className="object-contain h-80  rounded-[30px] "
+            onMouseEnter={() => setHoveredthree(true)}
+            onMouseLeave={() => setHoveredthree(false)}
           />
         </div>
       </div>
@@ -346,7 +379,6 @@ const Hero = () => {
         className=" bg-white 800px:px-10 800px:pb-10 ease-in duration-100 grid grid-cols-2 max-768px:grid max-768px:grid-cols-1 max-500px:grid max-500px:grid-cols-1 max-640px:grid max-640px:grid-cols-1 max-400px:grid max-400px:grid-cols-1"
         data-aos="fade-down"
         data-aos-delay="100"
-        
       >
         <div className="px-10 py-10 max-400px:px-5 400px:px-5 390px:px-5 text-justify">
           <h1 className="font-bold text-center text-[20px] 390px:text-[20px] 400pxtext-[20px]">
@@ -367,23 +399,13 @@ const Hero = () => {
             consectetur adipisicing elit. Voluptates id repellendus architecto?
             Commodi, totam alias possimus, rem maxime illo cum accusantium
             corporis hic, quas sapiente saepe dolore iusto ratione repellat?
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti
-            dolor accusantium maiores libero obcaecati vel amet aliquid alias
-            ipsa porro doloremque mollitia sapiente harum eaque commodi
-            deserunt, doloribus pariatur velit!. Lorem ipsum, dolor sit amet
-            consectetur adipisicing elit. Voluptates id repellendus architecto?
-            Commodi, totam alias possimus, rem maxime illo cum accusantium
-            corporis hic, quas sapiente saepe dolore iusto ratione repellat?
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti
-            dolor accusantium maiores libero obcaecati vel amet aliquid alias
-            ipsa porro doloremque mollitia sapiente harum eaque commodi
-       
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
           </p>
         </div>
         <div className="px-5 py-2 h-[40vh] ">
           <ReactPlayer
             className="react-player"
-            url="https://www.youtube.com/watch?v=wko93JCYwKk"
+            url="https://www.youtube.com/watch?v=GKnTULe9ORA"
             controls
             width="100%"
             height="100%"
@@ -525,25 +547,9 @@ const Hero = () => {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas ex
             sint incidunt sed reiciendis saepe dolore recusandae. Mollitia
             blanditiis debitis, deserunt amet repellat recusandae unde assumenda
-            animi. Assumenda, maiores. Et. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas ex
-            sint incidunt sed reiciendis saepe dolore recusandae. Mollitia
-            blanditiis debitis, deserunt amet repellat recusandae unde assumenda
-            animi. Assumenda, maiores. Et. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas ex
-            sint incidunt sed reiciendis saepe dolore recusandae. Mollitia
-            blanditiis debitis, deserunt amet repellat recusandae unde assumenda
-            animi. Assumenda, maiores. Et. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas ex
-            sint incidunt sed reiciendis saepe dolore recusandae. Mollitia
-            blanditiis debitis, deserunt amet repellat recusandae unde assumenda
-            animi. Assumenda, maiores. Et. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas ex
-            sint incidunt sed reiciendis saepe dolore recusandae. Mollitia
-            blanditiis debitis, deserunt amet repellat recusandae unde assumenda
-            animi. Assumenda, maiores. Et. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas ex
-            sint incidunt sed reiciendis saepe dolore recusandae. Mollitia
-            blanditiis debitis, deserunt amet repellat recusandae unde assumenda
-            animi. Assumenda, maiores. Et. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas ex
-            sint incidunt sed reiciendis saepe dolore recusandae. Mollitia
-            blanditiis debitis, deserunt amet repellat recusandae unde assumenda
-            animi. Assumenda, maiores. Et.
+            animi. Assumenda, maiores. Et. Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Voluptas ex sint incidunt sed
+            reiciendis saepe dolore recusandae. Mollitia
           </p>
         </div>
         <div className="bg-white 800px:px-20 800px:py-20 800px:rounded-br-[20px] shadow-md max-400px:px-5 ">
@@ -595,7 +601,6 @@ const Hero = () => {
         className="flex bg-white 800px:px-20 800px:pb-10 w-full ease-in duration-300"
         data-aos="fade-down"
         data-aos-delay="400"
-        
       >
         <div className="w-full">
           <FAQPage />
@@ -608,7 +613,7 @@ const Hero = () => {
           <Support />
         </div>
       </section>
-      
+
       <section className="flex w-full ">
         <div class=" bg-blue-900 w-full">
           <div class="max-w-2xl mx-auto text-white py-5">
@@ -668,17 +673,17 @@ const Hero = () => {
         </div>
       </section>
       <div
-      className={`fixed bottom-4 right-4 transition-opacity ${
-        isVisible ? 'opacity-100' : 'opacity-0'
-      }`}
-    >
-      <button
-        onClick={scrollToTop}
-        className="bg-blue-500 text-white rounded-full p-2 hover:bg-blue-600 focus:outline-none"
+        className={`fixed bottom-4 right-4 transition-opacity ${
+          isVisible ? "opacity-100" : "opacity-0"
+        }`}
       >
-        <BiArrowToTop size={24} />
-      </button>
-    </div>
+        <button
+          onClick={scrollToTop}
+          className="bg-blue-500 text-white rounded-full p-2 hover:bg-blue-600 focus:outline-none"
+        >
+          <BiArrowToTop size={24} />
+        </button>
+      </div>
     </section>
   );
 };

@@ -1,15 +1,14 @@
 import React, { useState } from 'react'
-import { BiBookmark, BiMenuAltRight, BiUserCircle } from 'react-icons/bi'
+import { BiBookmark, BiHomeAlt, BiUserCircle } from 'react-icons/bi'
 import { BsDropletHalf, BsQuestionCircle } from 'react-icons/bs'
 import { CgProfile } from 'react-icons/cg'
-import { IoCallOutline } from 'react-icons/io5'
-import { RiHome3Line, RiShutDownLine } from 'react-icons/ri'
-import { RxCaretDown, RxCaretUp, RxContainer, RxCross1, RxHamburgerMenu } from 'react-icons/rx'
+import { IoAlbumsOutline, IoCallOutline } from 'react-icons/io5'
+import { RiHome3Line, RiProductHuntLine, RiShutDownLine } from 'react-icons/ri'
+import {  RxContainer, RxCross1, RxHamburgerMenu } from 'react-icons/rx'
 import { Link, useNavigate } from 'react-router-dom'
 import styles from "../styles/styles";
 import { useSelector } from 'react-redux'
 import { HiQuestionMarkCircle } from 'react-icons/hi'
-import { AiOutlineProfile } from 'react-icons/ai'
 import axios from 'axios'
 import { server } from '../server'
 import { toast } from 'react-toastify'
@@ -18,17 +17,17 @@ const WebNavbar = () => {
     const { isAuthenticated, user } = useSelector((state) => state.user);
     const [open, setOpen] = useState(false);
     const navigate = useNavigate();
-    const [isSubItemsOpen, setSubItemsOpen] = useState(false);
-    const [isItemsOpen, setItemsOpen] = useState(false);
+    // const [isSubItemsOpen, setSubItemsOpen] = useState(false);
+    // const [isItemsOpen, setItemsOpen] = useState(false);
 
     
-  const toggleSubItems = () => {
-    setSubItemsOpen(!isSubItemsOpen);
-  };
+  // const toggleSubItems = () => {
+  //   setSubItemsOpen(!isSubItemsOpen);
+  // };
 
-  const toggleItems = () => {
-    setItemsOpen(!isItemsOpen);
-  };
+  // const toggleItems = () => {
+  //   setItemsOpen(!isItemsOpen);
+  // };
 
   const logoutHandler = () => {
     axios
@@ -44,7 +43,7 @@ const WebNavbar = () => {
   };
   return (
     <>
-     <div className="transition sticky shadow-lg shadow-gray-400 hidden 800px:flex items-center justify-between w-full bg-blue-900 h-[70px]">
+     <div className="transition sticky shadow hidden 800px:flex items-center justify-between w-full bg-blue-900 h-[70px]">
         <div
           className={`${styles.section} relative ${styles.noramlFlex} justify-between shadow-gray-500`}
         >
@@ -134,19 +133,29 @@ const WebNavbar = () => {
           )}
         </div>
 
-        {/* mobile header sidebar */}
-        {open && (
+         {/* mobile header sidebar */}
+         {open && (
           <div
             className={`fixed w-full bg-[#0000005f] z-20 h-full top-0 left-0`}
           >
-            <div className="fixed max-400px:w-[70%] max-500px:w-[60%] max-640px:w-[60%] max-768px:w-[60%] bg-gray-100 h-screen top-0 left-0 z-10 overflow-y-scroll">
+            <div className="fixed max-400px:w-[70%] max-500px:w-[60%] max-640px:w-[60%] max-768px:w-[60%] bg-blue-900 h-screen top-0 left-0 z-10 overflow-y-scroll">
               <div className="bg-blue-500 w-full h-2"></div>
               <div className="w-full justify-end flex   ">
                 <RxCross1
                   size={30}
-                  className=" pt-2 text-blue-500"
+                  className=" pt-2 pb-2 text-white"
                   onClick={() => setOpen(false)}
                 />
+              </div>
+              <div className="flex pb-3 items-center justify-center">
+              <Link to="/">
+            <img
+              src="https://see.fontimg.com/api/renderfont4/ow59x/eyJyIjoiZnMiLCJoIjozMywidyI6MTAwMCwiZnMiOjMzLCJmZ2MiOiIjMUE1N0IwIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/TVdSU01T/airtravelerspersonaluse-bdit.png"
+              alt=""
+              className="h-[30px] w-[150px]"
+            />
+          </Link>
+
               </div>
 
               <div className="w-50 bg-gray-100 text-white text-center">
@@ -175,7 +184,7 @@ const WebNavbar = () => {
                   <div className="flex w-full items-center justify-center h-[10%] mb-2  ">
                     {isAuthenticated ? (
                       <div className=" items-center justify-center pl-2">
-                        <Link to="/profile">
+                        <Link to="/">
                           <img
                             src={`${user.avatar?.url}`}
                             alt=""
@@ -204,57 +213,66 @@ const WebNavbar = () => {
 
                   <hr />
                   <div className="w-full text-center">
-                    {" "}
+                    
                     <h4 className="text-[11px] text-gray-600 ml-2">
-                      {" "}
-                      Role: {user.role}
+                     
+                      Role: {user && user?.role}
                     </h4>
-                    <h4 className="text-[11px] text-gray-600 ml-2">
-                      {" "}
-                      Name: {user.name}
-                    </h4>
+                    <h3 className="text-[11px] text-gray-600 ml-2">
+                      
+                      Name: {user && user.name}
+                    </h3>
                   </div>
                 </div>
-                <hr />
-                <ul className="py-3">
-                  <li className="pl-4 pr-2 ">
-                    <div className="text-blue-700 flex">
-                      <BiMenuAltRight size={24} /> Dashboard Menu{" "}
-                      <Link to={"/faq"}>
-                        <HiQuestionMarkCircle size={22} className="ml-5 " />
+                
+                <ul className="py-3 bg-blue-900">
+                  <li className=" ">
+                    <div className="text-white flex font-semibold mb-3 ml-3 ">
+                      <RxHamburgerMenu size={24} className="mr-1" /> NAVIGATION{" "}
+                      <Link to={"/webfaq"}>
+                        <HiQuestionMarkCircle size={22} className="ml-5 text-white" />
                       </Link>
                     </div>
-                    <hr />
+                   <hr />
+                    
 
-                    <ul className="pl-8 ">
+                   <div className=" items-center justify-center">
+                   <ul className="pl-10 bg-blue-900 items-center justify-center ">
                       <Link to={"/"}>
-                        <li className="py-2 cursor-pointer hover:p-2  hover:text-blue-500 text-gray-500">
-                          <div className="flex">🏠 Home</div>
+                        <li className="py-2 cursor-pointer hover:p-2 justify-center  hover:text-blue-500 text-gray-500">
+                          <div className="flex text-white justify-start font-bold"><BiHomeAlt className="mr-2" size={21}/>Home</div>
                         </li>
                       </Link>
-                      <hr />
-                      <Link to={"/best-selling"}>
-                        <li className="py-2 cursor-pointer hover:p-2  hover:text-blue-500 text-gray-500">
-                          <div className="flex">🛒 Best Item Order</div>
+                      
+                      <Link to={"/about"}>
+                        <li className="py-2 cursor-pointer hover:p-2  hover:text-blue-500  text-gray-500">
+                          <div className="flex text-white font-bold justify-start"><IoAlbumsOutline className="mr-2" size={21}/> About us</div>
                         </li>
                       </Link>
-                      <hr />
-                      <Link to={"/products"}>
+                      
+                      <Link to={"/webproducts"}>
                         <li className="py-2 cursor-pointer hover:p-2  hover:text-blue-500 text-gray-500">
-                          <div className="flex">🧴 Gallon | Container</div>
+                          <div className="flex text-white font-bold justify-start"><RiProductHuntLine className="mr-2" size={21}/>Product</div>
                         </li>
                       </Link>
-                      <hr />
-                      <Link to={"/events"}>
+                    
+                      <Link to={"/websupport"}>
                         <li className="py-2 cursor-pointer hover:p-2  hover:text-blue-500 text-gray-500">
-                          <div className="flex">🎁 Offer's Promo</div>
+                          <div className="flex text-white font-bold justify-start"><IoCallOutline className="mr-2" size={21}/>Support</div>
                         </li>
                       </Link>
-                      <hr />
+
+                      <Link to={"/webfaq"}>
+                        <li className="py-2 cursor-pointer hover:p-2  hover:text-blue-500 text-gray-500">
+                          <div className="flex text-white font-bold justify-start"><BsQuestionCircle className="mr-2" size={21}/>Faq</div>
+                        </li>
+                      </Link>
+                    
                     </ul>
+                   </div>
                   </li>
 
-                  <li className="pl-4 pr-2 py-2 ">
+                  {/* <li className="pl-4 pr-2 py-2 ">
                     <div onClick={toggleItems} className="text-blue-700 flex">
                       <AiOutlineProfile size={20} className="mr-1" />
                       Profile Dashboard
@@ -305,9 +323,9 @@ const WebNavbar = () => {
                         <hr />
                       </ul>
                     )}
-                  </li>
+                  </li> */}
 
-                  <li className="pl-4 pr-2 py-2  ">
+                  {/* <li className="pl-4 pr-2 py-2  ">
                     <div
                       onClick={toggleSubItems}
                       className="text-blue-700 flex"
@@ -330,8 +348,9 @@ const WebNavbar = () => {
                         <hr />
                       </ul>
                     )}
-                  </li>
-                  <div className="text-gray-500 flex mt-4 pl-4">
+                  </li> */}
+                  <hr />
+                  <div className="text-white flex mt-4 pl-4">
                     <RiShutDownLine
                       className="mr-1 text-[red]"
                       size={24}
@@ -341,7 +360,7 @@ const WebNavbar = () => {
                   </div>
                 </ul>
               </div>
-              <hr />
+              
              
             </div>
             

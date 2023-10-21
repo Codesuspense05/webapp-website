@@ -27,13 +27,15 @@ const HomePage = () => {
   };
   return (
     <>
-    <div className='mb-5 overflow-hidden 800px:hidden'>
+    <div className='mb-[3rem] mt-[4rem]  800px:hidden'>
       
         <Header activeHeading={1} />
 
          {/* <Hero /> */}
 
+        <div className='bg-white'>
         <Categories /> 
+        </div>
         <BestDeals /> 
         {/* <div className="fixed left-0 z-10  justify-center items-center ">
         <Navigation />

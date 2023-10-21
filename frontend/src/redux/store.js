@@ -9,6 +9,7 @@ import { wishlistReducer } from "./reducers/wishlist";
 import { orderReducer } from "./reducers/order";
 
 
+
 const Store = configureStore({
   reducer: {
     user: userReducer,
@@ -19,6 +20,7 @@ const Store = configureStore({
     cart: cartReducer,
     wishlist: wishlistReducer,
     order: orderReducer,
+    
   },
 });
 

@@ -31,6 +31,8 @@ import UserchangePassword from "../pages/UserchangePassword"
 import UserTrackOrder from "../pages/UserTrackOrders";
 import UserAddress from "../pages/UserAddress";
 import WebFaq from "../pages/WebFaq";
+import Barcode from "../pages/Barcode";
+import LineChartPage from "../pages/LineChartPage";
 
 
 
@@ -69,6 +71,8 @@ export {
     WebProducts,
     WebSupport,
     WebFaq,
+    Barcode,
+    LineChartPage
     
     
     

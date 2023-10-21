@@ -23,7 +23,7 @@ const ProductDetails = ({ data }) => {
   const { cart } = useSelector((state) => state.cart);
   const { user, isAuthenticated } = useSelector((state) => state.user);
   const { products } = useSelector((state) => state.products);
-   const { seller } = useSelector((state) => state.seller);
+  //  const { seller } = useSelector((state) => state.seller);
   const [count, setCount] = useState(1);
   const [, setClick] = useState(false);
   const [select, setSelect] = useState(0);
@@ -221,7 +221,7 @@ const ProductDetails = ({ data }) => {
                 <div className="flex items-center ">
                   <Link to={`/shop/preview/${data?.shop._id}`}>
                     <img
-                      src={`${seller?.avatar?.url}`}
+                      src={`${data?.shop.avatar?.url}`}
                       alt=""
                       className="w-[50px] h-[50px] rounded-full mr-2"
                     />
@@ -229,7 +229,7 @@ const ProductDetails = ({ data }) => {
                   <div className="pr-8">
                     <Link to={`/shop/preview/${data?.shop._id}`}>
                       <h3 className={`${styles.shop_name} pb-1 pt-1`}>
-                        {seller?.name}
+                        {data?.shop.name}
                       </h3>
                     </Link>
                     <h5 className="pb-3 text-[15px]">

@@ -91,8 +91,15 @@ const Contact = () => {
   return (
     <>
     <WebNavbar/>
+    <div className="bg-cover  ">
+          <img
+            src="https://img.freepik.com/free-photo/rear-view-businessman-talking-phone-city_53876-129657.jpg?size=626&ext=jpg&ga=GA1.1.1737282160.1690642300&semt=sph"
+            alt=""
+            className="h-[200px] w-full"
+          />
+        </div>
       <section
-        className="bg-white  800px:pt-20 800px:pb-5  overflow-hidden relative z-10 ease-in duration-300"
+        className="bg-white  800px:px-20 800px:pt-5  overflow-hidden relative z-10 ease-in duration-300"
         data-aos="fade-down"
         data-aos-delay="400"
       >
@@ -120,7 +127,7 @@ const Contact = () => {
                     frameborder="0"
                     scrolling="no"
                     marginheight="0"
-                    marginwidth="0"
+                    marginWidth="0"
                     src="https://maps.google.com/maps?width=720&amp;height=300&amp;hl=en&amp;q=Kasiglahan,%20Village%20Rodriguez%20Rizal+(Mineral%20Water%20Refilling%20Station)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
                   >
                     <a href="https://www.maps.ie/population/">

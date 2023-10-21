@@ -28,7 +28,7 @@ const orderSchema = new mongoose.Schema({
     },
     shopname:{
         type: Object,
-        required: true,
+        
     },
     paymentInfo:{
         id:{

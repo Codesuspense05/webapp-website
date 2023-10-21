@@ -5,7 +5,7 @@ import {
   LoginPage,
   SignupPage,
   ActivationPage,
-//  HomePage,
+  //  HomePage,
   ProductsPage,
   BestSellingPage,
   EventsPage,
@@ -34,8 +34,9 @@ import {
   WebSupport,
   WebFaq,
   RiderActivationPage,
-
- 
+  Barcode,
+  HomePage,
+  LineChartPage,
 } from "./routes/Routes.js";
 import {
   ShopDashboardPage,
@@ -55,8 +56,6 @@ import {
   ShopCreateOrder,
   RiderCreate,
   RiderDashboardPage,
-
-
 } from "./routes/ShopRoutes";
 import {
   AdminDashboardPage,
@@ -65,7 +64,7 @@ import {
   AdminDashboardOrders,
   AdminDashboardProducts,
   AdminDashboardEvents,
-  AdminDashboardWithdraw
+  AdminDashboardWithdraw,
 } from "./routes/AdminRoutes";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -82,6 +81,11 @@ import { server } from "./server";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import RiderLoginPrivate from "./pages/RiderLoginPrivate";
+import ForgotPassword from "./components/user/ForgotPassword";
+import ResetPassword from "./components/user/ResetPassword";
+import WebContext from "./pages/Webcontext";
+
+
 
 
 
@@ -118,34 +122,32 @@ const App = () => {
         </Elements>
       )}
       <Routes>
-
-              {/* For Website */}
+        {/* For Website */}
 
         <Route path="/about" element={<WebAbout />} />
         <Route path="/webproducts" element={<WebProducts />} />
         <Route path="/websupport" element={<WebSupport />} />
         <Route path="/webfaq" element={<WebFaq />} />
+        <Route path="/webcontext" element={<WebContext />} />
 
+        <Route path="/barcode" element={<Barcode />} />
 
-    
-        
-
-
-
-         {/* <Route path="/" element={<HomePage />} />  */}
+        <Route path="/website" element={<HomePage />} />
         <Route path="/" element={<HomeWeb />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/password/forgot" element={<ForgotPassword />} />
+        <Route path="/password/reset/:token" element={<ResetPassword />} />
         <Route path="/sign-up" element={<SignupPage />} />
         <Route
           path="/activation/:activation_token"
           element={<ActivationPage />}
         />
-            {/* seller activation */}
+        {/* seller activation */}
         <Route
           path="/seller/activation/:activation_token"
           element={<SellerActivationPage />}
         />
-            {/* rideractivation */}
+        {/* rideractivation */}
         <Route
           path="/rider/activation/:activation_token"
           element={<RiderActivationPage />}
@@ -164,7 +166,12 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        
+
+     
+      <Route path="/line" element={<LineChartPage/>} />
+
+      
+
         <Route path="/order/success" element={<OrderSuccessPage />} />
         <Route
           path="/profile"
@@ -174,7 +181,7 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-          <Route
+        <Route
           path="/user-orders"
           element={
             <ProtectedRoute>
@@ -182,7 +189,7 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-          <Route
+        <Route
           path="/user-refundOrders"
           element={
             <ProtectedRoute>
@@ -198,7 +205,7 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-         <Route
+        <Route
           path="/user-changepassword"
           element={
             <ProtectedRoute>
@@ -241,9 +248,23 @@ const App = () => {
         <Route path="/shop/preview/:id" element={<ShopPreviewPage />} />
         {/* shop Routes */}
         {/* <Route path="/shop-login" element={<ShopLoginPage />} />  */}
-        
-        <Route path="/rider-create" element={ <ProtectedAdminRoute><RiderCreate /> </ProtectedAdminRoute>} />
-        <Route path="/shop-create" element={ <ProtectedAdminRoute><ShopCreate /> </ProtectedAdminRoute>} />
+
+        <Route
+          path="/rider-create"
+          element={
+            <ProtectedAdminRoute>
+              <RiderCreate />{" "}
+            </ProtectedAdminRoute>
+          }
+        />
+        <Route
+          path="/shop-create"
+          element={
+            <ProtectedAdminRoute>
+              <ShopCreate />{" "}
+            </ProtectedAdminRoute>
+          }
+        />
         <Route path="/shop-private" element={<ShoploginPrivate />} />
         <Route path="/rider-private" element={<RiderLoginPrivate />} />
         <Route
@@ -271,7 +292,7 @@ const App = () => {
           }
         />
 
-      <Route
+        <Route
           path="/deliveryrider"
           element={
             <SellerProtectedRoute>
@@ -279,8 +300,7 @@ const App = () => {
             </SellerProtectedRoute>
           }
         />
-       
-        
+
         <Route
           path="/dashboard-create-product"
           element={
@@ -289,7 +309,7 @@ const App = () => {
             </SellerProtectedRoute>
           }
         />
-         <Route
+        <Route
           path="/dashboard-walkin-order-product"
           element={
             <SellerProtectedRoute>
@@ -301,7 +321,7 @@ const App = () => {
           path="/dashboard-create-orders"
           element={
             <SellerProtectedRoute>
-              <ShopCreateOrder/>
+              <ShopCreateOrder />
             </SellerProtectedRoute>
           }
         />
@@ -384,8 +404,7 @@ const App = () => {
           element={
             <ProtectedAdminRoute>
               <AdminDashboardPage />
-              </ProtectedAdminRoute>
-            
+            </ProtectedAdminRoute>
           }
         />
         <Route
@@ -393,8 +412,7 @@ const App = () => {
           element={
             <ProtectedAdminRoute>
               <AdminDashboardUsers />
-              </ProtectedAdminRoute>
-           
+            </ProtectedAdminRoute>
           }
         />
         <Route
@@ -413,7 +431,7 @@ const App = () => {
             </ProtectedAdminRoute>
           }
         />
-         <Route
+        <Route
           path="/admin-products"
           element={
             <ProtectedAdminRoute>
@@ -421,7 +439,7 @@ const App = () => {
             </ProtectedAdminRoute>
           }
         />
-         <Route
+        <Route
           path="/admin-events"
           element={
             <ProtectedAdminRoute>
@@ -429,7 +447,7 @@ const App = () => {
             </ProtectedAdminRoute>
           }
         />
-         <Route
+        <Route
           path="/admin-withdraw-request"
           element={
             <ProtectedAdminRoute>
@@ -439,17 +457,21 @@ const App = () => {
         />
       </Routes>
       <ToastContainer
-        position="top-center"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
+position="top-center"
+autoClose={1000}
+limit={1}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss={false}
+draggable={false}
+pauseOnHover={false}
+theme="colored"
+
+
+
+
+/>
     </BrowserRouter>
   );
 };

@@ -183,7 +183,56 @@ export const getAllUsers = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "getAllUsersFailed",
-      payload: error.response.data.message,
+      // payload: error.response.data.message,
     });
   }
 };
+
+// // Forgot Password
+// export const forgotPassword = (email) => async (dispatch) => {
+//   try {
+//     dispatch({ type: "forgotPasswordRequest" });
+
+//     const config = { headers: { "Content-Type": "application/json" } };
+
+//     const { data } = await axios.post(`/user/password/forgot`, email, config);
+
+//     dispatch({ type: "forgotPasswordSuccess", payload: data.message });
+//   } catch (error) {
+//     dispatch({
+//       type: "forgotPasswordFailed",
+//       payload: error.response.data.message,
+//     });
+//   }
+// };
+
+// // Reset Password
+// export const resetPassword = (token, passwords) => async (dispatch) => {
+//   try {
+//     dispatch({ type: "resetPasswordRequest" });
+
+//     const config = { headers: { "Content-Type": "application/json" } };
+
+//     const { data } = await axios.put(
+//       `/user/password/reset/${token}`,
+//       passwords,
+//       config
+//     );
+
+//     dispatch({ type: "resetPasswordSuccess", payload: data.success });
+//   } catch (error) {
+//     dispatch({
+//       type: "resetPasswordFailed",
+//       payload: error.response.data.message,
+//     });
+//   }
+// };
+// //   Clearing errors
+// export const clearErrors= () => async (dispatch)=>{
+//   dispatch({
+//       type: "clearErrors"
+//   })
+// }
+
+
+

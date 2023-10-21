@@ -1,4 +1,4 @@
-import React, { useEffect} from "react";
+import React, { useEffect, useState} from "react";
 import { AiOutlineEye} from "react-icons/ai";
 import styles from "../../styles/styles";
 import { Link } from "react-router-dom";
@@ -8,9 +8,10 @@ import { getAllOrdersOfShop } from "../../redux/actions/order";
 import { getAllProductsShop } from "../../redux/actions/product";
 import { Avatar, Button } from "@material-ui/core";
 import { DataGrid } from "@material-ui/data-grid";
-import {  CiMoneyBill } from "react-icons/ci";
 import { IoEyeOutline } from "react-icons/io5";
-import { CgProductHunt, CgShoppingBag } from "react-icons/cg";
+import ReactApexChart from 'react-apexcharts';
+import { LineChartPage } from "../../routes/Routes";
+
 
 const DashboardHero = () => {
   const dispatch = useDispatch();
@@ -23,7 +24,80 @@ const DashboardHero = () => {
      dispatch(getAllProductsShop(seller._id));
   }, [dispatch,seller._id]);
 
-  const availableBalance = seller?.availableBalance.toFixed(2);
+  const availableBalance = seller?.availableBalance.toFixed(2)
+  const totalorder = orders && orders.length;
+  const totalproducts = products && products.length;
+
+  
+
+  const [salesData, setSalesData] = useState([0, 0, 0, 0, 0, 0,0]);
+  const [orderData, setOrderData] = useState([0, 0, 0, 0, 0, 0,0]);
+  const [productData, setProductData] = useState([0, 0, 0, 0, 0, 0,0]);
+  const [currentDay, setCurrentDay] = useState('');
+
+  
+  useEffect(() => {
+    // Get the current day of the week (0 = Sunday, 1 = Monday, etc.)
+    const currentDate = new Date();
+    const currentDayIndex = currentDate.getDay();
+
+    // Update the sales data for the current day
+      // Update the sales data for the current day (set it to 1000)
+
+      //SALES
+    const updatedSalesData = [...salesData];
+    updatedSalesData[currentDayIndex] =+ availableBalance; // Set the current day's sales value to 1000
+
+    //ORDERS
+    const updatedOrderData = [...orderData];
+    updatedOrderData[currentDayIndex] = totalorder; // Set the current day's sales value to 1000
+
+    //PRODUCTS
+    const updatedProductData = [...productData];
+    updatedProductData[currentDayIndex] = totalproducts; // Set the current day's sales value to 1000
+
+
+    setSalesData(updatedSalesData);
+    setOrderData(updatedOrderData );
+    setProductData(updatedProductData );
+
+    // Set the current day label
+    const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    setCurrentDay(daysOfWeek[currentDayIndex]);
+  }, [availableBalance,orderData,salesData,productData,totalorder,totalproducts]);
+
+  const options = {
+    plotOptions: {
+      pie: {
+        donut: {
+          size: '70%',
+          labels: {
+            show: true,
+           
+            value: {
+              show: true,
+              fontSize: '12px',
+              color: '#333',
+              offsetY: 10, // Adjust this value for vertical positioning
+            },
+            total: {
+              show: true,
+              label: '📈',
+              color: '#333',
+              fontSize: '14px',
+              offsetY: 0, // Adjust this value for vertical positioning
+            },
+          },
+        },
+      },
+    },
+    labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+    dataLabels: {
+      enabled: false,
+    },
+  };
+
+
 
   const columns = [
     { field: "", headerName: "", minWidth: 30, flex: 0.1,  sortable: false,
@@ -152,67 +226,69 @@ const DashboardHero = () => {
   return (
     
     <div className="w-full p-8">
-      <div className="flex"><MdDashboard size={30}/><h3 className="text-[22px] font-Poppins pb-2">Shop Dashboard</h3></div>
+      <div className="flex"><MdDashboard size={30}/><h3 className="text-[22px] font-Poppins pb-2">Shop Dashboard |  </h3> <h2 className="text-[20px]">Current Day: {currentDay}</h2> </div>
       <div className="w-full block 800px:flex items-center justify-between">
-        <div className="w-full mb-4 800px:w-[30%] min-h-[20vh] bg-gradient-to-r from-purple-50 via-gray-150 to-blue-200 shadow-lg rounded-[50px] px-5 py-5">
+        <div className="w-full grid grid-cols-2 mb-4 800px:w-[30%] min-h-[20vh] bg-gradient-to-r from-blue-200 via-gray-150 to-blue-100 shadow-lg rounded-[50px] px-5 py-5">
           
           <div className="flex items-center">
-            <CiMoneyBill
-              size={35}
-              className="mr-2"
-              fill="blue"
-            />
+          💰
             <h3
-              className={`${styles.productTitle} !text-[18px] leading-5 !font-[400] text-[#00000085]`}
+              className={`${styles.productTitle} !text-[18px] ml-2 leading-5 !font-[400] text-[#00000085]`}
             >
                Total Revenue{" "}
-              <span className="text-[16px]">(Profit)</span>
+              <span className="text-[16px] ">(Profit)</span>
             </h3>
+            
           </div>
-          <h5 className="pt-2 pl-[36px] text-[22px] font-[500]">₱{availableBalance}</h5>
-          <br />
+         <div className="flex">
+         <h5 className="pt-2 pl-[36px] text-[22px] font-[500]">₱{availableBalance}</h5>
+       
+         </div>
+         
           <hr />
           <Link to="/dashboard-withdraw-money">
             <h5 className=" flex pt-4 pl-[2] text-blue-500">View Profit <IoEyeOutline size={25} className="ml-1"/></h5>
           </Link>
+
+        
+      <ReactApexChart options={options} series={salesData} type="donut" width="290" />
+        
         </div>
 
-        <div className="w-full mb-4 800px:w-[30%] min-h-[20vh] bg-gradient-to-r from-purple-50 via-gray-150 to-blue-200 shadow-lg rounded-[50px] px-5 py-5">
+        <div className="w-full grid grid-cols-2 mb-4 800px:w-[30%] min-h-[20vh] bg-gradient-to-r from-blue-200 via-gray-150 to-blue-100 shadow-lg rounded-[50px] px-5 py-5">
           <div className="flex items-center">
-            <CgShoppingBag size={30} className="mr-2 text-[blue]" fill="#00000085" />
+          👜
             <h3
-              className={`${styles.productTitle} !text-[18px] leading-5 !font-[400] text-[#00000085]`}
+              className={`${styles.productTitle} !text-[18px] ml-2 leading-5 !font-[400] text-[#00000085]`}
             >
               All Orders
             </h3>
           </div>
           <h5 className="pt-2 pl-[36px] text-[22px] font-[500]">{orders && orders.length}</h5>
-          <br />
+          
           <hr />
           <Link to="/dashboard-orders">
             <h5 className="flex pt-4 pl-2 text-blue-500">View Orders<IoEyeOutline size={25} className="ml-1"/></h5>
           </Link>
+          <ReactApexChart options={options} series={orderData} type="donut" width="290" />
         </div>
 
-        <div className="w-full mb-4 800px:w-[30%] min-h-[20vh] bg-gradient-to-r from-purple-50 via-gray-150 to-blue-200 shadow-lg rounded-[50px] px-5 py-5">
+        <div className="w-full grid grid-cols-2 mb-4 800px:w-[30%] min-h-[20vh] bg-gradient-to-r from-blue-200 via-gray-150 to-blue-100 shadow-lg rounded-[50px] px-5 py-5">
           <div className="flex items-center">
-            <CgProductHunt
-              size={35}
-              className="mr-2 text-[blue]"
-              fill="blue"
-            />
+          📦
             <h3
-              className={`${styles.productTitle} !text-[18px] leading-5 !font-[400] text-[#00000085]`}
+              className={`${styles.productTitle} !text-[18px] ml-2 leading-5 !font-[400] text-[#00000085]`}
             >
               All Products
             </h3>
           </div>
           <h5 className="pt-2 pl-[36px] text-[22px] font-[500]">{products && products.length}</h5>
-          <br />
+         
           <hr />
           <Link to="/dashboard-products">
             <h5 className="flex pt-4 pl-2 text-blue-500">View Products<IoEyeOutline size={25} className="ml-1"/></h5>
           </Link>
+          <ReactApexChart options={options} series={productData} type="donut" width="290" />
         </div>
       </div>
       <div className="bg-gray-300 w-full h-1"></div>
@@ -227,7 +303,14 @@ const DashboardHero = () => {
         autoHeight
       />
       </div>
-      
+      <br />
+      <div className="flex">
+        <LineChartPage/>
+        <LineChartPage/>
+        <LineChartPage/>
+      </div>
+     
+     
     </div>
   );
 };

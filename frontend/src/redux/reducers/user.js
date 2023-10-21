@@ -78,4 +78,48 @@ export const userReducer = createReducer(initialState, {
   clearMessages: (state) => {
     state.successMessage = null;
   },
+
+
+
+    // forgot password
+    forgotPasswordRequest: (state) => {
+      state.Loading = true;
+      state.error = null
+    },
+    forgotPasswordSuccess: (state,action) => {
+      state.Loading = false;
+      state.message = action.payload;
+    },
+    forgotPasswordFailed: (state,action) => {
+      state.Loading = false;
+      state.error = action.payload;
+    },
+    clearError: (state) => {
+      state.error = null;
+    },
+    // clearMessage: (state) => {
+    //   state.successMessage = null;
+    // },
+  
+      // reset password
+  resetPasswordRequest: (state) => {
+    state.Loading = true;
+    state.error = null
+  },
+  resetPasswordSuccess: (state,action) => {
+    state.Loading = false;
+    state.success = action.payload
+  },
+  resetPasswordFailed: (state,action) => {
+    state.Loading = false;
+    state.error = action.payload;
+  },
+
+  // clearMessage: (state) => {
+  //   state.successMessage = null;
+  // },
+
+
 });
+
+

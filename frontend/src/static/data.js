@@ -159,13 +159,13 @@ export const categoriesData = [
   },
   {
     id: 5,
-    title: "Bottles and other sizes",
+    title: "ML Bottle water and other sizes",
     subTitle: "",
     image_Url: "https://i.ibb.co/qmdHdGY/images-1-removebg-preview.png",
   },
   {
     id: 5,
-    title: "Accessories parts",
+    title: "Accessories parts of container | Gallon",
     subTitle: "",
     image_Url:
       "https://laz-img-sg.alicdn.com/p/90625c8f09a113ee91c91b89dd73ea80.jpg",

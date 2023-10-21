@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { server } from "../../server";
 import { toast } from "react-toastify";
+import { BsArrowBarLeft } from "react-icons/bs";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
 
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -25,7 +27,10 @@ const Login = () => {
         { withCredentials: true }
       )
       .then((res) => {
-        toast.success("Login Success!");
+        toast.success("Login Success!",{
+          theme:"colored"
+        });
+        
         navigate("/");
         window.location.reload(true);
       })
@@ -33,6 +38,7 @@ const Login = () => {
         toast.error(err.response.data.message);
       });
   };
+
 
   return (
     <div
@@ -52,6 +58,9 @@ const Login = () => {
         <div className=" bg-white py-4 px-4 shadow shadow-gray-400 sm:rounded-lg sm:px-10 max-400px:m-2  max-500px:m-10  max-640px:m-10 max-400px:rounded-[20px]">
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="  items-center justify-center">
+            <Link to={"/"}>
+        <div className="text-blue-500"><BsArrowBarLeft size={20}/></div>
+        </Link>
               <div className="flex  justify-center">
                 <img
                   src="https://i.ibb.co/ZVVMVrH/Lcd5nd-Bri-removebg-preview.png"
@@ -133,13 +142,10 @@ const Login = () => {
                   Remember me
                 </label>
               </div>
-              <div className="text-sm">
-                <a
-                  href="forgot-password"
-                  className="font-sm text-blue-600 hover:text-blue-500"
-                >
-                  Forgot your password?
-                </a>
+              <div className="text-sm text-blue-500 hover:text-blue-700">
+              <Link to="">Forgot Password</Link>
+                 
+                
               </div>
             </div>
             <div>

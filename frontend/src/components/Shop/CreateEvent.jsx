@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { categoriesData, colorTypeData } from "../../static/data";
 import { toast } from "react-toastify";
 import { createevent } from "../../redux/actions/event";
+import { IoRibbonOutline } from "react-icons/io5";
 
 const CreateEvent = () => {
   const { seller } = useSelector((state) => state.seller);
@@ -101,48 +102,26 @@ const CreateEvent = () => {
   };
 
   return (
-    <div className="w-[90%] 800px:w-[50%] bg-white  shadow h-[80vh] rounded-[4px] p-3 overflow-y-scroll">
-      <h5 className="text-[30px] font-Poppins text-center">Create Promo's</h5>
+    <div className="w-[90%] 800px:w-[40%] bg-white  shadow h-[80vh] rounded-[4px] p-5 ">
+      <h5 className="text-[30px] flex justify-end font-Poppins text-center">Create Promo's<IoRibbonOutline color="red"/></h5>
       {/* create event form */}
       <form onSubmit={handleSubmit}>
-        <br />
-        <div>
-          <label className="pb-2">
+      
+        <label className="pb-2">
             Product Name <span className="text-red-500">*</span>
           </label>
+        <div className="flex">
+          
           <input
             type="text"
             name="name"
             value={name}
-            className="mt-2 appearance-none block w-full px-3 h-[35px] border border-gray-300 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+            className="mt-2 mr-2 appearance-none block w-full px-3 h-[35px] border border-gray-500 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             onChange={(e) => setName(e.target.value)}
             placeholder="Enter your event product name..."
           />
-        </div>
-        <br />
-        <div>
-          <label className="pb-2">
-            Description <span className="text-red-500">*</span>
-          </label>
-          <textarea
-            cols="30"
-            required
-            rows="8"
-            type="text"
-            name="description"
-            value={description}
-            className="mt-2 appearance-none block w-full pt-2 px-3 border border-gray-300 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-            onChange={(e) => setDescription(e.target.value)}
-            placeholder="Enter your event product description..."
-          ></textarea>
-        </div>
-        <br />
-        <div>
-          <label className="pb-2">
-            ColorType <span className="text-red-500">*</span>
-          </label>
           <select
-            className="w-full mt-2 border h-[35px] rounded-[5px]"
+            className="w-full mt-2 border border-gray-500  h-[35px] rounded-[5px]"
             value={color}
             onChange={(e) => setColor(e.target.value)}
           >
@@ -158,10 +137,31 @@ const CreateEvent = () => {
         <br />
         <div>
           <label className="pb-2">
+            Description <span className="text-red-500">*</span>
+          </label>
+          <textarea
+            cols="30"
+            required
+            rows="5"
+            type="text"
+            name="description"
+            value={description}
+            className="mt-2 appearance-none block w-full pt-2 px-3 border border-gray-500 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder="Enter your event product description..."
+          ></textarea>
+        </div>
+        <br />
+            <div className="flex justify-between">
+            <label className="pb-2">
             Product Category <span className="text-red-500">*</span>
           </label>
+          <label className="pb-2">Tags</label>
+            </div>
+        <div className="flex">
+          
           <select
-            className="w-full mt-2 border h-[35px] rounded-[5px]"
+            className="w-full mt-2 mr-2 border h-[35px] border-gray-500 rounded-[5px]"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
           >
@@ -173,93 +173,93 @@ const CreateEvent = () => {
                 </option>
               ))}
           </select>
-        </div>
-        <br />
-        <div>
-          <label className="pb-2">Tags</label>
           <input
             type="text"
             name="tags"
             value={tags}
-            className="mt-2 appearance-none block w-full px-3 h-[35px] border border-gray-300 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+            required
+            className="mt-2 appearance-none block w-50 px-3 h-[35px] border border-gray-500 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             onChange={(e) => setTags(e.target.value)}
-            placeholder="Enter your event product tags..."
+            placeholder="Event product tags..."
           />
         </div>
+        
         <br />
-        <div>
+        <div className="flex justify-between"> 
           <label className="pb-2">Original Price</label>
+          <label className="pb-2">
+            Price (With Discount) <span className="text-red-500">*</span>
+          </label>
+          <label className="pb-2">
+            Product Stock <span className="text-red-500">*</span>
+          </label>
+          </div>
+        <div className="flex ">
+         
           <input
             type="number"
             name="price"
             value={originalPrice}
-            className="mt-2 appearance-none block w-full px-3 h-[35px] border border-gray-300 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+            required
+            className="mt-2 mr-2 appearance-none block w-full px-3 h-[35px] border border-gray-500 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             onChange={(e) => setOriginalPrice(e.target.value)}
-            placeholder="Enter your event product price..."
+            placeholder="Event product price..."
           />
-        </div>
-        <br />
-        <div>
-          <label className="pb-2">
-            Price (With Discount) <span className="text-red-500">*</span>
-          </label>
           <input
             type="number"
             name="price"
             value={discountPrice}
-            className="mt-2 appearance-none block w-full px-3 h-[35px] border border-gray-300 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+            required
+            className="mt-2 mr-2 appearance-none block w-full px-3 h-[35px] border border-gray-500 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             onChange={(e) => setDiscountPrice(e.target.value)}
-            placeholder="Enter your event product price with discount..."
+            placeholder="Event price with discount..."
           />
-        </div>
-        <br />
-        <div>
-          <label className="pb-2">
-            Product Stock <span className="text-red-500">*</span>
-          </label>
-          <input
+           
+           <input
             type="number"
             name="price"
             value={stock}
-            className="mt-2 appearance-none block w-full px-3 h-[35px] border border-gray-300 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+            className="mt-2 appearance-none block w-full px-3 h-[35px] border border-gray-500 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             onChange={(e) => setStock(e.target.value)}
-            placeholder="Enter your event product stock..."
+            placeholder="Event product stock..."
           />
         </div>
+       
         <br />
-        <div>
-          <label className="pb-2">
+        <div className="flex justify-between">
+        <label className="pb-2">
             Event Start Date <span className="text-red-500">*</span>
           </label>
+          <label className="pb-2">
+            Event End Date <span className="text-red-500">*</span>
+          </label>
+        </div>
+        <div className="flex">
+         
           <input
             type="date"
             name="price"
             id="start-date"
             value={startDate ? startDate.toISOString().slice(0, 10) : ""}
-            className="mt-2 appearance-none block w-full px-3 h-[35px] border border-gray-300 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+            className="mt-2 mr-5 appearance-none block w-full px-3 h-[35px] border border-gray-500 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             onChange={handleStartDateChange}
             min={today}
             placeholder="Enter your event product stock..."
           />
-        </div>
-        <br />
-        <div>
-          <label className="pb-2">
-            Event End Date <span className="text-red-500">*</span>
-          </label>
           <input
             type="date"
             name="price"
             id="start-date"
             value={endDate ? endDate.toISOString().slice(0, 10) : ""}
-            className="mt-2 appearance-none block w-full px-3 h-[35px] border border-gray-300 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+            className="mt-2 appearance-none block w-full px-3 h-[35px] border border-gray-500 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             onChange={handleEndDateChange}
             min={minEndDate}
             placeholder="Enter your event product stock..."
           />
         </div>
         <br />
-        <div>
+       
+        <div className="text-center">
           <label className="pb-2">
             Upload Images <span className="text-red-500">*</span>
           </label>
@@ -271,7 +271,7 @@ const CreateEvent = () => {
             multiple
             onChange={handleImageChange}
           />
-          <div className="w-full flex items-center flex-wrap">
+          <div className="w-full flex items-center justify-center flex-wrap">
             <label htmlFor="upload">
               <AiOutlinePlusCircle size={30} className="mt-3" color="#555" />
             </label>
@@ -290,7 +290,7 @@ const CreateEvent = () => {
             <input
               type="submit"
               value="Create"
-              className="mt-2 cursor-pointer appearance-none text-center block w-full px-3 h-[35px] border border-gray-300 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+              className="mt-2 cursor-pointer appearance-none text-center block w-full px-3 h-[35px] border border-blue-500 rounded-[3px] hover:bg-blue-500 hover:text-white placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             />
           </div>
         </div>
