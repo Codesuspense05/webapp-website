@@ -39,7 +39,7 @@ router.post("/create-rider", catchAsyncErrors(async (req, res, next) => {
 
     const activationToken = createActivationToken(rider);
 
-    const activationUrl = `http://localhost:3000/rider/activation/${activationToken}`;
+    const activationUrl = `https://mineralwater-websystem.vercel.app/rider/activation/${activationToken}`;
 
     try {
       await sendMail({
