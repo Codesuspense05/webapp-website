@@ -44,7 +44,7 @@ const RiderActivationPage = () => {
           <span className="font-medium text-lg text-orange-900"><span className="font-semibold">Sorry!!</span>Your Token was Expired!</span>
           <p className="text-base mt-2">Please try again to register account. Thank you!.</p>
           
-          <Link to={"/dashboard"}>
+          <Link to={"/rider-private"}>
           <button className="flex justify-center items-center bg-orange-700 hover:bg-orange-800 pl-4 pr-4 pt-1.5 pb-1.5 mt-4 rounded-md text-white font-medium">
             <span className="mr-2">Go to App</span>
             <svg className="w-6 h-6" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -75,7 +75,7 @@ const RiderActivationPage = () => {
           </p>
         </div>
         <div className="p-6 pt-0">
-         <Link to={'/dashboard'}>
+         <Link to={'/deliveryrider'}>
          <button data-ripple-light="true" type="button" className="select-none rounded-lg bg-blue-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
             Login
           </button>

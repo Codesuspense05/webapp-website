@@ -1,15 +1,17 @@
 import React from 'react'
-import Header from '../components/Layout/Header'
-import Footer from '../components/Layout/Footer'
+
 import UserOrderDetails from "../components/UserOrderDetails";
+import HeaderOrderdetails from './HeaderOrderdetails';
+import CustomerDetails from './CustomerDetails';
 
 const OrderDetailsPage = () => {
   return (
-    <div>
-        <Header />
+    <div className='bg-white'>
+     <HeaderOrderdetails/>
         <UserOrderDetails />
-        <Footer />
+        <CustomerDetails/>
     </div>
+    
   )
 }
 

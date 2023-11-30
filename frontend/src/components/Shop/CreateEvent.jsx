@@ -219,6 +219,7 @@ const CreateEvent = () => {
             type="number"
             name="price"
             value={stock}
+            required
             className="mt-2 appearance-none block w-full px-3 h-[35px] border border-gray-500 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             onChange={(e) => setStock(e.target.value)}
             placeholder="Event product stock..."
@@ -243,6 +244,7 @@ const CreateEvent = () => {
             value={startDate ? startDate.toISOString().slice(0, 10) : ""}
             className="mt-2 mr-5 appearance-none block w-full px-3 h-[35px] border border-gray-500 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             onChange={handleStartDateChange}
+            required
             min={today}
             placeholder="Enter your event product stock..."
           />
@@ -250,6 +252,7 @@ const CreateEvent = () => {
             type="date"
             name="price"
             id="start-date"
+            required
             value={endDate ? endDate.toISOString().slice(0, 10) : ""}
             className="mt-2 appearance-none block w-full px-3 h-[35px] border border-gray-500 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             onChange={handleEndDateChange}
@@ -269,6 +272,7 @@ const CreateEvent = () => {
             id="upload"
             className="hidden"
             multiple
+            required
             onChange={handleImageChange}
           />
           <div className="w-full flex items-center justify-center flex-wrap">

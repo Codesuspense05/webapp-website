@@ -9,6 +9,7 @@ const LoginPage = () => {
   const { isAuthenticated } = useSelector((state) => state.user);
 
   useEffect(() => {
+    window.localStorage.getItem('isLoggedIn', true)
     if(isAuthenticated === true){
       navigate("/");
     }

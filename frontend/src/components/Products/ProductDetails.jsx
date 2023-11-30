@@ -16,6 +16,7 @@ import { addTocart } from "../../redux/actions/cart";
 import { toast } from "react-toastify";
 import Ratings from "./Ratings";
 import axios from "axios";
+import { MdMoreHoriz } from "react-icons/md";
 
 
 const ProductDetails = ({ data }) => {
@@ -24,7 +25,7 @@ const ProductDetails = ({ data }) => {
   const { user, isAuthenticated } = useSelector((state) => state.user);
   const { products } = useSelector((state) => state.products);
   //  const { seller } = useSelector((state) => state.seller);
-  const [count, setCount] = useState(1);
+  const [count,] = useState(1);
   const [, setClick] = useState(false);
   const [select, setSelect] = useState(0);
   const navigate = useNavigate();
@@ -38,15 +39,7 @@ const ProductDetails = ({ data }) => {
     }
   }, [data, wishlist,dispatch]);
 
-  const incrementCount = () => {
-    setCount(count + 1);
-  };
 
-  const decrementCount = () => {
-    if (count > 1) {
-      setCount(count - 1);
-    }
-  };
 
   // const removeFromWishlistHandler = (data) => {
   //   setClick(!click);
@@ -118,18 +111,19 @@ const ProductDetails = ({ data }) => {
         <div className={`${styles.section} w-[90%] 800px:w-[80%]`}>
           <div className="w-full py-5">
             <div className="block w-full 800px:flex">
+              <Link to={"/products"}><MdMoreHoriz size={30} className=" relative top-2 left-0 cursor-pointer"/></Link>
               <div className="w-full 800px:w-[50%] items-center justify-center">
                 <img
                   src={`${data && data.images[select]?.url}`}
                   alt=""
-                  className="w-[80%] max-400px:w-[60%] max-400px:ml-14 "
+                  className="relative w-[80%] max-400px:h-[110px] max-500px:h-[110px]  max-500px:w-[40%] max-400px:w-[40%] top-0 left-10 max-400px:ml-14 "
                 />
                 <div className="w-[150px] flex">
                   {data &&
                     data.images.map((i, index) => (
                       <div
                         className={`${
-                          select === 0 ? "border rounded-full" : "null"
+                          select === 0 ? "border rounded-[10px]" : "null"
                         } cursor-pointer`}
                       >
                         <img
@@ -139,6 +133,7 @@ const ProductDetails = ({ data }) => {
                           onClick={() => setSelect(index)}
                         />
                         
+                        
                       </div>
                     ))}
                   <div
@@ -147,7 +142,7 @@ const ProductDetails = ({ data }) => {
                     } cursor-pointer`}
                   ></div>
                 </div>
-      
+                    
               </div>
               <br />
               <hr />
@@ -170,44 +165,7 @@ const ProductDetails = ({ data }) => {
                           
        
 
-                <div className="flex items-center mt-12 max-400px:mt-6 justify-center pr-3">
-                  <div>
-                    <button
-                      className="bg-gradient-to-r from-blue-400 to-blue-500 text-white font-bold rounded px-4 py-1 shadow-lg hover:opacity-75 transition duration-300 ease-in-out"
-                      onClick={decrementCount}
-                    >
-                      -
-                    </button>
-                    <span className="border text-gray-800 font-medium px-4 py-1">
-                      {count}
-                    </span>
-                    <button
-                      className="bg-gradient-to-r from-blue-400 to-blue-500 text-white font-bold rounded px-4 py-1 shadow-lg hover:opacity-75 transition duration-300 ease-in-out"
-                      onClick={incrementCount}
-                    >
-                      +
-                    </button>
-                  </div>
-                  {/* <div className="ml-2 border p-1">
-                    {click ? (
-                      <AiFillHeart
-                        size={30}
-                        className="cursor-pointer"
-                        onClick={() => removeFromWishlistHandler(data)}
-                        color={click ? "red" : "#333"}
-                        title="Remove from wishlist"
-                      />
-                    ) : (
-                      <AiOutlineHeart
-                        size={30}
-                        className="cursor-pointer"
-                        onClick={() => addToWishlistHandler(data)}
-                        color={click ? "red" : "#333"}
-                        title="Add to wishlist"
-                      />
-                    )}
-                  </div> */}
-                </div>
+                
                 <div
                   className="w-[150px]flex 800px:w-[70%] items-center justify-center  cursor-pointer !mt-2 !rounded-full h-9 border-[2px] border-blue-500 !bg-transparent shadow-lg"
                   onClick={() => addToCartHandler(data._id)}

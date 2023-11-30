@@ -94,7 +94,7 @@ const Hero = () => {
   };
 
   return (
-    <section className=" bg-white overflow-hidden w-full  ">
+    <section className=" bg-white w-full  ">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 110 1440 170"

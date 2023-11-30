@@ -13,7 +13,8 @@ const DashboardSideBar = ({ active }) => {
   
 
   return (
-    <div className="w-full h-[100vh] bg-white   sticky top-0 left-0 z-10 overflow-y-scroll  ">
+    <div className="w-full h-[110vh] bg-white sticky top-0 left-0 z-10 overflow-hidden shadow-xl  ">
+      
       {/* single item */}
       {/* <div className=" flex items-center justify-center p-2 max-400px:hidden"
          

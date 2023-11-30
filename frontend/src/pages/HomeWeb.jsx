@@ -78,9 +78,10 @@ const HomeWeb = () => {
   
   return (
     <>
+    <div className="">
       {/* <div className="bg-blue-500 800px:w-[100%] h-1 max-400px:hidden max-500px:hidden max-640px:hidden  max-768px:hidden"></div> */}
 
-      <div className=" overflow-hidden p-0 m-0 mt-0 mb-0">
+      <div className=" !overflow-hidden p-0 m-0 mt-0 mb-0 ">
         <div className="hidden 800px:h-[50px]  800px:flex items-center justify-between px-10 py-10 bg-[#0099ff]">
           
           <div className="relative flex overflow-x-hidden text-white">
@@ -210,7 +211,7 @@ const HomeWeb = () => {
       {/* mobile header */}
      
       <div className="w-full h-[70px] bg-gray-100 z-50 top-0 left-0 shadow-lg 800px:hidden">
-        <div className="w-full flex items-center justify-between p-4">
+        <div className="w-full  flex items-center justify-between p-4">
           <div>
             <BiMenuAltLeft
               color="blue"
@@ -230,7 +231,7 @@ const HomeWeb = () => {
 
           {isAuthenticated ? (
             <div className=" flex items-center justify-center">
-              <Link to="/profile">
+              <Link to="/">
                 <img
                   src={`${user.avatar?.url}`}
                   alt=""
@@ -482,6 +483,7 @@ const HomeWeb = () => {
         
       </div>
       <Hero/>
+      </div>
     </>
   );
 };

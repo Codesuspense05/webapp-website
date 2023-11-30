@@ -129,6 +129,7 @@ const ShopCreate = () => {
         setName("");
         setEmail("");
         setPassword("");
+        setConfirmPassword("");
         setAvatar();
         setZipCode("");
         setAddress("");
@@ -418,7 +419,7 @@ const ShopCreate = () => {
              className="group relative w-full h-[40px] flex justify-center py-2 px-4 border  text-sm font-medium  border-blue-500 rounded-md text-blue-500 bg-transparent hover:bg-blue-700 hover:text-white"
              
            >
-             Register as Delivery Staff
+             Register as another Shop
            </button>
          </div>
          <div className={`${styles.noramlFlex} flex w-full`}>

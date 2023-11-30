@@ -33,6 +33,8 @@ const AdminDashboardMain = () => {
 
    const adminBalance = adminEarning?.toFixed(2);
 
+
+
   const columns = [
     { field: "id", headerName: "Order ID", minWidth: 130, flex: 0.5 },
 
@@ -147,8 +149,8 @@ const AdminDashboardMain = () => {
       ) : (
         <div className="w-full p-4">
         <h3 className="text-[22px] font-Poppins pb-2"><div className="flex"><GrUserAdmin size={28}/>Admin Dashboard</div></h3>
-        <div className="w-full block 800px:flex items-center justify-between">
-          <div className="w-full mb-4 800px:w-[30%] min-h-[20vh] bg-gradient-to-r from-white via-gray-150 to-blue-400 shadow-xl rounded-[40px] px-6 py-6 mr-3 ">
+        <div className="w-full block 800px:flex items-center ">
+          {/* <div className="w-full mb-4 800px:w-[30%] min-h-[20vh] bg-gradient-to-r from-white via-gray-150 to-blue-400 shadow-xl rounded-[40px] px-6 py-6 mr-3 ">
             <div className="flex items-center">
               <AiOutlineMoneyCollect
                 size={30}
@@ -162,9 +164,9 @@ const AdminDashboardMain = () => {
               </h3>
             </div>
             <h5 className="pt-2 pl-[36px] text-[22px] font-[500]">₱ {adminBalance}</h5>
-          </div>
+          </div> */}
   
-          <div className="w-full mb-4 800px:w-[30%] min-h-[20vh] bg-gradient-to-r from-white via-gray-150 to-blue-400 shadow-xl rounded-[40px] px-6 py-5 mr-3">
+          <div className="w-full mb-4 800px:w-[20%] min-h-[10vh] bg-gradient-to-r from-white via-gray-150 to-blue-400 shadow-xl rounded-[40px] px-6 py-5 mr-3">
             <div className="flex items-center">
               <BsShopWindow size={30} className="mr-2" fill="#00000085" />
               <h3
@@ -179,7 +181,7 @@ const AdminDashboardMain = () => {
             </Link>
           </div>
   
-          <div className="w-full mb-4 800px:w-[30%] min-h-[20vh] bg-gradient-to-r from-white via-gray-150 to-blue-400 shadow-xl rounded-[40px] px-6 py-5 mr-3">
+          <div className="w-full mb-4 800px:w-[20%] min-h-[10vh] bg-gradient-to-r from-white via-gray-150 to-blue-400 shadow-xl rounded-[40px] px-6 py-5 mr-3">
             <div className="flex items-center">
               <GrOrderedList  
                 size={30}
@@ -198,7 +200,7 @@ const AdminDashboardMain = () => {
             </Link>
           </div>
 
-          <div className="w-full mb-4 800px:w-[30%] min-h-[20vh] bg-gradient-to-r from-white via-gray-150 to-blue-400 shadow-xl rounded-[40px] px-6 py-5 ">
+          <div className="w-full mb-4 800px:w-[20%] min-h-[10vh] bg-gradient-to-r from-white via-gray-150 to-blue-400 shadow-xl rounded-[40px] px-6 py-5 ">
             <div className="flex items-center">
               <HiUsers
                 size={30}

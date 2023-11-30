@@ -87,7 +87,7 @@ const CreateProduct = () => {
   };
 
   return (
-    <div className="w-[90%] 800px:w-[40%] bg-white border border-gray-500 shadow-xl h-[80vh] rounded-[10px] p-5 ">
+    <div className="w-[90%] 800px:w-[40%] bg-white border border-gray-500 shadow-xl h-[90vh] rounded-[10px] p-5 ">
       <h5 className="text-[30px] font-Poppins text-center">Create Product</h5>
       {/* create product form */}
       <form onSubmit={handleSubmit}>

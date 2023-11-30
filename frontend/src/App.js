@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState} from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {
@@ -11,7 +11,6 @@ import {
   EventsPage,
   FAQPage,
   CheckoutPage,
-  PaymentPage,
   OrderSuccessPage,
   ProductDetailsPage,
   ProfilePage,
@@ -37,6 +36,7 @@ import {
   Barcode,
   HomePage,
   LineChartPage,
+  PaymentPage,
 } from "./routes/Routes.js";
 import {
   ShopDashboardPage,
@@ -76,20 +76,29 @@ import { ShopHomePage } from "./ShopRoutes.js";
 import SellerProtectedRoute from "./routes/SellerProtectedRoute";
 import { getAllProducts } from "./redux/actions/product";
 import { getAllEvents } from "./redux/actions/event";
-import axios from "axios";
-import { server } from "./server";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
 import RiderLoginPrivate from "./pages/RiderLoginPrivate";
 import ForgotPassword from "./components/user/ForgotPassword";
 import ResetPassword from "./components/user/ResetPassword";
 import WebContext from "./pages/Webcontext";
+import PullToRefresh from "./pages/refresh";
+import TestStocks from "./pages/test";
+import RiderProtectedRoute from "./routes/RiderProtectroute";
+import Googlechart from "./pages/googlechart";
+import LineChart from "./pages/linechart";
+import LogoutButton from "./components/Layout/showmessage.jsx";
+import Popup from "./pages/Popup.jsx";
+import axios from "axios";
+import { server } from "./server.js";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+
 
 
 
 
 
 const App = () => {
+ 
   const [stripeApikey, setStripeApiKey] = useState("");
 
   async function getStripeApikey() {
@@ -107,7 +116,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      {stripeApikey && (
+       {stripeApikey && (
         <Elements stripe={loadStripe(stripeApikey)}>
           <Routes>
             <Route
@@ -121,6 +130,7 @@ const App = () => {
           </Routes>
         </Elements>
       )}
+
       <Routes>
         {/* For Website */}
 
@@ -131,13 +141,16 @@ const App = () => {
         <Route path="/webcontext" element={<WebContext />} />
 
         <Route path="/barcode" element={<Barcode />} />
-
+        <Route path="/show" element={<LogoutButton />} />
+       
         <Route path="/website" element={<HomePage />} />
         <Route path="/" element={<HomeWeb />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/password/forgot" element={<ForgotPassword />} />
         <Route path="/password/reset/:token" element={<ResetPassword />} />
         <Route path="/sign-up" element={<SignupPage />} />
+
+          {/* users activation */}
         <Route
           path="/activation/:activation_token"
           element={<ActivationPage />}
@@ -148,10 +161,11 @@ const App = () => {
           element={<SellerActivationPage />}
         />
         {/* rideractivation */}
-        <Route
+
+      <Route
           path="/rider/activation/:activation_token"
           element={<RiderActivationPage />}
-        />
+        /> 
 
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/product/:id" element={<ProductDetailsPage />} />
@@ -169,6 +183,13 @@ const App = () => {
 
      
       <Route path="/line" element={<LineChartPage/>} />
+      <Route path="/refresh" element={<PullToRefresh/>} />
+      <Route path="/test" element={<TestStocks/>} />
+
+      <Route path="/googlecharts" element={<Googlechart/>} />
+      <Route path="/linechart" element={<LineChart/>} />
+      <Route path="/pop" element={<Popup/>} />
+   
 
       
 
@@ -252,9 +273,10 @@ const App = () => {
         <Route
           path="/rider-create"
           element={
-            <ProtectedAdminRoute>
+            <SellerProtectedRoute>
               <RiderCreate />{" "}
-            </ProtectedAdminRoute>
+              </SellerProtectedRoute>
+            
           }
         />
         <Route
@@ -266,7 +288,14 @@ const App = () => {
           }
         />
         <Route path="/shop-private" element={<ShoploginPrivate />} />
-        <Route path="/rider-private" element={<RiderLoginPrivate />} />
+
+        <Route path="/rider-private" element={
+
+        <RiderLoginPrivate />
+        
+        } />
+
+
         <Route
           path="/shop/:id"
           element={
@@ -295,9 +324,9 @@ const App = () => {
         <Route
           path="/deliveryrider"
           element={
-            <SellerProtectedRoute>
+            <RiderProtectedRoute>
               <RiderDashboardPage />
-            </SellerProtectedRoute>
+            </RiderProtectedRoute>
           }
         />
 

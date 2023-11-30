@@ -54,7 +54,7 @@ export const loadRider = () => async (dispatch) => {
     });
     dispatch({
       type: "LoadRiderSuccess",
-      payload: data.seller,
+      payload: data.rider,
     });
   } catch (error) {
     dispatch({

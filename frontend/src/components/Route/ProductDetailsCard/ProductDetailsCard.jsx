@@ -16,12 +16,13 @@ import { addTocart } from "../../../redux/actions/cart";
 //   addToWishlist,
 //   removeFromWishlist,
 // } from "../../../redux/actions/wishlist";
-import { BsShopWindow } from "react-icons/bs";
+import { BsShopWindow, BsStarFill } from "react-icons/bs";
 
 
 const ProductDetailsCard = ({ setOpen, data }) => {
   const { cart } = useSelector((state) => state.cart);
   const { wishlist } = useSelector((state) => state.wishlist);
+  const {products} = useSelector((state) => state.products);
   const dispatch = useDispatch();
   const [count, setCount] = useState(1);
   const [, setClick] = useState(false);
@@ -62,21 +63,19 @@ const ProductDetailsCard = ({ setOpen, data }) => {
     }
   }, [wishlist,data._id]);
 
-  // const removeFromWishlistHandler = (data) => {
-  //   setClick(!click);
-  //   dispatch(removeFromWishlist(data));
-  // };
+  const totalReviewsLength =
+  products &&
+  products.reduce((acc, product) => acc + product.reviews.length, 0);
 
-  // const addToWishlistHandler = (data) => {
-  //   setClick(!click);
-  //   dispatch(addToWishlist(data));
-  // };
+const totalRatings = products && products.reduce((acc,product) => acc + product.reviews.reduce((sum,review) => sum + review.rating, 0),0);
+
+const averageRating = totalRatings / totalReviewsLength || 0;
 
   return (
     <div className="bg-[#fff]">
       {data ? (
         <div className="fixed w-full h-screen top-0 left-0 bg-[#00000030] z-40 flex items-center justify-center">
-          <div className="w-[90%] 800px:w-[60%] h-[90vh] overflow-y-scroll 800px:h-[45vh] max-400px:h-[65vh]  bg-white rounded-md shadow-sm relative p-4">
+          <div className="w-[90%] 800px:w-[60%] h-[90vh] overflow-y-scroll 800px:h-[45vh] max-400px:h-[65vh]  bg-white rounded-md shadow-sm relative p-4  border-blue-500 border-[2px]">
             <RxCross1
               size={20}
               className="absolute right-3 top-3 z-50 text-blue-500"
@@ -113,12 +112,10 @@ const ProductDetailsCard = ({ setOpen, data }) => {
           </div>
 
                 <div className="flex pt-3">
-                  <h4 className={`${styles.productDiscountPrice}`}>
+                  <h4 className={`${styles.productDiscountPrice} text-[20px]`}>
                     P{data.discountPrice}
                   </h4>
-                  <h3 className={`${styles.price}`}>
-                    {data.originalPrice ? "P" + data.originalPrice  : null}
-                  </h3>
+                  
                 </div>
                 <div className="flex items-center  justify-end pr-3">
                   <div>
@@ -169,7 +166,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                 <div className="flex  items-center max-400px:justify-start border">
                   <Link to={`/shop/preview/${data.shop._id}`} className="flex">
                     <img
-                      src={`${data.images && data.images[0]?.url}`}
+                      src={`${data?.shop.avatar?.url}`}
                       alt=""
                       className="w-[50px] h-[50px] rounded-full mr-2"
                     />
@@ -177,7 +174,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                       <h3 className={`${styles.shop_name}`}>
                         {data.shop.name}
                       </h3>
-                      <h5 className="pb-3 text-[15px]">{data?.ratings} Ratings</h5>
+                      <h5 className="flex pb-3 text-[15px]">{averageRating}/5 <BsStarFill size={10} color="orange"/></h5>
                     </div>
                   </Link>
                   <div className="flex items-center justify-end"><BsShopWindow size={30} className="max-400px:ml-[120px] 800px:ml-[350px] text-blue-500"/></div>

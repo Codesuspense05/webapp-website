@@ -1,9 +1,8 @@
-import { Button } from "@material-ui/core";
+import { Avatar, Button } from "@material-ui/core";
 import { DataGrid } from "@material-ui/data-grid";
 import React, { useEffect } from "react";
-import { AiOutlineDelete, AiOutlineEye } from "react-icons/ai";
+import { AiOutlineDelete} from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { deleteEvent, getAllEventsShop } from "../../redux/actions/event";
 // import { getAllProductsShop } from "../../redux/actions/product";
 // import { deleteProduct } from "../../redux/actions/product";
@@ -27,53 +26,77 @@ const AllEvents = () => {
   const columns = [
     { field: "id", headerName: "Product Id", minWidth: 150, flex: 0.7 },
     {
+      field: "image",
+      headerName: "Image",
+      minWidth: 120,
+      flex: 0.1,
+      sortable: false,
+      filterable: false,
+      renderCell: (params) => {
+        console.log(params);
+        return (
+          <>
+            
+            <Avatar src={params.value}/>
+           
+          </>
+        );
+      }
+    },
+    {
       field: "name",
       headerName: "Name",
       minWidth: 180,
       flex: 1.4,
     },
     {
-      field: "price",
-      headerName: "Price",
-      minWidth: 100,
+      field: "color",
+      headerName: "Colotype",
+      minWidth: 180,
+      flex: 0.5,
+    },
+    {
+      field: "original",
+      headerName: "Original Price",
+      minWidth: 180,
+      flex: 0.6,
+    },
+    
+    {
+      field: "discount",
+      headerName: "Discount Price",
+      minWidth: 180,
       flex: 0.6,
     },
     {
       field: "Stock",
       headerName: "Stock",
       type: "number",
-      minWidth: 80,
+      minWidth: 120,
       flex: 0.5,
     },
+    {
+      field: "status",
+      headerName: "Promo Status",
+      minWidth: 180,
+      flex: 0.5,
+    },
+    {
+      field: "start",
+      headerName: "Start Date",
+      minWidth: 180,
+      flex: 1.4,
+    },
+    {
+      field: "end",
+      headerName: "End Date",
+      minWidth: 180,
+      flex: 1.4,
+    },
 
-    {
-      field: "sold",
-      headerName: "Sold out",
-      type: "number",
-      minWidth: 130,
-      flex: 0.6,
-    },
-    {
-      field: "Preview",
-      flex: 0.8,
-      minWidth: 100,
-      headerName: "",
-      type: "number",
-      sortable: false,
-      renderCell: (params) => {
-        const d = params.row.name;
-        const product_name = d.replace(/\s+/g, "-");
-        return (
-          <>
-            <Link to={`/product/${product_name}`}>
-              <Button>
-                <AiOutlineEye size={20} />
-              </Button>
-            </Link>
-          </>
-        );
-      },
-    },
+
+
+    
     {
       field: "Delete",
       flex: 0.8,
@@ -102,9 +125,15 @@ const AllEvents = () => {
       row.push({
         id: item._id,
         name: item.name,
-        price: "₱" + item.discountPrice,
+        image: item.images[0].url,
+        color: item.color,
+        original: "₱" + item.discountPrice,
+        discount: "₱" + item.discountPrice,
         Stock: item.stock,
-        sold: item.sold_out,
+        status: item.status,
+        start: "📅 " + item.start_Date,
+        end: "📅 " + item.Finish_Date
+        
       });
     });
 

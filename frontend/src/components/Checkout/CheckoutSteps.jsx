@@ -8,7 +8,8 @@ import { Link } from 'react-router-dom';
 const CheckoutSteps = ({active}) => {
     console.log(active);
   return (
-    <div className='w-full flex justify-center '>
+    <div className='w-full flex items-center justify-center mb-2 pt-5 pb-5 bg-white '>
+      
         <Link to={"/checkout"}>
             <RxCaretLeft color={`${active === 1 ? "gray" : "blue"}`} size={40} className='cursor-pointer'/></Link>
         

@@ -98,47 +98,33 @@ const ProductCard = ({ data,isEvent }) => {
             {data.name.length > 40 ? data.name.slice(0, 40) + "..." : data.name}
           </h4>
 
-          <div className="flex 800px:items-end 800px:justify-end 800px:text-[20px]  ">
+          <div className="flex 800px:items-end 800px:justify-end 800px:text-[20px] 800px:hidden  ">
           <Ratings  rating={data?.ratings} />
           </div>
 
           <div className=" flex items-center justify-end">
             <div className="flex">
-              <h5 className={`${styles.productDiscountPrice} max-400px:text-sm 800px:text-[25px]`}>
-              P{data.originalPrice === 0
+              <h5 className={`${styles.productDiscountPrice} max-400px:text-sm 800px:text-[25px] mr-2`}>
+              ₱{data.originalPrice === 0
                   ? data.originalPrice
                   : data.discountPrice}
                 
               </h5>
-              <h4 className={`${styles.price}  max-400px:hidden max-500px:hidden max-640px:hidden max-768px:hidden`}>
+              <span className="font-[400] text-[17px] text-[#6878d2] max-400px:hidden max-500px:hidden max-640px:hidden max-768px:hidden">
+             | {data?.stock} stock
+            </span>
+
+              <h4 className={`${styles.price}  max-400px:hidden max-500px:hidden max-640px:hidden max-768px:hidden  800px:hidden`}>
                 {data.originalPrice ? data.originalPrice + "₱" : null}
               </h4>
             </div>
-            <span className="font-[400] text-[17px] text-[#6878d2] max-400px:hidden max-500px:hidden max-640px:hidden max-768px:hidden">
-              {data?.sold_out} stock
-            </span>
+         
           </div>
         </Link>
 
         {/* side options */}
         <div>
-          {/* {click ? (
-            <AiFillHeart
-             
-              className="cursor-pointer absolute right-2 800px:top-14 max-400px:top-9 800px:text-[30px]"
-              onClick={() => removeFromWishlistHandler(data)}
-              color={click ? "red" : "#333"}
-              title="Remove from wishlist"
-            />
-          ) : (
-            <AiOutlineHeart
-             
-              className="cursor-pointer absolute right-2 800px:top-14 max-400px:top-9 800px:text-[30px]"
-              onClick={() => addToWishlistHandler(data)}
-              color={click ? "red" : "#333"}
-              title="Add to wishlist"
-            />
-          )} */}
+        
           <AiOutlineEye
            
             className="cursor-pointer absolute right-2 800px:top-28 max-400px:top-14 max-500px:top-14 max-640px:top-14 max-768px:top-14 800px:text-[30px]"

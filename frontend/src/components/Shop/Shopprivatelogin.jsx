@@ -16,7 +16,6 @@ const ShopLogin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     await axios
       .post(
         `${server}/shop/login-shop`,

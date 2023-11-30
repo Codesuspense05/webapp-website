@@ -1,9 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { BiCalendar } from 'react-icons/bi';
+import { BsClock } from 'react-icons/bs';
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 const AdminHeader = () => {
     const {user} = useSelector((state) => state.user);
+    const [currentTime, setCurrentTime] = useState(new Date());
+
+    useEffect(() => {
+      // Update the current time every second
+      const interval = setInterval(() => {
+        setCurrentTime(new Date());
+      }, 1000);
+  
+      return () => {
+        clearInterval(interval);
+      };
+    }, []);
 
   return (
          <div className="w-full h-[80px] bg-white shadow sticky top-0 left-0 z-30 flex items-center justify-between px-4">
@@ -15,6 +29,11 @@ const AdminHeader = () => {
           />
         </Link>
       </div>
+      <div className="flex  items-center justify-end">
+        <BsClock size={20} className="mr-1"/><p className="mr-2"> Time: {currentTime.toLocaleTimeString()}</p>
+        
+      <BiCalendar size={20}/><p>Date: {currentTime.toLocaleDateString()}</p>
+        </div>
       <div className="flex items-center justify-center">
       
    

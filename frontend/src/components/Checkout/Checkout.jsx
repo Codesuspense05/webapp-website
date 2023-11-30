@@ -36,8 +36,8 @@ const Checkout = () => {
   }, []);
 
   const paymentSubmit = () => {
-   if(address === "" || landmark === ""){
-      toast.error("Please Provide complete address!")
+   if(address === "" || landmark === "" || penname === ""){
+      toast.error("Please Provide complete Info")
    } else{
     const shippingAddress = {
       address,
@@ -178,7 +178,7 @@ const ShippingInfo = ({
 }) => {
   return (
     
-    <div className=" w-full 800px:w-[65%] bg-white rounded-md p-5 pb-8  border-[2px] border-blue-500 shadow-xl justify-end  ">
+    <div className=" w-full 800px:w-[65%] bg-white rounded-md p-5 pb-8  border-[2px] justify-end">
       
       <h5 className="text-[18px] font-[500]"><div className="flex justify-between"><BiHomeAlt size={25}/> | Home Delivery Address</div></h5>
       <br />
@@ -344,7 +344,7 @@ const CartData = ({
 }) => {
   return (
     
-    <div className=" w-full bg-[#fff] h-full rounded-md p-5 pb-8 border-[2px] border-blue-500  ">
+    <div className=" w-full bg-[#fff] h-full rounded-md p-5 pb-8 border-[2px]">
    
     <div className="flex items-center justify-between"> <RiCoupon2Fill color="red" size={40}/> <RiCoupon2Fill  color="red" size={40}/></div>
     <br />

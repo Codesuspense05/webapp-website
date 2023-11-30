@@ -11,7 +11,7 @@ import {
   
 } from "react-icons/ai";
 import { IoIosArrowDown,  IoLogoYoutube } from "react-icons/io";
-import { BiCart,  BiMenuAltRight,  } from "react-icons/bi";
+import { BiCart, BiMenuAltRight,  } from "react-icons/bi";
 import {  CgProfile} from "react-icons/cg";
 import DropDown from "./DropDown";
 import Navbar from "./Navbar";
@@ -26,6 +26,7 @@ import { RiFacebookCircleFill, RiShutDownLine, RiYoutubeFill } from "react-icons
 import axios from "axios";
 import { toast } from "react-toastify";
 import { server } from "../../server";
+
 
 
 const Header = ({ activeHeading }) => {
@@ -45,6 +46,12 @@ const Header = ({ activeHeading }) => {
   const [isItemsOpen, setItemsOpen] = useState(false);
   const navigate = useNavigate();
 
+  const [showConfirmation, setShowConfirmation] = useState(false);
+
+
+
+
+
 
 
   const refreshPage = () => {
@@ -61,7 +68,7 @@ const Header = ({ activeHeading }) => {
         product.name.toLowerCase().includes(term.toLowerCase())
       );
     setSearchData(filteredProducts);
-    if (searchData && searchData.length === 0){
+    if (searchData && searchData.length > 0){
       setSearchData(!allProducts)
     } 
     
@@ -87,6 +94,7 @@ const Header = ({ activeHeading }) => {
   }
   
   const logoutHandler = () => {
+    window.localStorage.removeItem('isLoggedIn')
     
     axios
       .get(`${server}/user/logout`, { withCredentials: true })
@@ -94,6 +102,7 @@ const Header = ({ activeHeading }) => {
         toast.success(res.data.message);
         window.location.reload(true);
         navigate("/login");
+        setShowConfirmation(false)
       })
       .catch((error) => {
         console.log(error.response.data.message);
@@ -279,6 +288,7 @@ const Header = ({ activeHeading }) => {
             </div>
 
             {/* cart popup */}
+           
             {openCart ? <Cart setOpenCart={setOpenCart} /> : null}
 
             {/* wishlist popup */}
@@ -294,9 +304,9 @@ const Header = ({ activeHeading }) => {
       
       <div
         className={`${
-          active === true ? "shadow-sm fixed top-0 left-0 z-10" : null
+          active === true ? "shadow-sm overflow-hidden fixed top-0 left-0 z-10" : null
         }
-      w-full h-[70px] bg-blue-800 z-50 top-0 left-0 shadow-sm 800px:hidden`}
+        fixed w-full h-[70px] bg-blue-800 z-50 top-0 left-0 shadow-sm 800px:hidden`}
       >
         <div className="w-full flex items-center justify-between">
           <div>
@@ -323,6 +333,8 @@ const Header = ({ activeHeading }) => {
                 
                 {searchData && (
                   <div className="absolute bg-[#fff] z-10 shadow w-full left-0 p-3" >
+                   <div className="flex items-center justify-end">
+                   </div>
                     {searchData.map((i,index) => {
                       // const d = i.name;
                       
@@ -333,10 +345,10 @@ const Header = ({ activeHeading }) => {
                             <img
                               src={i.images[0]?.url}
                               alt=""
-                              className="w-[50px] mr-2"
+                              className="w-[50px] h-[35px] "
                           
                             />
-                            <h5 className="max-400px:text-[12px]">{i.name}</h5>
+                            <h5 className="max-400px:text-[10px]">{i.name}</h5>
                           </div>
                         </Link>
                       );
@@ -351,23 +363,7 @@ const Header = ({ activeHeading }) => {
               className=" h-[50px] w-[50px] bg-none ml-1"/></Link>
               </div>
              
-          {/* <div>
-            <div
-              className="relative mr-[20px]"
-              onClick={() => setOpenCart(true)}
-            >
-              <BiCart className="text-white mt-3"
-              size={30} />
-              <span className="absolute right-0 top-0 rounded-full bg-[#ec3a3a] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px]  leading-tight text-center">
-                {cart && cart.length}
-              </span>
-            </div>
-          </div> */}
-          {/* cart popup */}
-          {/* {openCart ? <Cart setOpenCart={setOpenCart} /> : null} */}
-
-          {/* wishlist popup */}
-          {/* {openWishlist ? <Wishlist setOpenWishlist={setOpenWishlist} /> : null} */}
+         
         </div>
 
         {/* mobile header sidebar */}
@@ -432,6 +428,7 @@ const Header = ({ activeHeading }) => {
               <hr />
       </div>
       <hr />
+      {isAuthenticated ? (
       <ul className="py-3">
         <li className="pl-4 pr-2 ">
           <div  className="text-blue-700 flex">
@@ -512,15 +509,43 @@ const Header = ({ activeHeading }) => {
           )}
          
         </li>
-        <div  className="text-gray-500 flex mt-4 pl-4 " >
-            <RiShutDownLine  className="mr-1 text-[red]" size={24} onClick={logoutHandler} /> Logout
-            
+
+      
+
+<div>
+<div  className="text-gray-500 flex mt-4 pl-4 " >
+                  <RiShutDownLine  className="mr-1 text-[red]" size={24} onClick={() => setShowConfirmation(true)} /> Logout   
+    </div>
+
+      {showConfirmation && (
+        <div className="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center">
+          <div className="bg-white p-8 rounded">
+            <p className="text-black">Are you sure you want to logout?</p>
+            <div className="mt-4 flex justify-end">
+              <button onClick={() => setShowConfirmation(false)} className="mr-4 text-gray-600 hover:text-gray-800 cursor-pointer">
+                Cancel
+              </button>
+              <button onClick={logoutHandler} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded cursor-pointer">
+                Logout
+              </button>
+            </div>
           </div>
-          
+        </div>
+      )}
+    </div>
+
+
+       
           
         
         
       </ul>
+      ) : (
+        <>
+        
+         
+        </>
+      )}
       <br />
       <div  className="text-gray-500 flex mt-4  justify-evenly" >
             <Link to={"https://www.facebook.com"}><RiFacebookCircleFill  className="mr-1 text-[blue]" size={24} /><h5 className="text-[7px]">Facebook</h5></Link>

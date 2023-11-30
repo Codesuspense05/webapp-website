@@ -129,6 +129,7 @@ const RiderCreate = () => {
         setName("");
         setEmail("");
         setPassword("");
+        setConfirmPassword("");
         setAvatar();
         setZipCode("");
         setAddress("");

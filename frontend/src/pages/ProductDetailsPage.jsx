@@ -25,7 +25,9 @@ const ProductDetailsPage = () => {
   }, [allProducts, allEvents,eventData,id]);
 
   return (
-    <div>
+    <div className="!overflow-scroll h-[100vh] w-full ">
+      <br />
+      <br />
       <Header />
       <ProductDetails data={data} />
         {

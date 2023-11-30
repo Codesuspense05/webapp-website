@@ -28,7 +28,7 @@ const RiderLogin = () => {
       )
       .then((res) => {
         toast.success("Login Success!");
-        navigate("/dashboard");
+        navigate("/deliveryrider");
         window.location.reload(true); 
       })
       .catch((err) => {

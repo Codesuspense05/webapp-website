@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { MdOutlineLocalOffer } from "react-icons/md";
+import { MdOutlineLocalOffer, MdOutlineSms } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { RiCoupon3Line, RiProductHuntLine } from "react-icons/ri";
@@ -23,7 +23,7 @@ const DashboardHeader = () => {
     };
   }, []);
   return (
-    <div className="w-full h-[80px] bg-white shadow shadow-blue-500 sticky top-0 left-0 z-30 flex items-center justify-between px-4">
+    <div className="w-full h-[80px] bg-white shadow shadow-gray-900 sticky top-0 left-0 z-30 flex items-center justify-between px-4">
      
       <div className="flex items-center">
         <div className="flex items-center mr-4">
@@ -58,14 +58,14 @@ const DashboardHeader = () => {
             size={30} 
             className="mx-5 cursor-pointer" />
           </Link>
-          <Link to="/dashboard-messages" className="800px:block hidden">
-            <TbMessageDots
-              title="Inbox"
+          <a href="https://app.mysms.com/#compose" target="_blank" rel="noopener noreferrer">
+            <MdOutlineSms
+              title="Sms"
               color="#555"
               size={30}
               className="mx-5 cursor-pointer"
             />
-          </Link>
+          </a>
          
         </div>
        

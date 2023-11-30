@@ -6,6 +6,7 @@ import Loader from "../components/Layout/Loader";
 import ProductCard from "../components/Route/ProductCard/ProductCard";
 import styles from "../styles/styles";
 import Footer from "../components/Layout/Footer";
+import NavButton from "../components/Route/Hero/NavButton";
 
 const BestSellingPage = () => {
   const [data, setData] = useState([]);
@@ -19,12 +20,14 @@ const BestSellingPage = () => {
 
   return (
    <>
+    <div className=" !overflow-scroll">
    {
     isLoading ? (
       <Loader />
     ) : (
-      <div>
+      <div className="!overflow-scroll h-[96vh] w-full">
       <Header activeHeading={2} />
+      <br />
       <br />
       <br />
       <div className={`${styles.section}`}>
@@ -32,12 +35,19 @@ const BestSellingPage = () => {
           {data && data.map((i, index) => <ProductCard data={i} key={index} />)}
         </div>
       </div>
+      <NavButton/>
       <Footer />
     </div>
     )
    }
+ </div>
    </>
   );
 };
+
+
+
+
+
 
 export default BestSellingPage;
