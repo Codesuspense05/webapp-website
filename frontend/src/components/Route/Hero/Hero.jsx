@@ -113,7 +113,7 @@ const Hero = () => {
             <BsDropletHalf
               size={30}
               color="blue"
-              className="flex animate-spin  text-center animate-duration-500 "
+              className="flex animate-bounce  text-center animate-duration-500 "
             />
           </div>
           <div className="flex w-full ">
