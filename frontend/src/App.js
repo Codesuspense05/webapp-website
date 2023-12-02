@@ -143,7 +143,7 @@ const App = () => {
         <Route path="/barcode" element={<Barcode />} />
         <Route path="/show" element={<LogoutButton />} />
        
-        <Route path="/website" element={<HomePage />} />
+        <Route path="" element={<HomePage />} />
         <Route path="/" element={<HomeWeb />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/password/forgot" element={<ForgotPassword />} />
