@@ -148,7 +148,7 @@ const AdminSideBar = ({ active }) => {
 
       <div className="w-full flex items-center p-4">
         <Link
-          to="/profile"
+          to=""
           className="w-full flex items-center"
         >
           <GrUserSettings
