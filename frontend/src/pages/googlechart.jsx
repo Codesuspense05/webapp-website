@@ -36,7 +36,7 @@ const DoughnutChart = () => {
   
 
   return (
-    <div>
+    <div className='800px:hidden'>
       <Chart
         width={'100%'}
         height={'280px'}

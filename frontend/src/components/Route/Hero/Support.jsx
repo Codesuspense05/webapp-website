@@ -96,7 +96,7 @@ const Contact = () => {
       >
         <div className="800px:container">
           <div className="flex flex-wrap  lg:justify-between">
-            <div className="w-full px-4 lg:w-1/2 xl:w-6/12">
+            <div className="w-full px-4 lg:w-1/2 ">
               <div className="800px:mb-12 800px:max-w-[570px] max-400px:text-center 400px:text-center 390px:text-center lg:mb-0">
                 <span className=" mb-4 text-4xl font-bold text-center w-full max-400px:text-[23px] 400px:text-[23px] 390px:text-[23px] ">
                   CONTACT US
@@ -130,8 +130,8 @@ const Contact = () => {
                
               </div>
             </div>
-            <div className="w-full px-4 lg:w-1/2 xl:w-4/12">
-              <div className="relative p-8 bg-white rounded-lg border shadow-xl max-400px:p-5 xl:p-10">
+            <div className="w-full px-4 lg:w-1/2 ">
+              <div className="w-full relative p-8 bg-white rounded-lg border shadow-xl max-400px:p-5 xl:p-10">
                 <form ref={form} onSubmit={sendEmail} >
                 {error && <div className="error text-[red]">{error}</div>}
                   <input
@@ -208,7 +208,7 @@ const Contact = () => {
         <br />
         <br />
         <div className="flex w-full justify-between max-400px:grid max-400px:grid-cols-1 400px:grid 400px:grid-cols-1 800px:grid 800px:grid-cols-5 max-400px:px-5 428px:px-5">
-                <div className="800px:mb-8 flex w-full max-w-[370px]">
+                <div className="800px:mb-8 flex w-full w">
                   <div className="mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-primary bg-opacity-5 text-primary sm:h-[70px] sm:max-w-[70px]">
                     <HiLocationMarker size={30} color="red" />
                   </div>
@@ -219,7 +219,7 @@ const Contact = () => {
                       Our Location
                     </h4>
                     <p className="text-base text-body-color">
-                      # 101 St. Brgy., Papuntang Langit. Philippines
+                      # 101 St. Brgy. (Philippines)
                     </p>
                   </div>
                 </div>
@@ -229,11 +229,11 @@ const Contact = () => {
                   </div>
                   <div className="w-full">
                   <hr />
-                    <h4 className=" text-lg font-bold text-dark">
-                      Phone Number
+                    <h4 className=" text-lg text-[12px] font-bold text-dark">
+                      Contact
                     </h4>
-                    <p className="text-base text-body-color">
-                      (+63)9 123 456 789
+                    <p className="text-base text-[11px] text-body-color">
+                      9 123 456 789
                     </p>
                   </div>
                 </div>
@@ -246,8 +246,8 @@ const Contact = () => {
                     <h4 className=" text-lg font-bold text-dark">
                       Email Address
                     </h4>
-                    <p className="text-base text-body-color">
-                      Capstonev2@gmail.com
+                    <p className="text-base text-[12px] text-body-color">
+                     MyEmail@gmail.com
                     </p>
                   </div>
                 </div>
@@ -261,14 +261,14 @@ const Contact = () => {
                     <h4 className=" text-lg font-bold text-dark">
                       Facebook
                     </h4>
-                    <p className="text-base text-body-color">
-                      www.facebook.com/profile
+                    <p className="text-base text-[12px] text-body-color">
+                     www.facebook.com
                     </p>
                   </div>
                   
                 </div>
                 <div className="800px:mb-8 flex w-full max-w-[370px]">
-                  <div className="mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-primary bg-opacity-5 text-primary sm:h-[70px] sm:max-w-[70px]">
+                  <div className="mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-primary bg-opacity-5 text-primary sm:h-[70px] sm:max-w-[70px] ">
                     <BsMessenger size={25} className="text-blue-600" />
                   </div>
                   <div className="w-full">
@@ -276,8 +276,8 @@ const Contact = () => {
                     <h4 className=" text-lg font-bold text-dark">
                       Messenger
                     </h4>
-                    <p className="text-base text-body-color">
-                      www.messenger.com/me
+                    <p className="text-base text-[12px] text-body-color">
+                      www.messenger.com
                     </p>
                   </div>
                   

@@ -8,11 +8,6 @@ import { getAllOrdersOfShop } from "../../redux/actions/order";
 import { getAllProductsShop } from "../../redux/actions/product";
 import { Avatar, Button } from "@material-ui/core";
 import { DataGrid } from "@material-ui/data-grid";
-import { IoEyeOutline, IoOpenOutline } from "react-icons/io5";
-import ReactApexChart from 'react-apexcharts';
-import { BsViewList, BsViewStacked } from "react-icons/bs";
-import { TbViewfinder } from "react-icons/tb";
-import { RiCodeView } from "react-icons/ri";
 import { GrSettingsOption } from "react-icons/gr";
 import DoughnutChart from "../../pages/googlechart";
 

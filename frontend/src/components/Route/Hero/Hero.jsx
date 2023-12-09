@@ -92,6 +92,13 @@ const Hero = () => {
       behavior: "smooth", // For a smooth scrolling animation
     });
   };
+  const handleDownload = () => {
+    // Replace 'your_file_path' with the actual path to your application/file
+    const filePath = 'https://drive.usercontent.google.com/download?id=1ErGS2zRrNFBgozbCqrsEwxmu3gjS00F4&export=download&authuser=0&confirm=t&uuid=f0a13977-dc4e-4dd8-9a0b-79116e7b8e3f&at=APZUnTVHi8xcH2LEOAcYKNLif7WN%3A1702049094279&fbclid=IwAR2RhuxI7R2Exr-BgAl5Mvi6X87iGLJISK9T-BVpEzmDz6WOewy70CDLAeU';
+    window.open(filePath, '_blank');
+  };
+
+  
 
   return (
     <section className=" bg-white w-full  ">
@@ -107,8 +114,9 @@ const Hero = () => {
           d="M0,224L6.2,224C12.3,224,25,224,37,229.3C49.2,235,62,245,74,240C86.2,235,98,213,111,186.7C123.1,160,135,128,148,112C160,96,172,96,185,85.3C196.9,75,209,53,222,64C233.8,75,246,117,258,133.3C270.8,149,283,139,295,160C307.7,181,320,235,332,256C344.6,277,357,267,369,224C381.5,181,394,107,406,90.7C418.5,75,431,117,443,144C455.4,171,468,181,480,186.7C492.3,192,505,192,517,192C529.2,192,542,192,554,170.7C566.2,149,578,107,591,112C603.1,117,615,171,628,170.7C640,171,652,117,665,128C676.9,139,689,213,702,218.7C713.8,224,726,160,738,138.7C750.8,117,763,139,775,160C787.7,181,800,203,812,213.3C824.6,224,837,224,849,234.7C861.5,245,874,267,886,272C898.5,277,911,267,923,234.7C935.4,203,948,149,960,133.3C972.3,117,985,139,997,149.3C1009.2,160,1022,160,1034,154.7C1046.2,149,1058,139,1071,138.7C1083.1,139,1095,149,1108,176C1120,203,1132,245,1145,250.7C1156.9,256,1169,224,1182,213.3C1193.8,203,1206,213,1218,186.7C1230.8,160,1243,96,1255,112C1267.7,128,1280,224,1292,229.3C1304.6,235,1317,149,1329,106.7C1341.5,64,1354,64,1366,74.7C1378.5,85,1391,107,1403,101.3C1415.4,96,1428,64,1434,48L1440,32L1440,0L1433.8,0C1427.7,0,1415,0,1403,0C1390.8,0,1378,0,1366,0C1353.8,0,1342,0,1329,0C1316.9,0,1305,0,1292,0C1280,0,1268,0,1255,0C1243.1,0,1231,0,1218,0C1206.2,0,1194,0,1182,0C1169.2,0,1157,0,1145,0C1132.3,0,1120,0,1108,0C1095.4,0,1083,0,1071,0C1058.5,0,1046,0,1034,0C1021.5,0,1009,0,997,0C984.6,0,972,0,960,0C947.7,0,935,0,923,0C910.8,0,898,0,886,0C873.8,0,862,0,849,0C836.9,0,825,0,812,0C800,0,788,0,775,0C763.1,0,751,0,738,0C726.2,0,714,0,702,0C689.2,0,677,0,665,0C652.3,0,640,0,628,0C615.4,0,603,0,591,0C578.5,0,566,0,554,0C541.5,0,529,0,517,0C504.6,0,492,0,480,0C467.7,0,455,0,443,0C430.8,0,418,0,406,0C393.8,0,382,0,369,0C356.9,0,345,0,332,0C320,0,308,0,295,0C283.1,0,271,0,258,0C246.2,0,234,0,222,0C209.2,0,197,0,185,0C172.3,0,160,0,148,0C135.4,0,123,0,111,0C98.5,0,86,0,74,0C61.5,0,49,0,37,0C24.6,0,12,0,6,0L0,0Z"
         ></path>
       </svg>
-      <div className="container flex flex-col justify-center max-400px:h-[60vh] max-500px:h-[60vh] max-640px:h-[60vh] text-center mx-auto sm:py-2 lg:flex-row lg:justify-between">
-        <div className="flex flex-col justify-center  text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left ">
+      <div className="w-[90%] container flex flex-col justify-center max-400px:h-[60vh] max-500px:h-[60vh] max-640px:h-[60vh] text-center mx-auto sm:py-2 lg:flex-row lg:justify-between">
+        <div className="relative flex flex-col justify-center  text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left ">
+          
           <div className="flex max-400px:justify-center max-500px:justify-center max-640px:justify-center max-768px:justify-center ">
             <BsDropletHalf
               size={30}
@@ -116,7 +124,7 @@ const Hero = () => {
               className="flex animate-bounce  text-center animate-duration-500 "
             />
           </div>
-          <div className="flex w-full ">
+          <div className="flex w-full z-10 ">
             <h1
               data-aos="fade-right"
               data-aos-delay="400"
@@ -155,11 +163,11 @@ const Hero = () => {
               typeSpeed={30}
             />
           </div>
-          <div className="flex text-[12px] max-400px:text-center 390px:text-center 400px:text-center 800px:text-left  390px:px-5 800px:px-0  400px:px-5">
+          <div className="relative flex text-[12px] w-[85%] max-400px:text-center 390px:text-center 400px:text-center 800px:text-left  390px:px-5 800px:px-0  400px:px-5">
             <p
               data-aos="fade-right"
               data-aos-delay="400"
-              className="mt-4 mb-8 text-justify w-full ease-in duration-300 text-[12px]"
+              className="mt-4 mb-8 text-justify w-full ease-in duration-300 text-[12px] z-10"
             >
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Consequuntur, incidunt quisquam tempore dolorem adipisci voluptas
@@ -201,7 +209,7 @@ const Hero = () => {
         <div
           data-aos="fade-left"
           data-aos-delay="400"
-          className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128 max-400px:hidden max-500px:hidden max-640px:hidden max-768px:hidden"
+          className="flex items-center justify-center  p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128 max-400px:hidden max-500px:hidden max-640px:hidden max-768px:hidden"
         >
           <img
             src={
@@ -210,7 +218,7 @@ const Hero = () => {
                 : "https://media.istockphoto.com/id/1131617171/photo/water-delivery-man-in-blue-t-shirt-and-cap.jpg?s=612x612&w=0&k=20&c=kG8v7OJpptuVfbkA2bLx_Op7GyjnsnW-FYhdebHqvfo="
             }
             alt=""
-            className="object-contain h-80  rounded-[30px] "
+            className="object-contain h-80 - rounded-[30px] "
             onMouseEnter={() => setHoveredone(true)}
             onMouseLeave={() => setHoveredone(false)}
           />
@@ -232,7 +240,7 @@ const Hero = () => {
                 : "https://media.istockphoto.com/id/1131617158/photo/water-delivery-man-in-blue-t-shirt-and-cap.jpg?s=612x612&w=0&k=20&c=03XUe2UWM_qa4-c64FJ6TigjI-XPNrZbExDpCW06SXE="
             }
             alt=""
-            className="object-contain h-80  rounded-[30px] "
+            className="object-contain h-80  rounded-[30px]  "
             onMouseEnter={() => setHoveredthree(true)}
             onMouseLeave={() => setHoveredthree(false)}
           />
@@ -609,7 +617,7 @@ const Hero = () => {
       <hr />
 
       <section className="flex bg-white">
-        <div className="w-full 800px:px-20 800px:mx-20 border shadow-xl">
+        <div className="w-full 800px:px-10 800px:mx-10 border shadow-xl">
           <Support />
         </div>
       </section>
@@ -623,7 +631,7 @@ const Hero = () => {
                 Download our app{" "}
               </h3>
               <p> Stay hydrated. All day, every day. </p>
-              <div class="flex justify-center my-10 max-400px:my-2">
+              <div class="flex justify-center my-10 max-400px:my-2" onClick={handleDownload}>
                 <div class="flex items-center border rounded-lg px-4 py-2 w-52 mx-2">
                   <img
                     src="https://cdn-icons-png.flaticon.com/512/888/888857.png"
@@ -640,7 +648,7 @@ const Hero = () => {
                     </p>
                   </div>
                 </div>
-                <div class="flex items-center border  rounded-lg px-4 py-2 w-44 mx-2">
+                {/* <div class="flex items-center border  rounded-lg px-4 py-2 w-44 mx-2">
                   <img
                     src="https://cdn-icons-png.flaticon.com/512/888/888841.png"
                     alt=""
@@ -655,7 +663,7 @@ const Hero = () => {
                       Apple Store{" "}
                     </p>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
             <div class="mt-5 flex flex-col md:flex-row md:justify-between items-center text-sm text-gray-400">
