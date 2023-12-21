@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { RxCross1, RxCross2 } from "react-icons/rx";
+import { RxContainer, RxCross1, RxCross2 } from "react-icons/rx";
 import { IoBagHandle} from "react-icons/io5";
 import { HiOutlineMinus, HiPlus } from "react-icons/hi";
 import styles from "../../styles/styles";
@@ -30,13 +30,13 @@ const Cart = ({ setOpenCart }) => {
   return (
     <div className="fixed !overflow-scroll top-0 left-0 w-full inset-0  bg-[#0000004b] z-10">
     
-      <div className="fixed top-0 right-0 h-full max-400px:w-[80%] max-500px:w-[80%] max-640px:w-[80%] max-768px:w-[80%] 800px:w-[25%] bg-white flex flex-col overflow-y-scroll justify-between shadow-sm ">
+      <div className="fixed top-0 right-0 h-full max-400px:w-[80%] max-500px:w-[80%] max-640px:w-[80%] max-768px:w-[80%] 800px:w-[25%]  bg-white flex flex-col overflow-y-scroll justify-between shadow-sm ">
         {cart && cart.length === 0 ? (
           <div className="w-full h-screen flex items-center justify-center" onClick={() => setOpenCart(false)}>
-         <BsCartXFill size={40} color="gray" className=" animate-pulse"/>
+         <RxContainer size={40} color="gray" className=" animate-pulse"/>
        
     
-            <h5 className="text-gray-500 animate-pulse">Empty Cart!</h5>
+            <h5 className="text-gray-500 animate-pulse">Refill Me</h5>
             
           </div>
         ) : (
@@ -117,7 +117,7 @@ const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
   };
 
   return (
-    <div className="border-b p-4">
+    <div className=" border-b p-4">
        {/* color type */}
        <div className=" flex items-center justify-start">
                     <h5 className={"text-[15px] text-gray-500 pt-0 pb-0.5 text-shadow flex"}><h4 className="text-orange-500 flex pr-2">Colortype:</h4> {data.color}</h5>

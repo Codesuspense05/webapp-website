@@ -16,6 +16,7 @@ import { addTocart } from "../../../redux/actions/cart";
 import { toast } from "react-toastify";
 import Ratings from "../../Products/Ratings";
  import { HiLocationMarker } from "react-icons/hi";
+import { IoCartOutline } from "react-icons/io5";
 
 const ProductCard = ({ data,isEvent }) => {
   const { wishlist } = useSelector((state) => state.wishlist);
@@ -64,20 +65,21 @@ const ProductCard = ({ data,isEvent }) => {
 
   return (
     <>
-      <div className="w-full h-[360px] max-400px:h-[175px]  max-500px:h-[175px] max-640px:h-[175px] max-768px:h-[175px] bg-white rounded-lg shadow-xl p-2 relative cursor-pointer">
+      <div className="w-full h-[360px] max-400px:h-[175px]  max-500px:h-[175px] max-640px:h-[175px] max-768px:h-[175px] bg-white border-[5px] border-blue-500 rounded-lg shadow-xl p-2 relative cursor-pointer">
+    
     <div className="flex">
         <Link to={`/shop/preview/${data?.shop._id}`}>
       <img
               src={`${data?.shop.avatar?.url}`}
               alt=""
-              className=" flex w-[35px] h-[35px] max-400px:w-[20px]  max-400px:h-[20px] max-500px:w-[20px] max-500px:h-[20px] max-640px:w-[20px] max-640px:h-[20px]  rounded-full cursor-pointer mr-1"
+              className=" flex w-[55px] h-[55px] max-400px:w-[20px] border   max-400px:h-[20px] max-500px:w-[20px] max-500px:h-[20px] max-640px:w-[20px] max-640px:h-[20px]  rounded-full cursor-pointer mr-1"
             />
         </Link> 
         <HiLocationMarker size={12} color="red"/><h5 className={`${styles.shop_name} text-[15px] max-400px:text-[8px] max-500px:text-[9px] max-640px:text-[9px] max-768px:text-[9px] pt-0`}>{data?.shop.address}</h5>
         </div> 
           
         <div className="flex justify-end"></div>
-        <Link to={`${isEvent === true ? `/product/${data._id}?isEvent=true` : `/product/${data._id}`}`}>
+        <Link to={`${isEvent === true ? `` : ``}`}>
           <img
             src={`${data.images && data.images[0]?.url}`}
             alt=""
@@ -93,7 +95,7 @@ const ProductCard = ({ data,isEvent }) => {
 
       
         
-        <Link to={`${isEvent === true ? `/product/${data._id}?isEvent=true` : `/product/${data._id}`}`}>
+        <Link to={`${isEvent === true ? `` : ``}`}>
           <h4 className="font-[500] 800px:text-[20px] max-400px:text-[9px] max-500px:text-[9px] max-640px:text-[9px] max-768px:text-[9px]">
             {data.name.length > 40 ? data.name.slice(0, 40) + "..." : data.name}
           </h4>
@@ -111,7 +113,7 @@ const ProductCard = ({ data,isEvent }) => {
                 
               </h5>
               <span className="font-[400] text-[17px] text-[#6878d2] max-400px:hidden max-500px:hidden max-640px:hidden max-768px:hidden">
-             | {data?.stock} stock
+             {/* | {data?.stock} stock */}
             </span>
 
               <h4 className={`${styles.price}  max-400px:hidden max-500px:hidden max-640px:hidden max-768px:hidden  800px:hidden`}>
@@ -125,18 +127,18 @@ const ProductCard = ({ data,isEvent }) => {
         {/* side options */}
         <div>
         
-          <AiOutlineEye
+          {/* <AiOutlineEye
            
             className="cursor-pointer absolute right-2 800px:top-28 max-400px:top-14 max-500px:top-14 max-640px:top-14 max-768px:top-14 800px:text-[30px]"
             onClick={() => setOpen(!open)}
             color="blue"
             title="Quick view"
-          />
-          <AiOutlineShoppingCart
+          /> */}
+          <IoCartOutline
             
-            className="cursor-pointer absolute right-2 800px:top-40 max-400px:top-20 max-500px:top-20 max-640px:top-20 max-768px:top-20 800px:text-[30px]"
+            className="cursor-pointer absolute right-2 800px:top-20 max-400px:top-20 max-500px:top-20 max-640px:top-20 max-768px:top-20 800px:text-[50px]"
             onClick={() => addToCartHandler(data._id)}
-            color="green"
+            color="orange"
             title="Add to cart"
           />
           {open ? <ProductDetailsCard setOpen={setOpen} data={data} /> : null}

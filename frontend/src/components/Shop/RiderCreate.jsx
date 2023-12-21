@@ -424,7 +424,7 @@ const RiderCreate = () => {
          </div>
          <div className={`${styles.noramlFlex} flex w-full`}>
            {/* <h4>Already have an account?</h4> */}
-           <Link to="/admin/dashboard" className="text-blue-600 pl-2 hover:text-[red] flex">
+           <Link to="/dashboard" className="text-blue-600 pl-2 hover:text-[red] flex">
              <TfiBackLeft size={20}/>Back to Dashboard
            </Link>
          </div>

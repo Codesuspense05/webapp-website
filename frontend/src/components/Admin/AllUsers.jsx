@@ -9,7 +9,7 @@ import { RxCross1 } from "react-icons/rx";
 import axios from "axios";
 import { server } from "../../server";
 import { toast } from "react-toastify";
-import {  BiUserCheck } from "react-icons/bi";
+
 
 
 const AllUsers = () => {
@@ -152,14 +152,15 @@ const AllUsers = () => {
     });
 
   return (
-    <div className="w-full flex justify-center pt-5">
+    <div className="w-full flex justify-center pt-5 ">
       <div className="w-[97%]">
-        <h3 className="text-[22px] font-Poppins pb-2"><BiUserCheck/>All Registered Users</h3>
-        <div className="w-full min-h-[45vh] bg-white rounded">
+        
+        <div className="w-full min-h-[45vh] bg-white rounded-[20px]">
+        <h3 className="text-[22px] font-Poppins pb-2 text-center" >All Registered Users</h3>
           <DataGrid
             rows={row}
             columns={columns}
-            pageSize={10}
+            pageSize={5}
             checkboxSelection={false}
             autoHeight
           />

@@ -5,11 +5,12 @@ import AdminDashboardMain from "../components/Admin/AdminDashboardMain";
 import  AllUsers  from "../components/Admin/AllUsers";
 import  AllSellers  from "../components/Admin/AllSellers";
 import  AllProducts from "../components/Admin/AllProducts";
+import AllRiders from "../components/Admin/AllRiders";
 
 
 const AdminDashboardPage = () => {
   return (
-    <div>
+    <div className="bg-[#dfe6f2]">
       <AdminHeader />
       <div className="w-full flex">
         <div className="flex items-start justify-between w-full">
@@ -30,6 +31,7 @@ const AdminDashboardPage = () => {
       <AllUsers />
       <AllSellers/>
       <AllProducts/>
+     <AllRiders/>
 </div>
     </div>
   );

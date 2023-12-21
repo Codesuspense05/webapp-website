@@ -32,6 +32,7 @@ const rider = require("./controller/rider");
 const product = require("./controller/product");
 const event = require("./controller/event");
 const coupon = require("./controller/coupounCode");
+const barcoupon = require("./controller/barcouponcode");
 const payment = require("./controller/payment");
 const order = require("./controller/order");
 const conversation = require("./controller/conversation");
@@ -48,6 +49,7 @@ app.use("/api/v2/rider", rider);
 app.use("/api/v2/product", product);
 app.use("/api/v2/event", event);
 app.use("/api/v2/coupon", coupon);
+app.use("/api/v2/barcoupon", barcoupon);
 app.use("/api/v2/payment", payment);
 app.use("/api/v2/withdraw", withdraw);
 

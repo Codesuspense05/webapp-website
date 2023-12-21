@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { getAllRiders } from "../../redux/actions/deliveries";
 import { DataGrid } from "@material-ui/data-grid";
 import { AiOutlineDelete, AiOutlineEye } from "react-icons/ai";
 import { Avatar, Button } from "@material-ui/core";
@@ -8,34 +9,34 @@ import { RxCross1 } from "react-icons/rx";
 import axios from "axios";
 import { server } from "../../server";
 import { toast } from "react-toastify";
-import { getAllSellers } from "../../redux/actions/sellers";
 import { Link } from "react-router-dom";
 
-const AllSellers = () => {
+
+
+const AllRiders = () => {
   const dispatch = useDispatch();
-  const { sellers } = useSelector((state) => state.seller);
+  const { riders } = useSelector((state) => state.rider);
   const [open, setOpen] = useState(false);
   const [userId, setUserId] = useState("");
 
   useEffect(() => {
-    dispatch(getAllSellers());
+    dispatch(getAllRiders());
   }, [dispatch]);
 
   const handleDelete = async (id) => {
     await axios
-    .delete(`${server}/shop/delete-seller/${id}`, { withCredentials: true })
+    .delete(`${server}/rider/delete-rider/${id}`, { withCredentials: true })
     .then((res) => {
       toast.success(res.data.message);
     });
 
-  dispatch(getAllSellers());
+  dispatch(getAllRiders());
   };
-
   const columns = [
-    { field: "id", headerName: "Shop ID", minWidth: 150, flex: 0.7 },
+    { field: "id", headerName: "Rider ID", minWidth: 150, flex: 0.7 },
     {
       field: "avatar",
-      headerName: "Shop Logo",
+      headerName: "Rider Picture",
       minWidth: 150,
       flex: 0.5,
       sortable: false,
@@ -67,10 +68,17 @@ const AllSellers = () => {
       flex: 1.7,
     },
     {
+        field: "contact",
+        headerName: "Contact No.",
+        type: "text",
+        minWidth: 300,
+        flex: 0.7,
+      },
+    {
       field: "address",
-      headerName: "Seller Address",
+      headerName: "Rider Address",
       type: "text",
-      minWidth: 130,
+      minWidth: 300,
       flex: 0.7,
     },
 
@@ -81,31 +89,31 @@ const AllSellers = () => {
       minWidth: 130,
       flex: 0.8,
     },
-    {
-        field: "  ",
-        flex: 1,
-        minWidth: 150,
-        headerName: "Preview Shop",
-        type: "number",
-        sortable: false,
-        renderCell: (params) => {
-          return (
-            <>
-            <Link to={`/shop/preview/${params.id}`}>
-            <Button>
-                <AiOutlineEye size={20} />
-              </Button>
-            </Link>
-            </>
-          );
-        },
-      },
+    // {
+    //     field: "  ",
+    //     flex: 1,
+    //     minWidth: 150,
+    //     headerName: "Preview Shop",
+    //     type: "number",
+    //     sortable: false,
+    //     renderCell: (params) => {
+    //       return (
+    //         <>
+    //         <Link to={`/shop/preview/:id${params.id}`}>
+    //         <Button>
+    //             <AiOutlineEye size={20} />
+    //           </Button>
+    //         </Link>
+    //         </>
+    //       );
+    //     },
+    //   },
     {
       field: " ",
       flex: 1,
       minWidth: 150,
-      headerName: "Delete Seller",
-      type: "number",
+      headerName: "Delete Rider",
+      
       sortable: false,
       renderCell: (params) => {
         return (
@@ -120,29 +128,30 @@ const AllSellers = () => {
   ];
 
   const row = [];
-  sellers &&
-  sellers.forEach((item) => {
+  riders &&
+  riders.forEach((item) => {
       row.push({
         id: item._id,
         avatar: item?.avatar.url,
         name: item?.name,
         email: item?.email,
+        contact: item?.phoneNumber,
         joinedAt: item.createdAt.slice(0, 10),
         address: item.address,
       });
     });
 
   return (
-    <div className="w-full flex justify-center pt-5 rounded-[20px]">
+    <div className="w-full flex justify-center pt-5 ">
       <div className="w-[97%]">
         
-        <div className="w-full min-h-[45vh] bg-white rounded-[20px]">
-        <h3 className="text-[22px] font-Poppins pb-2 text-center">All Registered Shop</h3>
+        <div className="w-full  bg-white rounded-[20px]">
+        <h3 className="text-[22px] font-Poppins pb-2 text-center" >All Rider Staff</h3>
           <DataGrid
             rows={row}
             columns={columns}
-            pageSize={10}
-           
+            pageSize={2}
+            checkboxSelection={false}
             autoHeight
           />
         </div>
@@ -177,4 +186,4 @@ const AllSellers = () => {
   );
 };
 
-export default AllSellers;
+export default AllRiders;

@@ -35,7 +35,7 @@ const RiderHeader = () => {
         
      
       <div className="flex items-center justify-end border border-gray-500 rounded-full p-1"> 
-        <Link to={`/shop/${seller._id}`}>
+        <Link to={``}>
             <img
               src={`${rider.avatar?.url}`}
               alt=""

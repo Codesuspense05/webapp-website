@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { MdOutlineLocalOffer, MdOutlineSms } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { RiCoupon3Line, RiProductHuntLine } from "react-icons/ri";
+import { RiBarcodeFill, RiCoupon3Line, RiProductHuntLine } from "react-icons/ri";
 import { GrOrderedList } from "react-icons/gr";
 import { TbMessageDots } from "react-icons/tb";
 import { BsClock } from "react-icons/bs";
-import { BiCalendar } from "react-icons/bi";
+import { BiBarcodeReader, BiCalendar } from "react-icons/bi";
 
 const DashboardHeader = () => {
   const { seller } = useSelector((state) => state.seller);
@@ -66,11 +66,16 @@ const DashboardHeader = () => {
               className="mx-5 cursor-pointer"
             />
           </a>
-         
+          <Link to={"/barcode"}>
+          <BiBarcodeReader size={30}   title="Generate Barcode" className=" animate-pulse mr-2"/>
+         </Link>
+         <Link to={"/coupouns-barcode"}>
+          <RiBarcodeFill size={30}   title="Coupon Barcode"/>
+         </Link>
         </div>
        
       </div>
-      <div className="flex  items-center justify-end">
+      <div className="flex  items-center justify-end text-[20px]">
         <BsClock size={20} className="mr-1"/><p className="mr-2"> Time: {currentTime.toLocaleTimeString()}</p>
         
       <BiCalendar size={20}/><p>Date: {currentTime.toLocaleDateString()}</p>

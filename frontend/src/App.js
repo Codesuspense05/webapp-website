@@ -91,6 +91,8 @@ import axios from "axios";
 import { server } from "./server.js";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import BarcodeScanner from "./pages/BarcodeScan.jsx";
+import Allbarcode from "./components/Shop/AllBarcode.jsx";
 
 
 
@@ -189,6 +191,7 @@ const App = () => {
       <Route path="/googlecharts" element={<Googlechart/>} />
       <Route path="/linechart" element={<LineChart/>} />
       <Route path="/pop" element={<Popup/>} />
+      <Route path="/scan" element={<BarcodeScanner/>} />
    
 
       
@@ -408,6 +411,14 @@ const App = () => {
           element={
             <SellerProtectedRoute>
               <ShopAllCoupouns />
+            </SellerProtectedRoute>
+          }
+        />
+         <Route
+          path="/coupouns-barcode"
+          element={
+            <SellerProtectedRoute>
+              <Allbarcode/>
             </SellerProtectedRoute>
           }
         />

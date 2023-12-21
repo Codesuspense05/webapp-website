@@ -43,7 +43,7 @@ const WebNavbar = () => {
   };
   return (
     <>
-     <div className="transition sticky shadow hidden 800px:flex items-center justify-between w-full bg-blue-900 h-[70px]">
+     <div className="transition fixed z-20 shadow hidden 800px:flex items-center justify-between w-full bg-blue-500 h-[70px]">
         <div
           className={`${styles.section} relative ${styles.noramlFlex} justify-between shadow-gray-500`}
         >
@@ -63,12 +63,12 @@ const WebNavbar = () => {
 
           {/* navitems */}
           <div className="flex justify-evenly">
-                <ul className="flex items-center justify-evenly font-Roboto font-semibold text-white ">
+                <ul className="flex items-center justify-evenly font-Roboto font-semibold text-white  ">
                   <Link to={"/"}><li className="px-4"><div className="flex"><RiHome3Line size={20}/>Home</div></li></Link>
-                  <Link to={"/about"}><li className="px-4"><div className="flex"><BiBookmark color="white"  size={20}/>About</div></li></Link>
-                  <Link to={"/webproducts"}><li className="px-4"><div className="flex"><RxContainer color="white"  size={20}/>Container</div></li></Link>
+                  <Link to={"/about"}><li className="px-4"><div className="flex"><BiBookmark color="white"  size={20}/>About Us</div></li></Link>
+                  <Link to={"/webproducts"}><li className="px-4"><div className="flex"><RxContainer color="white"  size={20}/>Products</div></li></Link>
                   <Link to={"/websupport"}><li className="px-4"><div className="flex"><IoCallOutline color="white"  size={20}/>Support</div></li></Link>
-                  <Link to={"/webfaq"}><li className="px-4"><div className="flex"><BsQuestionCircle color="white"  size={20}/>FAQ</div></li></Link>
+                  <Link to={"/webfaq"}><li className="px-4"><div className="flex"><BsQuestionCircle color="white" className='mr-1'  size={20}/>FAQ</div></li></Link>
                 </ul>
               </div>
 
@@ -252,7 +252,7 @@ const WebNavbar = () => {
                       
                       <Link to={"/webproducts"}>
                         <li className="py-2 cursor-pointer hover:p-2  hover:text-blue-500 text-gray-500">
-                          <div className="flex text-white font-bold justify-start"><RiProductHuntLine className="mr-2" size={21}/>Product</div>
+                          <div className="flex text-white font-bold justify-start"><RiProductHuntLine className="mr-2" size={21}/>Products</div>
                         </li>
                       </Link>
                     

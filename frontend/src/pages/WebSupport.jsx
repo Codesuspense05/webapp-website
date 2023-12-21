@@ -2,7 +2,7 @@ import React, { useRef, useState} from "react";
 import emailjs from '@emailjs/browser';
 import { BsMessenger, BsTelephoneFill } from "react-icons/bs";
 import { HiLocationMarker } from "react-icons/hi";
-import { MdOutlineMarkEmailRead } from "react-icons/md";
+import { MdContactMail, MdContactSupport, MdOutlineMarkEmailRead } from "react-icons/md";
 import { RiFacebookCircleFill } from "react-icons/ri";
 import { toast } from "react-toastify";
 import WebNavbar from "./WebNavbar";
@@ -91,15 +91,48 @@ const Contact = () => {
   return (
     <>
     <WebNavbar/>
-    <div className="bg-cover  ">
-          <img
-            src="https://img.freepik.com/free-photo/rear-view-businessman-talking-phone-city_53876-129657.jpg?size=626&ext=jpg&ga=GA1.1.1737282160.1690642300&semt=sph"
-            alt=""
-            className="h-[200px] w-full"
-          />
+    <section
+        className="800px:grid 800px:grid-cols-1 grid grid-cols-1 bg-gray-100  w-full h-[50vh] ease-in duration-300"
+        data-aos="fade-down"
+        data-aos-delay="400"
+      >
+        <div
+          class="relative bg-gradient-to-r from-blue-800 to-transparent bg-cover bg-center  flex items-center justify-center "
+          style={{
+            backgroundImage:
+              "url(https://thumbor.forbes.com/thumbor/fit-in/900x510/https://www.forbes.com/advisor/wp-content/uploads/2023/06/customerservice.jpg)",
+          }}
+        >
+          <p class="absolute inset-0 bg-gradient-to-r from-transparent to-blue-800"></p>
+
+          <p class="absolute inset-0 bg-gradient-to-r from-transparent to-blue-800"></p>
+          <p
+            class="absolute grid grid-cols-2 inset-0  items-center justify-end z-10 px-10 text-white text-[18px] text-justify ease-in duration-500"
+            data-aos="fade-right"
+            data-aos-delay="400"
+          >
+            
+            <p>
+              {" "}
+              MORE THAN JUST FOR DRINKING Lorem ipsum dolor sit amet consectetur
+              adipisicing elit. Eveniet tempore non nemo animi harum nihil
+              nesciunt ipsum. Hic expedita laudantium veniam tenetur, delectus
+              atque, aliquam libero animi incidunt inventore nisi. Lorem, ipsum
+              dolor sit amet consectetur adipisicing elit. Enim eligendi,
+              debitis optio porro maiores similique odio veniam nulla nisi
+              asperiores. Repellendus dolore numquam, natus tempora cum officia
+              porro inventore mollitia.
+            </p>
+          <div className="flex align-middle justify-center items-center">  
+          <BsTelephoneFill size={40} className=" animate-bounce "/>
+          <MdContactSupport size={100} className=" animate-bounce "/>
+          <MdContactMail size={30} className=" animate-bounce "/>
+          </div>
+          </p>
         </div>
+      </section>
       <section
-        className="bg-white  800px:px-20 800px:pt-5  overflow-hidden relative z-10 ease-in duration-300"
+        className="bg-white  800px:px-10 800px:pt-5  overflow-hidden relative z-10 ease-in duration-300"
         data-aos="fade-down"
         data-aos-delay="400"
       >
@@ -139,7 +172,7 @@ const Contact = () => {
                
               </div>
             </div>
-            <div className="w-full px-4 lg:w-1/2 xl:w-4/12">
+            <div className="w-full px-4 lg:w-1/2 ">
               <div className="relative p-8 bg-white rounded-lg border shadow-xl max-400px:p-5 xl:p-10">
                 <form ref={form} onSubmit={sendEmail} >
                 {error && <div className="error text-[red]">{error}</div>}
@@ -217,7 +250,7 @@ const Contact = () => {
         <br />
         <br />
         <div className="flex w-full justify-between max-400px:grid max-400px:grid-cols-1 400px:grid 400px:grid-cols-1 800px:grid 800px:grid-cols-5 max-400px:px-5 428px:px-5">
-                <div className="800px:mb-8 flex w-full max-w-[370px]">
+                <div className="800px:mb-8 flex w-full w">
                   <div className="mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-primary bg-opacity-5 text-primary sm:h-[70px] sm:max-w-[70px]">
                     <HiLocationMarker size={30} color="red" />
                   </div>
@@ -228,7 +261,7 @@ const Contact = () => {
                       Our Location
                     </h4>
                     <p className="text-base text-body-color">
-                      # 101 St. Brgy., Papuntang Langit. Philippines
+                      # 101 St. Brgy. (Philippines)
                     </p>
                   </div>
                 </div>
@@ -238,11 +271,11 @@ const Contact = () => {
                   </div>
                   <div className="w-full">
                   <hr />
-                    <h4 className=" text-lg font-bold text-dark">
-                      Phone Number
+                    <h4 className=" text-lg text-[12px] font-bold text-dark">
+                      Contact
                     </h4>
-                    <p className="text-base text-body-color">
-                      (+63)9 123 456 789
+                    <p className="text-base text-[11px] text-body-color">
+                      9 123 456 789
                     </p>
                   </div>
                 </div>
@@ -255,8 +288,8 @@ const Contact = () => {
                     <h4 className=" text-lg font-bold text-dark">
                       Email Address
                     </h4>
-                    <p className="text-base text-body-color">
-                      Capstonev2@gmail.com
+                    <p className="text-base text-[12px] text-body-color">
+                     MyEmail@gmail.com
                     </p>
                   </div>
                 </div>
@@ -270,14 +303,14 @@ const Contact = () => {
                     <h4 className=" text-lg font-bold text-dark">
                       Facebook
                     </h4>
-                    <p className="text-base text-body-color">
-                      www.facebook.com/profile
+                    <p className="text-base text-[12px] text-body-color">
+                     www.facebook.com
                     </p>
                   </div>
                   
                 </div>
                 <div className="800px:mb-8 flex w-full max-w-[370px]">
-                  <div className="mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-primary bg-opacity-5 text-primary sm:h-[70px] sm:max-w-[70px]">
+                  <div className="mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-primary bg-opacity-5 text-primary sm:h-[70px] sm:max-w-[70px] ">
                     <BsMessenger size={25} className="text-blue-600" />
                   </div>
                   <div className="w-full">
@@ -285,8 +318,8 @@ const Contact = () => {
                     <h4 className=" text-lg font-bold text-dark">
                       Messenger
                     </h4>
-                    <p className="text-base text-body-color">
-                      www.messenger.com/me
+                    <p className="text-base text-[12px] text-body-color">
+                      www.messenger.com
                     </p>
                   </div>
                   

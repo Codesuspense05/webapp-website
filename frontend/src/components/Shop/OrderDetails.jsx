@@ -45,6 +45,24 @@ const OrderDetails = () => {
       });
   };
 
+  const riderorderUpdateHandler = async (e) => {
+    await axios
+      .put(
+        `${server}/order/update-order-status/${id}`,
+        {
+          status,
+        },
+        { withCredentials: true }
+      )
+      .then((res) => {
+        toast.success("Order updated!");
+        navigate("/deliveryrider");
+      })
+      .catch((error) => {
+        toast.error(error.response.data.message);
+      });
+  };
+
   const refundOrderUpdateHandler = async (e) => {
     await axios
     .put(
@@ -75,12 +93,26 @@ const OrderDetails = () => {
       ) : (
     
     <div className={`py-4 min-h-screen ${styles.section}`}>
-      <div className="w-full flex items-center justify-around">
+      <div className="w-full flex items-center justify-around max-400px:hidden">
         <div className="flex items-center ">
           <IoBagCheckOutline size={30} color="blue" />
           <h1 className="pl-2 text-[25px]">Order Details</h1>
         </div>
         <Link to="/dashboard-orders">
+          <div
+            className={`${styles.button} 800px:!bg-blue-500 !rounded-full text-white font-[600] !h-[45px] text-[18px] max-400px:w-[50px] max-400px:bg-transparent`}
+          >
+            <IoListOutline className="mr-1 max-400px:text-[30px] max-400px:text-blue-500"/><h1 className="max-400px:hidden ">Order List</h1>
+          </div>
+        </Link>
+      </div>
+
+      <div className="w-full flex items-center justify-around 800px:hidden">
+        <div className="flex items-center ">
+          <IoBagCheckOutline size={30} color="blue" />
+          <h1 className="pl-2 text-[25px]">Order Details</h1>
+        </div>
+        <Link to="/deliveryrider">
           <div
             className={`${styles.button} 800px:!bg-blue-500 !rounded-full text-white font-[600] !h-[45px] text-[18px] max-400px:w-[50px] max-400px:bg-transparent`}
           >
@@ -162,7 +194,7 @@ const OrderDetails = () => {
       
       <hr />
       <div className="flex items-center justify-end">
-      <h4 className="flex pt-3 text-[19px] max-400px:w-[70%] max-400px:text-[18px]  font-[600] 800px:mr-2"><GrStatusInfo size={15} className="mr-1"/>Order Status:</h4>
+      <h4 className="flex pt-3 text-[19px] max-400px:w-[70%] max-400px:text-[18px]  font-[600] 800px:mr-2"><GrStatusInfo size={15} className=""/>Order Status:</h4>
       {data?.status !== "Processing refund" && data?.status !== "Refund Success" && (
         <select
           value={status}
@@ -222,8 +254,18 @@ const OrderDetails = () => {
       }
     
       <button disabled={isButtonDisabled}><div
-        className={`${styles.button} mt-5  !rounded-[10px] text-white font-[600] !h-[45px] text-[18px] ml-2  max-400px:w-[30%] bg-blue-500 hover:bg-blue-600`}
+        className={`${styles.button} mt-5  !rounded-[10px] text-white font-[600] !h-[45px] text-[18px] ml-2  max-400px:w-full bg-blue-500 hover:bg-blue-600 max-400px:hidden`}
         onClick={data?.status !== "Processing refund" ? orderUpdateHandler : refundOrderUpdateHandler}
+        
+        
+      >
+        <MdSecurityUpdateGood className="max-400px:text-[30px]"/><h1 className="max-400px:hidden">Update Status</h1>
+      </div>
+      </button>
+
+      <button disabled={isButtonDisabled}><div
+        className={`${styles.button} mt-5  !rounded-[10px] text-white font-[600] !h-[45px] text-[18px] ml-2  max-400px:w-full bg-blue-500 hover:bg-blue-600 800px:hidden`}
+        onClick={data?.status !== "Processing refund" ? riderorderUpdateHandler : refundOrderUpdateHandler}
         
         
       >

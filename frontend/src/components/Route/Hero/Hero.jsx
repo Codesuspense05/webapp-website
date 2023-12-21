@@ -28,10 +28,10 @@ const Hero = () => {
     nextArrow: null,
     autoplay: true,
     autoplaySpeed: 3000, // Adjust the speed (in milliseconds)
-    dots: true, // Show navigation dots
+    dots: false, // Show navigation dots
     infinite: true, // Enable infinite loop
     speed: 500, // Transition speed (in milliseconds)
-    slidesToShow: 4, // Number of items to show at once
+    slidesToShow: 2, // Number of items to show at once
     slidesToScroll: 1, // Number of items to scroll on each autoplay
     responsive: [
       {
@@ -44,7 +44,7 @@ const Hero = () => {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 1,
           slidesToScroll: 1,
         },
       },
@@ -58,7 +58,7 @@ const Hero = () => {
       {
         breakpoint: 400,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 2,
           slidesToScroll: 1,
         },
       },
@@ -94,11 +94,19 @@ const Hero = () => {
   };
   const handleDownload = () => {
     // Replace 'your_file_path' with the actual path to your application/file
-    const filePath = 'https://drive.usercontent.google.com/download?id=1ErGS2zRrNFBgozbCqrsEwxmu3gjS00F4&export=download&authuser=0&confirm=t&uuid=f0a13977-dc4e-4dd8-9a0b-79116e7b8e3f&at=APZUnTVHi8xcH2LEOAcYKNLif7WN%3A1702049094279&fbclid=IwAR2RhuxI7R2Exr-BgAl5Mvi6X87iGLJISK9T-BVpEzmDz6WOewy70CDLAeU';
-    window.open(filePath, '_blank');
+    const filePath =
+      "https://drive.usercontent.google.com/download?id=1ErGS2zRrNFBgozbCqrsEwxmu3gjS00F4&export=download&authuser=0&confirm=t&uuid=f0a13977-dc4e-4dd8-9a0b-79116e7b8e3f&at=APZUnTVHi8xcH2LEOAcYKNLif7WN%3A1702049094279&fbclid=IwAR2RhuxI7R2Exr-BgAl5Mvi6X87iGLJISK9T-BVpEzmDz6WOewy70CDLAeU";
+    window.open(filePath, "_blank");
   };
 
-  
+  const photos = [
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSjf9CPeypFNR14Wj2g6UMiWN9mPDSatagt_V5HmuwzfSBAqnnUax1IBWqpYqMl99rPVg&usqp=CAU",
+    "https://filipiknow.net/wp-content/uploads/2018/07/water-refilling-station-business-in-the-philippines.jpg?ezimgfmt=rs:372x279/rscb47",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTovxnNVWQgLIdggMOuF_0vraEqkx_nEdqruQCxdl1HxB8VdBsstVFyZ1frX9WdWFuimzY&usqp=CAU",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2BVgZyzBVaFDuEnU8jgSmvIa7yu_e14Let_BzW-S-meE3fEorYZab9yqLqC4doePgJFw&usqp=CAU",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8UD0mN7RBbBfXK2scT-RahtR3BCvtOlmsVqepPJP-YTcIWR7MRYv5TPhfhIQIt07FpX0&usqp=CAU",
+    // Add more photo URLs as needed
+  ];
 
   return (
     <section className=" bg-white w-full  ">
@@ -116,7 +124,6 @@ const Hero = () => {
       </svg>
       <div className="w-[90%] container flex flex-col justify-center max-400px:h-[60vh] max-500px:h-[60vh] max-640px:h-[60vh] text-center mx-auto sm:py-2 lg:flex-row lg:justify-between">
         <div className="relative flex flex-col justify-center  text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left ">
-          
           <div className="flex max-400px:justify-center max-500px:justify-center max-640px:justify-center max-768px:justify-center ">
             <BsDropletHalf
               size={30}
@@ -153,9 +160,9 @@ const Hero = () => {
               startDelay={2000}
               cursorColor="#3F3D56"
               multiText={[
-                "Water",
+                "Mineral Water at your service",
                 "Crystal Clear",
-                "Good Water Quality",
+                "Good Quality of Water",
                 "Always Free Delivery",
                 "Order Now",
               ]}
@@ -167,33 +174,31 @@ const Hero = () => {
             <p
               data-aos="fade-right"
               data-aos-delay="400"
-              className="mt-4 mb-8 text-justify w-full ease-in duration-300 text-[12px] z-10"
+              className="mt-4 mb-8 text-justify w-full ease-in duration-300 text-[14px]  z-10"
             >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Consequuntur, incidunt quisquam tempore dolorem adipisci voluptas
-              ipsa, optio debitis asperiores doloremque voluptate saepe
-              deserunt, aliquam earum voluptates velit non. Mollitia, quidem?
+              These stations are designed to be more sustainable and
+              environmentally friendly than single-use plastic water bottles,
+              which can create a lot of waste. In addition to reducing waste,
+              water bottle refilling stations also provide a convenient and
+              cost-effective way for individuals to stay hydrated.
               <br
                 data-aos="fade-right"
                 data-aos-delay="400"
                 className="hidden md:inline lg:hidden"
               />
-              turpis pulvinar, est scelerisque ligula sem
             </p>
           </div>
-          <div
-            data-aos="fade-right"
-            data-aos-delay="400"
-            className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start 390px:px-4 400px:px-4"
-          >
+          <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start 390px:px-4 400px:px-4">
             <Link to="/">
               <div className="px-3 py-2  text-lg font-semibold  shadow-md bg-blue-500 text-white  border rounded-xl transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ...">
                 Download App
               </div>
             </Link>
-            <div className="px-8 py-2 text-lg font-semibold border shadow-md border-blue-500 rounded-xl dark:border-gray-100  ">
-              Learn more
-            </div>
+            <Link to={"/about"}>
+              <div className="px-8 py-2 text-lg font-semibold border shadow-md border-blue-500 rounded-xl dark:border-gray-100  hover:bg-indigo-500 duration-300 hover:text-white  ">
+                Learn more
+              </div>
+            </Link>
           </div>
         </div>
         {/* <div className="relative">
@@ -388,26 +393,22 @@ const Hero = () => {
         data-aos="fade-down"
         data-aos-delay="100"
       >
-        <div className="px-10 py-10 max-400px:px-5 400px:px-5 390px:px-5 text-justify">
-          <h1 className="font-bold text-center text-[20px] 390px:text-[20px] 400pxtext-[20px]">
+        <div className="px-10 py-10 max-400px:px-5  400px:px-5 390px:px-5 text-justify">
+          <h1 className="font-bold  800px:text-[30px] 390px:text-[20px] 400pxtext-[20px]">
             OUR PROCESS
           </h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti
-            dolor accusantium maiores libero obcaecati vel amet aliquid alias
-            ipsa porro doloremque mollitia sapiente harum eaque commodi
-            deserunt, doloribus pariatur velit!. Lorem ipsum, dolor sit amet
-            consectetur adipisicing elit. Voluptates id repellendus architecto?
-            Commodi, totam alias possimus, rem maxime illo cum accusantium
-            corporis hic, quas sapiente saepe dolore iusto ratione repellat?
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti
-            dolor accusantium maiores libero obcaecati vel amet aliquid alias
-            ipsa porro doloremque mollitia sapiente harum eaque commodi
-            deserunt, doloribus pariatur velit!. Lorem ipsum, dolor sit amet
-            consectetur adipisicing elit. Voluptates id repellendus architecto?
-            Commodi, totam alias possimus, rem maxime illo cum accusantium
-            corporis hic, quas sapiente saepe dolore iusto ratione repellat?
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+            The mineral water production process flow that illustrates the
+            stages of mineral water production. It includes all the significant
+            steps in producing mineral water, from filtering raw water to
+            bottling the product for sale. The process begins with collecting
+            clean source water and packaging it in plastic gallon or other
+            containers. This blog post will discuss how each step is completed
+            and some challenges that can be faced throughout the process. The
+            demand for mineral water is increasing each year. In the Industrial,
+            the packaging of mineral water production lines has been entirely
+            automated and intelligent. While having little energy consumption
+            and being environmentally friendly.
           </p>
         </div>
         <div className="px-5 py-2 h-[40vh] ">
@@ -434,31 +435,8 @@ const Hero = () => {
         </svg>
 
         <div className="grid grid-cols-2 max-400px:grid max-400px:grid-cols-1 max-500px:grid  max-500px:grid-cols-1  max-640px:grid  max-640px:grid-cols-1 max-768px:grid max-768px:grid-cols-1">
-          <div className="px-10 400px:px-5 max-400px:px-5 390px:px-5 text-justify">
-            <h1
-              className="font-bold text-[30px] max-400px:pt-5 max-500px:pt-5 max-640px:pt-5 max-768px:pt-5 
-            max-400px:text-[20px] max-500px:text-[20px] max-640px:text-[20px] max-768px:text-[20px]"
-            >
-              Our Products
-            </h1>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi esse
-            magni laudantium neque officia nisi, sed iure repellendus voluptate.
-            Sequi provident omnis consequatur sapiente vel ipsam hic perferendis
-            molestias dolore? Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Quasi esse magni laudantium neque officia nisi, sed iure
-            repellendus voluptate. Sequi provident omnis consequatur sapiente
-            vel ipsam hic perferendis molestias dolore? Lorem ipsum dolor sit
-            amet consectetur adipisicing elit. Quasi esse magni laudantium neque
-            officia nisi, sed iure repellendus voluptate. Sequi provident omnis
-            consequatur sapiente vel ipsam hic perferendis molestias dolore?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi esse
-            magni laudantium neque officia nisi, sed iure repellendus voluptate.
-            Sequi provident omnis consequatur sapiente vel ipsam hic perferendis
-            molestias dolore?
-            <hr />
-          </div>
-          <div>
-            <Slider {...settings} className="bg-white">
+          <div className="">
+            <Slider {...settings} className="bg-white ">
               {/* Add your product items here */}
               <div>
                 <img
@@ -529,6 +507,40 @@ const Hero = () => {
               </div>
               {/* Add more product items as needed */}
             </Slider>
+            <p className="text-justify">
+              It's important to note that market trends and consumer preferences
+              can influence the types and sizes of containers offered by mineral
+              water stations. Additionally, there is an increasing awareness of
+              environmental sustainability, leading to a rise in demand for
+              eco-friendly packaging options such as recycled materials or
+              biodegradable gallon and bottles.
+            </p>
+          </div>
+          <div className="px-10 400px:px-5 max-400px:px-5 390px:px-5 text-justify">
+            <h1
+              className="font-bold text-[30px] max-400px:pt-5 max-500px:pt-5 max-640px:pt-5 max-768px:pt-5 
+            max-400px:text-[20px] max-500px:text-[20px] max-640px:text-[20px] max-768px:text-[20px]"
+            >
+              Our Products
+            </h1>
+            The availability of these products can vary depending on the
+            specific mineral water station and its offerings. Additionally, some
+            stations may also sell water-related accessories, such as reusable
+            water bottles, water dispensers, or water filters.Gallons: Large
+            plastic or glass containers typically holding around 3.78 liters (1
+            gallon) of mineral water. These are commonly used for household
+            consumption. Bottles: Mineral water is often packaged in smaller
+            individual bottles, ranging in sizes such as: 500 ml (0.5 liters) 1
+            liter 1.5 liters 2 liters 5 liters Custom Sizes: Some mineral water
+            stations may offer custom sizes or packaging to cater to specific
+            consumer needs or commercial clients. Bulk Containers: For
+            commercial or institutional use, mineral water may be supplied in
+            larger containers, such as 18.9-liter (5-gallon) bottles or even
+            larger containers. Packaging Material: The containers are commonly
+            made of plastic , glass, or in some cases, metal. The choice of
+            material depends on factors such as cost, convenience, and
+            environmental considerations.
+            <hr />
           </div>
         </div>
 
@@ -542,36 +554,58 @@ const Hero = () => {
       </section>
       <hr />
       <section
-        className="800px:grid 800px:grid-cols-2 grid grid-cols-1 bg-gray-100 800px:px-20 pb-10 h-[70vh] ease-in duration-300"
+        className="800px:grid 800px:grid-cols-1 grid grid-cols-1 bg-gray-100  w-full h-[50vh] ease-in duration-300"
         data-aos="fade-down"
         data-aos-delay="400"
       >
-        <div className="bg-blue-500 800px:rounded-bl-[20px] shadow-lg grid grid-cols-1 max-400px:px-5">
-          <h1 className="font-bold text-center text-[20px] 800px:px-20 800px:pt-20 max-400px:text-[20px] 400px:py-2 390px:py-2 390px:text-[20px] 400px:text-[20px] max-400px:pt-5">
-            ABOUT US
-          </h1>
-          <p className="800px:px-20 text-justify 800px:py-10 400px:px-5 390px:px-5 text-white ">
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas ex
-            sint incidunt sed reiciendis saepe dolore recusandae. Mollitia
-            blanditiis debitis, deserunt amet repellat recusandae unde assumenda
-            animi. Assumenda, maiores. Et. Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Voluptas ex sint incidunt sed
-            reiciendis saepe dolore recusandae. Mollitia
+        <div
+          class="relative bg-gradient-to-r from-blue-800 to-transparent bg-cover bg-center  flex items-center justify-center "
+          style={{
+            backgroundImage:
+              "url(https://netstorage-kami.akamaized.net/images/a69771d572c6191c.jpg?imwidth=900)",
+          }}
+        >
+          <p class="absolute inset-0 bg-gradient-to-l from-transparent to-blue-800"></p>
+          <p
+            class="absolute grid grid-cols-2 inset-0  items-center justify-start z-10 px-10 text-white text-[18px] text-justify ease-in duration-500"
+            data-aos="fade-right"
+            data-aos-delay="400"
+          >
+            The process of filtering in a mineral water station involves several
+            stages to remove impurities and contaminants from the water,
+            ensuring it meets the required quality standards for drinking water.
+            The specific steps may vary depending on the technology and
+            equipment used, but here is a general outline of the filtration
+            process. It's important to note that the exact processes and
+            equipment used can vary depending on factors such as the source
+            water quality, the capacity of the water treatment plant, and local
+            regulations. Water treatment plants typically follow a combination
+            of these processes to ensure the production of clean and safe
+            drinking water.
           </p>
-        </div>
-        <div className="bg-white 800px:px-20 800px:py-20 800px:rounded-br-[20px] shadow-md max-400px:px-5 ">
-          <img
-            src="https://img.freepik.com/free-photo/front-view-water-recipients-ice-cube-copy-space_23-2148728782.jpg?size=626&ext=jpg&ga=GA1.1.1737282160.1690642300&semt=ais"
-            alt=""
-          />
         </div>
       </section>
 
       <hr />
+      <div
+        className="flex max-400px:overflow-x-visible items-center justify-center"
+        data-aos="fade-down"
+        data-aos-delay="400"
+      >
+        {photos.map((photo, index) => (
+          <div key={index} className="flex-none w-64 p-2">
+            <img
+              src={photo}
+              alt={` ${index + 1}`}
+              className="w-full h-[300px] rounded  transition-transform hover:scale-110 ease-in duration-300"
+            />
+          </div>
+        ))}
+      </div>
       <br />
 
       <br />
+      <hr />
       <section>
         <div
           data-aos="fade-up"
@@ -596,15 +630,93 @@ const Hero = () => {
 
           <div className="w-full lg:-w[50%] lg:-h[20%] m-auto justify-between ml-8">
             <img
-              src="https://whitewaternow.com/wp-content/uploads/2020/04/water-delivery-precautions-coronavirus.jpg"
+              src="https://assets-v2.lottiefiles.com/a/0469b7f2-1178-11ee-8518-d717d4c98fb0/YB3kW64U4R.gif"
               alt=""
               className=" w-[70%] h-[30%] ml-10"
             />
           </div>
         </div>
       </section>
-      <hr />
 
+      <hr />
+      <br />
+      <section
+        className="800px:grid 800px:grid-cols-1 grid grid-cols-1 bg-gray-100  w-full h-[70vh] ease-in duration-300"
+        data-aos="fade-down"
+        data-aos-delay="400"
+      >
+        <div
+          class="relative bg-gradient-to-r from-blue-800 to-transparent bg-cover bg-center  flex items-center justify-center "
+          style={{
+            backgroundImage:
+              "url(https://home.drinkflowater.com/cdn/shop/articles/The-Importance-of-Water-Filtration_1024x.jpg?v=1596714019)",
+          }}
+        >
+          <p class="absolute inset-0 bg-gradient-to-r from-transparent to-blue-800"></p>
+
+          <p class="absolute inset-0 bg-gradient-to-r from-transparent to-blue-800"></p>
+          <p
+            class="absolute grid grid-cols-2 inset-0  items-center justify-end z-10 px-10 text-white text-[18px] text-justify ease-in duration-500"
+            data-aos="fade-right"
+            data-aos-delay="400"
+          >
+            <img
+              src="https://media0.giphy.com/media/RN2DRs6Ogl4v5c1nlP/giphy.gif"
+              alt=""
+            />
+            <p>
+              {" "}
+              MORE THAN JUST FOR DRINKING Lorem ipsum dolor sit amet consectetur
+              adipisicing elit. Eveniet tempore non nemo animi harum nihil
+              nesciunt ipsum. Hic expedita laudantium veniam tenetur, delectus
+              atque, aliquam libero animi incidunt inventore nisi. Lorem, ipsum
+              dolor sit amet consectetur adipisicing elit. Enim eligendi,
+              debitis optio porro maiores similique odio veniam nulla nisi
+              asperiores. Repellendus dolore numquam, natus tempora cum officia
+              porro inventore mollitia.
+            </p>
+          </p>
+        </div>
+      </section>
+      <div
+        className=" grid grid-cols-3 gap-5 items-center justify-center  bg-gray-100 px-10 py-10 ease-in duration-300"
+        data-aos="fade-down"
+        data-aos-delay="400"
+      >
+        <div className="max-w-md p-8 bg-white shadow-md rounded-md ">
+          <img
+            className="w-full h-auto mb-4 rounded-md"
+            src="https://cdn.uconnectlabs.com/wp-content/uploads/sites/33/2023/01/goals.png"
+            alt="Your Alt Text"
+          />
+          <p className="text-gray-700">
+            Your text goes here. This is an example of an image with text using
+            Tailwind CSS and ReactJS.
+          </p>
+        </div>
+        <div className="max-w-md p-8 bg-white shadow-md rounded-md ">
+          <img
+            className="w-full h-auto mb-4 rounded-md"
+            src="https://www.odpc.go.ke/wp-content/uploads/2021/08/our-mission.png"
+            alt="Your Alt Text"
+          />
+          <p className="text-gray-700">
+            Your text goes here. This is an example of an image with text using
+            Tailwind CSS and ReactJS.
+          </p>
+        </div>
+        <div className="max-w-md p-8 bg-white shadow-md rounded-md ">
+          <img
+            className="w-full h-auto mb-4 rounded-md"
+            src="https://s.yimg.com/ny/api/res/1.2/9WmC5xtZ191i8yQ6o6nzAg--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY5MDtoPTM5MA--/https://media.zenfs.com/en_SG/News/e27/Vision_entrepreneurs_ecosystem.png"
+            alt="Your Alt Text"
+          />
+          <p className="text-gray-700">
+            Your text goes here. This is an example of an image with text using
+            Tailwind CSS and ReactJS.
+          </p>
+        </div>
+      </div>
       <section
         className="flex bg-white 800px:px-20 800px:pb-10 w-full ease-in duration-300"
         data-aos="fade-down"
@@ -631,7 +743,10 @@ const Hero = () => {
                 Download our app{" "}
               </h3>
               <p> Stay hydrated. All day, every day. </p>
-              <div class="flex justify-center my-10 max-400px:my-2" onClick={handleDownload}>
+              <div
+                class="flex justify-center my-10 max-400px:my-2"
+                onClick={handleDownload}
+              >
                 <div class="flex items-center border rounded-lg px-4 py-2 w-52 mx-2">
                   <img
                     src="https://cdn-icons-png.flaticon.com/512/888/888857.png"

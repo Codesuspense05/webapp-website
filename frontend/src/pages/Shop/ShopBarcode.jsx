@@ -1,8 +1,7 @@
 import React from 'react'
 import DashboardHeader from '../../components/Shop/Layout/DashboardHeader'
 import DashboardSideBar from '../../components/Shop/Layout/DashboardSideBar'
-import AllCoupons from "../../components/Shop/AllCoupons";
-
+import Allbarcode from '../../components/Shop/AllBarcode';
 
 const ShopAllCoupouns = () => {
   return (
@@ -10,10 +9,10 @@ const ShopAllCoupouns = () => {
         <DashboardHeader />
         <div className="flex justify-between w-full">
             <div className="w-[80px] 800px:w-[330px]">
-              <DashboardSideBar active={10} />
+              <DashboardSideBar active={13} />
             </div>
             <div className="w-full justify-center flex">
-                <AllCoupons />
+            <Allbarcode/>
               
             </div>
             

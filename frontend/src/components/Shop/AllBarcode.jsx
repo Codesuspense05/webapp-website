@@ -9,8 +9,11 @@ import styles from "../../styles/styles";
 import Loader from "../Layout/Loader";
 import { server } from "../../server";
 import { toast } from "react-toastify";
+import { MdDashboardCustomize } from "react-icons/md";
+import { BsDashSquare } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
-const AllCoupons = () => {
+const Allbarcode= () => {
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -63,7 +66,7 @@ const AllCoupons = () => {
         { withCredentials: true }
       )
       .then((res) => {
-       toast.success("Coupon code created successfully!");
+       toast.success("Coupon barcode created successfully!");
        setOpen(false);
        window.location.reload();
       })
@@ -76,13 +79,13 @@ const AllCoupons = () => {
     { field: "id", headerName: "ID", minWidth: 150, flex: 0.7 },
     {
       field: "name",
-      headerName: "Coupon Code (RFID)",
+      headerName: "Barcode" + " ▌│█║▌║▌║" ,
       minWidth: 180,
       flex: 1.4,
     },
     {
       field: "price",
-      headerName: "Value",
+      headerName: "Discount " + "🏷️",
       minWidth: 100,
       flex: 0.6,
     },
@@ -111,7 +114,7 @@ const AllCoupons = () => {
   coupouns.forEach((item) => {
       row.push({
         id: item._id,
-        name: item.name + " 💳",
+        name: item.name + "  ║▌║█║▌│║▌║▌█",
         price: item.value + " %",
         sold: 10,
       });
@@ -122,25 +125,31 @@ const AllCoupons = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <div className="w-full mx-8 pt-1 mt-10 bg-white">
-          <div className="w-full flex justify-end">
+        <div className="w-full px-20 pt-1 mt-10 bg-white">
+          <Link to={"/dashboard"}>
+          <BsDashSquare size={30} color="blue"/>
+          </Link>
+          <div className="w-full flex justify-center ">
             <div
-              className={`${styles.button} !w-max !h-[45px] px-3 !rounded-[5px] mr-3 mb-3`}
+              className={`${styles.button} !w-max !h-[45px] px-3 !rounded-[5px] mr-3 mb-3 shadow-xl`}
               onClick={() => setOpen(true)}
             >
-              <span className="text-white">Create Coupon Code Using RFID</span>
+              <span className="text-white">Create Barcode Dicount</span>
             </div>
           </div>
-          <DataGrid
+        <div className="shadow shadow-gray-500">
+        <DataGrid
             rows={row}
             columns={columns}
             pageSize={10}
             disableSelectionOnClick
             autoHeight
+            className=""
           />
+        </div>
           {open && (
             <div className="fixed top-0 left-0 w-full h-screen bg-[#00000062] z-[20000] flex items-center justify-center">
-              <div className="w-[90%] 800px:w-[25%] h-[70vh] bg-white rounded-md shadow p-4 border-red-500 border-[4px]">
+              <div className="w-[90%] 800px:w-[25%] h-[70vh] bg-white rounded-md shadow p-4 border-blue-500 border-[2px]">
                 <div className="w-full flex justify-end">
                   <RxCross1
                     size={30}
@@ -149,14 +158,14 @@ const AllCoupons = () => {
                   />
                 </div>
                 <h5 className="text-[20px] font-Poppins text-center">
-                  Create Discount Code
+                  Create Discount Using Barcode
                 </h5>
                 {/* create coupoun code */}
                 <form onSubmit={handleSubmit} props-required={true}>
                   <br />
                   <div>
                     <label className="pb-2">
-                      Discount Code (RFID CARD) <span className="text-red-500">*</span>
+                      Discount Code (BARCODE NUMBER) <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
@@ -245,4 +254,4 @@ const AllCoupons = () => {
   );
 };
 
-export default AllCoupons;
+export default Allbarcode;

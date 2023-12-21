@@ -6,11 +6,14 @@ import { Link, useSearchParams } from "react-router-dom";
 import Loader from "../components/Layout/Loader";
 import ProductCard from "../components/Route/ProductCard/ProductCard";
 import styles from "../styles/styles";
-import { BiCart } from "react-icons/bi";
+import { BiArrowToLeft, BiCart } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
 import Cart from "../components/cart/Cart";
 import Wishlist from "../components/Wishlist/Wishlist";
 import { RxPinLeft } from "react-icons/rx";
+import DashboardHeader from "../components/Shop/Layout/DashboardHeader";
+import { RiDashboard3Fill } from "react-icons/ri";
+import { MdOutlineDashboard } from "react-icons/md";
 
 const ProductsPage = () => {
   const [searchParams] = useSearchParams();
@@ -45,22 +48,13 @@ const ProductsPage = () => {
     ) : (
       <div>
       {/* <Header activeHeading={3} /> */}
+      <DashboardHeader/>
       <Link to={"/dashboard"}>
       <div className="max-400px:hidden 400px:hidden"><RxPinLeft size={30} className="m-2 hover:text-blue-500"/></div>  
       </Link>
+      
       <div className="flex bg-blue-500 h-[70px] items-center justify-end ">
-            {/* <div className={`${styles.noramlFlex} `}>
-              <div
-                className="relative cursor-pointer mr-[15px]"
-                onClick={() => setOpenWishlist(true)}
-              >
-                <AiFillHeart size={30} color="rgb(255 255 255 / 83%)" />
-                <span className="absolute right-0 top-0 rounded-full bg-[#e43840] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
-                  {wishlist && wishlist.length}
-                </span>
-              </div>
-            </div> */}
-
+          <div className="mr-[90%]"><Link to={"/dashboard"}>  <MdOutlineDashboard size={35} color="white" className="mr-[90%] animate-bounce"/></Link></div>
             <div className={`${styles.noramlFlex}  `}>
               <div
                 className="relative cursor-pointer mr-[15px]"
@@ -106,7 +100,7 @@ const ProductsPage = () => {
       <br />
       <br />
       <div className={`${styles.section}`}>
-        <div className="grid grid-cols-1 gap-[20px] md:grid-cols-2 md:gap-[25px] lg:grid-cols-4 lg:gap-[25px] xl:grid-cols-5 xl:gap-[30px] mb-12">
+        <div className="grid grid-cols-1 gap-[15px] md:grid-cols-2 md:gap-[20px] lg:grid-cols-4 lg:gap-[25px] xl:grid-cols-5 xl:gap-[30px] mb-12">
           {data && data.map((i, index) => <ProductCard data={i} key={index} />)}
         </div>
         {data && data.length === 0 ? (
@@ -114,6 +108,7 @@ const ProductsPage = () => {
             No products Found!
           </h1>
         ) : null}
+        
       </div>
       
     </div>

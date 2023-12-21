@@ -5,11 +5,12 @@ import Checkout from "../components/Checkout/Checkout";
 import Footer from '../components/Layout/Footer';
 import { Link } from 'react-router-dom';
 import { RxPinLeft } from 'react-icons/rx';
+import DashboardHeader from '../components/Shop/Layout/DashboardHeader';
 
 const CheckoutPage = () => {
   return (
     <div className='!overflow-scroll h-[100vh] bg-white'>
-      
+      <DashboardHeader/>
       <Link to={"/dashboard-walkin-order-product"}>
         <RxPinLeft size={30} className='m-5 hover:text-blue-500 max-400px:hidden'/>
       </Link>

@@ -11,10 +11,11 @@ import { AiOutlineArrowRight, AiOutlineNumber } from "react-icons/ai";
 import { IoScaleOutline, IoSwapHorizontalOutline } from "react-icons/io5";
 import { CgArrowDown,CgNametag } from "react-icons/cg";
 import { MdOutlineEmail } from "react-icons/md";
-import { BsHouseFill, BsTruck } from "react-icons/bs";
+import { BsCardImage, BsCardText, BsHouseFill, BsTruck } from "react-icons/bs";
 import { HiLocationMarker } from "react-icons/hi";
 import { RiCoupon2Fill } from "react-icons/ri";
 import { BiHomeAlt, BiPen } from "react-icons/bi";
+import { IoMdBarcode } from "react-icons/io";
 
 const Checkout = () => {
   const { user } = useSelector((state) => state.user);
@@ -103,6 +104,33 @@ const Checkout = () => {
         setCouponCode("");
       }
     });
+
+    await axios.get(`${server}/barcoupon/get-barcoupon-value/${name}`).then((res) => {
+      const shopId = res.data.couponCode?.shopId;
+      const couponCodeValue = res.data.couponCode?.value;
+      if (res.data.couponCode !== null) {
+        const isCouponValid =
+          cart && cart.filter((item) => item.shopId === shopId);
+
+        if (isCouponValid.length === 0) {
+          toast.error("Coupon code is not valid for this shop");
+          setCouponCode("");
+        } else {
+          const eligiblePrice = isCouponValid.reduce(
+            (acc, item) => acc + item.qty * item.discountPrice,
+            0
+          );
+          const discountPrice = (eligiblePrice * couponCodeValue) / 100;
+          setDiscountPrice(discountPrice);
+          setCouponCodeData(res.data.couponCode);
+          setCouponCode("");
+        }
+      }
+      if (res.data.couponCode === null) {
+        toast.error("Discount code doesn't exists!");
+        setCouponCode("");
+      }
+    });
   };
 
   const discountPercentenge = couponCodeData ? discountPrice : "";
@@ -148,10 +176,10 @@ const Checkout = () => {
         </div>
       </div>
       <div
-        className={`${styles.button} max-400px:w-[250px] 400px:w-[250px] 800px:w-[240px] mt-10`}
+        className={`${styles.button} max-400px:w-[250px] 400px:w-[250px] 800px:w-full flex items-center justify-center mt-10`}
         onClick={paymentSubmit}
       >
-       <h5 className="text-white max-400px:text-[15px] ">Proceed to Payment Method</h5> <AiOutlineArrowRight className="text-white text-[20px]"/>
+       <h5 className="text-white max-400px:text-[15px] text-center ml-[7%] ">Proceed to Payment Method</h5> <AiOutlineArrowRight className="text-white text-[20px]"/>
       </div>
     </div>
   );
@@ -178,7 +206,7 @@ const ShippingInfo = ({
 }) => {
   return (
     
-    <div className=" w-full 800px:w-[65%] bg-white rounded-md p-5 pb-8  border-[2px] justify-end">
+    <div className=" w-full 800px:w-[65%] bg-white rounded-md p-5 pb-8  border-[2px] justify-end shadow-xl shadow-gray-500  border-blue-500">
       
       <h5 className="text-[18px] font-[500]"><div className="flex justify-between"><BiHomeAlt size={25}/> | Home Delivery Address</div></h5>
       <br />
@@ -253,7 +281,7 @@ const ShippingInfo = ({
         </div>
         <div className="w-full flex pb-3">
           <div className="w-[100%]">
-            <label className="block pb-2"><div className="flex"><BiPen size={20} color="gray"/> Pen Name</div></label>
+            <label className="block pb-2"><div className="flex"><BiPen size={20} color="gray"/> NickName</div></label>
             <input
               type="name"
               required
@@ -344,9 +372,11 @@ const CartData = ({
 }) => {
   return (
     
-    <div className=" w-full bg-[#fff] h-full rounded-md p-5 pb-8 border-[2px]">
+    <div className=" w-full bg-[#fff] h-full rounded-md p-5 pb-8 border-[2px] border-red-500 shadow-xl shadow-gray-500">
    
-    <div className="flex items-center justify-between"> <RiCoupon2Fill color="red" size={40}/> <RiCoupon2Fill  color="red" size={40}/></div>
+    <div className="flex items-center justify-between"> <BsCardText color="orange" size={40}/> USE RFID | BARCODE NUMBER <IoMdBarcode color="black" size={40}/></div>
+    <br />
+    <hr />
     <br />
       <div className="flex justify-between">
       <IoScaleOutline className="text-[30px] text-blue-500"/><h3 className="text-[16px] font-[400] text-[#000000a4]">Subtotal:</h3>
@@ -366,6 +396,7 @@ const CartData = ({
       </div>
       <h5 className="text-[18px] font-[600] text-end pt-3">P{totalPrice}</h5>
       <br />
+ <br />
       <form onSubmit={handleSubmit}>
         <input
           type="number"

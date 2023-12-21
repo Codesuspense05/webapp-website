@@ -29,22 +29,7 @@ const Webfooter = () => {
                     </p>
                   </div>
                 </div>
-                <div class="flex items-center border  rounded-lg px-4 py-2 w-44 mx-2">
-                  <img
-                    src="https://cdn-icons-png.flaticon.com/512/888/888841.png"
-                    alt=""
-                    class="w-7 md:w-8 max-400px:w-6  max-400px:h-6"
-                  />
-                  <div class="text-left ml-3">
-                    <p class="text-xs text-gray-200 max-400px:text-[10px]">
-                      Download on{" "}
-                    </p>
-                    <p class="text-sm md:text-base max-400px:text-[12px]">
-                      {" "}
-                      Apple Store{" "}
-                    </p>
-                  </div>
-                </div>
+               
               </div>
             </div>
             <div class="mt-5 flex flex-col md:flex-row md:justify-between items-center text-sm text-gray-400">
